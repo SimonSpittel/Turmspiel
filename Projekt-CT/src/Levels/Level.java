@@ -18,4 +18,4 @@ public abstract class Level {
 //    }                                                         <-- Muss nacher in die einzelnen Levels
     
     
-}
+} 
