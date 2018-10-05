@@ -13,8 +13,8 @@ import java.awt.image.BufferedImage;
  */
 public abstract class Spielelement {
     protected BufferedImage alleBilder[];
-    private int xPos;
-    private int yPos;
+    protected int xPos;
+    protected int yPos;
     
     public abstract void berechneBilder();
     
