@@ -25,11 +25,11 @@ public abstract class Aktion {
     public int getyPos() {
         return yPos;
     }
-
+         
 
     public boolean isBenutzt() {
         return benutzt;
-    }
+    }            
 
     /**
      * @return the aktionVerfügbar
