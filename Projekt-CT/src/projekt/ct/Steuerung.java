@@ -6,7 +6,6 @@
 package projekt.ct;
 
 import java.awt.Graphics;
-import java.util.Random;
 
 /**
  *
@@ -38,39 +37,7 @@ public class Steuerung {
         
     }
     
-//    public void loadLvl(){
-//        Scanner scanIn =null;
-//        int Rowc = 0;
-//        int Row  = 0;
-//        int Colc = 0;
-//        int Col  = 0;
-//        String InputLine = "";
-//        double xnum = 0;
-//        String xfileLocation;
-//    
-//        xfileLocation = "/Dateien/Lvl1.txt";
-//        try{
-//            scanIn = new Scanner(new BufferedReader(new FileReader(xfileLocation)));
-//            
-//            while(scanIn.hasNextLine()){
-//                String [] InArray =InputLine.split(",");
-//                for (int x=0;x< InArray.length; x++){
-//                    test[Rowc][x]= Double.parseDouble(InArray[x]);
-//                }
-//                Rowc ++;
-//            }
-//        } catch (Exception e){
-//            System.out.println("ERROR");
-//        }
-//    }    
-//    public void printLvl(){
-//        for(int y = 0 ; y < test.length ; y++){
-//            for(int x = 0 ; x < test[0].length ; x++){
-//                System.out.print(""+test[x][y]);
-//            }
-//            System.out.println("");
-//        }
-//    }
+
     
     private void initSpielelemente(){
         figur.setxPos(0);
@@ -86,7 +53,7 @@ public class Steuerung {
     
     public void zeichneSpielElemente(Graphics g){
         figur.zeichne(g);
-
+        System.out.println("-------------------------------------");
         for(int v = 0; SpielelementeEbene[aktiveTurmseite].length > v ; v++){        //  v  <--- Durchlaufvariable für die Turmhöhe
             for(int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h ; h++){ //  h  <--- Durchlaufvariable für die Turmbreite    
                 SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g);
@@ -97,8 +64,10 @@ public class Steuerung {
     
     
    //--------------------reagiert auf tastendruck zum Bewegen---------------------
-    public void verarbeiteTastendruck(java.awt.event.KeyEvent evt){    
-        figur.bewege(evt);
+    public void verarbeiteTastendruck(java.awt.event.KeyEvent evt){
+        if(SpielelementeEbene[aktiveTurmseite][figur.pruefeBegehbarkeit(evt).y][figur.pruefeBegehbarkeit(evt).x].isBegehbarkeit()){
+            figur.bewege(evt);
+        }
         o.repaint();
     }
   

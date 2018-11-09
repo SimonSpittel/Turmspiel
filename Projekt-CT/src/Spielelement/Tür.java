@@ -12,10 +12,9 @@ import java.awt.Graphics;
  * @author Simon.Spittel
  */
 public class Tür extends Spielelement{
-    protected boolean Begehbarkeit = true;
-    @Override
-    public void berechneBilder() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public Tür(){
+        Begehbarkeit = true;
     }
 
     @Override

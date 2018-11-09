@@ -13,11 +13,14 @@ import java.awt.image.BufferedImage;
  * @author Simon.Spittel
  */
 public abstract class Spielelement {
-    protected BufferedImage alleBilder[];
+
+  
+
+    protected boolean Begehbarkeit = true;
     protected int xPos;
     protected int yPos;
     
-    public abstract void berechneBilder();
+    
     
     public abstract void zeichne(Graphics g);
 
@@ -41,5 +44,7 @@ public abstract class Spielelement {
         this.yPos = yPos;
     }
     
-    
+    public boolean isBegehbarkeit() {
+        return Begehbarkeit;
+    }
 }

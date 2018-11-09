@@ -26,11 +26,8 @@ public class Oberflaeche extends javax.swing.JPanel {
         requestFocus();     
     }
 
-    public Graphics gibZeichenFlaeche(){
-        return g;
-    }
-    protected void paintComponent(Graphics g){
-      
+
+    protected void paintComponent(Graphics g){     
         super.paintComponent(g);
         s.zeichneSpielElemente(g);
     }
@@ -74,6 +71,7 @@ public class Oberflaeche extends javax.swing.JPanel {
                 break;
                     
         }
+        
     }//GEN-LAST:event_formKeyPressed
 
 

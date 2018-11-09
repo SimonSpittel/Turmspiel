@@ -6,6 +6,7 @@
 package Spielelement;
 
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 
 
@@ -16,10 +17,7 @@ import java.awt.event.KeyEvent;
  */
 public class Spielfigur extends Spielelement{
     
-    @Override
-    public void berechneBilder() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     @Override
     public void zeichne(Graphics g) {
@@ -29,43 +27,46 @@ public class Spielfigur extends Spielelement{
     public void bewege(java.awt.event.KeyEvent evt){
         switch(evt.getKeyCode()){
             case KeyEvent.VK_UP :
-                
+                yPos--;
                 break;
             case KeyEvent.VK_DOWN:
+                yPos++;
                 break;
                 
             case KeyEvent.VK_LEFT:
+                xPos--;
                 break;
                 
             case KeyEvent.VK_RIGHT:
+                xPos++;
                 break;
                 
         }
     }
     
     
-    private boolean pruefeBegehbarkeit(String Richtung){
+    public Point pruefeBegehbarkeit(java.awt.event.KeyEvent evt){
         int tempX = xPos;
         int tempY = yPos;
-        switch(Richtung){
-            case "Hoch":
+        switch(evt.getKeyCode()){
+            case KeyEvent.VK_UP:
                 tempY--;
                 break;
-            case "Runter":
+            case KeyEvent.VK_DOWN:
                 tempY++;
                 break;
-            case "Links":
+            case KeyEvent.VK_LEFT:
                 tempX--;
                 break;
-            case "Rechts":
+            case KeyEvent.VK_RIGHT:
                 tempX++;
                 break;
             default: 
                 break;               
         }
+        Point p = new Point(tempX,tempY);
         
-        
-        return true;
+        return p;
     }
     
     
