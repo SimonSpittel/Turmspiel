@@ -48,6 +48,7 @@ public class Spielfigur extends Spielelement{
     public Point pruefeBegehbarkeit(java.awt.event.KeyEvent evt){
         int tempX = xPos;
         int tempY = yPos;
+        Point p = new Point();
         switch(evt.getKeyCode()){
             case KeyEvent.VK_UP:
                 tempY--;
@@ -64,7 +65,8 @@ public class Spielfigur extends Spielelement{
             default: 
                 break;               
         }
-        Point p = new Point(tempX,tempY);
+        p.x = tempX;
+        p.y = tempY;
         
         return p;
     }

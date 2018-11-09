@@ -44,7 +44,7 @@ public class Steuerung {
         figur.setyPos(0);
         for(int v = 0; SpielelementeEbene[aktiveTurmseite].length > v ; v++){        //  
             for(int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h ; h++){ // 
-                SpielelementeEbene[aktiveTurmseite][v][h] = new Spielelement.Mauer();//  <--- NUR ZUM TESTEN
+                SpielelementeEbene[aktiveTurmseite][v][h] = new Spielelement.Gang();//  <--- NUR ZUM TESTEN
             }                                                                        //
             
         }
@@ -65,8 +65,12 @@ public class Steuerung {
     
    //--------------------reagiert auf tastendruck zum Bewegen---------------------
     public void verarbeiteTastendruck(java.awt.event.KeyEvent evt){
-        if(SpielelementeEbene[aktiveTurmseite][figur.pruefeBegehbarkeit(evt).y][figur.pruefeBegehbarkeit(evt).x].isBegehbarkeit()){
-            figur.bewege(evt);
+        if(figur.pruefeBegehbarkeit(evt).x < 15 && figur.pruefeBegehbarkeit(evt).y < 30 && figur.pruefeBegehbarkeit(evt).x >= 0 && figur.pruefeBegehbarkeit(evt).y >= 0){   //<--- prüft ob Figur die Außenmase des Turms verlassen würde                                            // <--- prüft ob er die Turmmaße verlässt )
+            if(SpielelementeEbene[aktiveTurmseite][figur.pruefeBegehbarkeit(evt).y][figur.pruefeBegehbarkeit(evt).x].isBegehbarkeit()){   //<---- prüft ob nächstes Feld begehbar ist oder nicht
+                figur.bewege(evt);           
+            }
+//            System.out.println(figur.getxPos()+" / "+ figur.getyPos()); //<--- nur zum test
+            
         }
         o.repaint();
     }
