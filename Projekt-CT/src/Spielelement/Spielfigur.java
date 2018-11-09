@@ -5,6 +5,7 @@
  */
 package Spielelement;
 
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 
@@ -21,7 +22,7 @@ public class Spielfigur extends Spielelement{
     }
 
     @Override
-    public void zeichne() {
+    public void zeichne(Graphics g) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
