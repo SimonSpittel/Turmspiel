@@ -5,6 +5,8 @@
  */
 package Spielelement;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author Simon.Spittel
@@ -18,7 +20,7 @@ public class Gang extends Spielelement {
     }
 
     @Override
-    public void zeichne() {
+    public void zeichne(Graphics g) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

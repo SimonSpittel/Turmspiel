@@ -5,6 +5,7 @@
  */
 package Spielelement;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 /**
@@ -18,7 +19,7 @@ public abstract class Spielelement {
     
     public abstract void berechneBilder();
     
-    public abstract void zeichne();
+    public abstract void zeichne(Graphics g);
 
 
     public int getxPos() {
