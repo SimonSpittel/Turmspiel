@@ -16,9 +16,9 @@ public abstract class Aktion {
     protected int xPos;
     protected int yPos;
     protected boolean benutzt;
-    protected boolean aktionVerfügbar;
+    protected boolean aktionVerfügbar = true; // <-- standardmäsig true nur bei Klasse KeineAktion wird dieser im Konstruktor auf false gesetzt
     
-    public abstract void aktion();
+    //public abstract void aktion();
 
     public int getxPos() {
         return xPos;

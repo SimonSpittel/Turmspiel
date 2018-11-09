@@ -10,16 +10,16 @@ package Aktionen;
  * @author Simon Spittel
  */
 public class wechsleTurmseite extends Aktion {
-    private int Turmseite;
+    private int neueTurmseite; //<--- gibt an zu welhcer turmseite gewechselt werden soll
     
     public wechsleTurmseite(int Turmseite){
-        aktionVerfügbar = true;
-        this.Turmseite = Turmseite;
+        
+        this.neueTurmseite = Turmseite;
     }
     
-    @Override
-    public void aktion() {
-        
+    
+    public int aktion() {
+        return neueTurmseite;
     }
 
 

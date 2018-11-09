@@ -14,9 +14,9 @@ public class starteMinigame extends Aktion {
         aktionVerfügbar = true;
     }
 
-    @Override
+
     public void aktion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
 

@@ -11,7 +11,7 @@ package Aktionen;
  */
 public class schlüsselAblegen extends Aktion {
 
-    @Override
+
     public void aktion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
