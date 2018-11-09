@@ -17,10 +17,8 @@ import java.io.IOException;
 public class LoadLevel {
     private FileReader fr;
     private BufferedReader br;
-    private Aktionen.Aktion[][] AktionsEbene1 = new Aktionen.Aktion[30][15];
-    private Aktionen.Aktion[][] AktionsEbene2 = new Aktionen.Aktion[30][15];
-    private Aktionen.Aktion[][] AktionsEbene3 = new Aktionen.Aktion[30][15];
-    private Aktionen.Aktion[][] AktionsEbene4 = new Aktionen.Aktion[30][15];
+    private Aktionen.Aktion[][][] AktionsEbene1 = new Aktionen.Aktion[4][30][15];
+
     
     public void LoadAktionLevel(int level) throws FileNotFoundException, IOException{
         fr = new FileReader(level+".Aktionslayout.txt");

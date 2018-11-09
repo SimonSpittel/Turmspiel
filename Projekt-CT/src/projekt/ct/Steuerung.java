@@ -6,9 +6,7 @@
 package projekt.ct;
 
 import java.awt.Graphics;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.Scanner;
+import java.util.Random;
 
 /**
  *
@@ -22,14 +20,13 @@ public class Steuerung {
     private int Intervall =500;
     //------------------------------------------------AktionsEbene--------------------------------- 
     
-    private Aktionen.Aktion[][] AktionsEbene = new Aktionen.Aktion[30][15];
-    private int aktiveTurmseite;
+    private Aktionen.Aktion[][][] AktionsEbene;   //<-- [1] gibt Turmseite; [2] gibt Höhe im Turm;  [3] gibt breite im Turm
+    private int aktiveTurmseite = 0;
     
     //--------------------------------------------SpielelementeEbene-------------------------------- 
     
-    private Spielelement.Spielelement [][]SpielelementeEbene = new Spielelement.Spielelement[30][15];
-    private double [][] test = new double[30][15];
-    private Spielelement.Spielfigur figur = new Spielelement.Spielfigur();
+    private Spielelement.Spielelement [][][] SpielelementeEbene =  new Spielelement.Spielelement[4][30][15]; // <--- muss später aus Klasse Level geladen werden somit Array [][][][] erstes gibt die turmseite an um so auch wechseln zu können
+    private Spielelement.Spielfigur figur = new Spielelement.Spielfigur();                                   // <-- nur zum test
     
 
     //-----------------------------------------------EndeAtribute-----------------------------------
@@ -78,21 +75,39 @@ public class Steuerung {
     private void initSpielelemente(){
         figur.setxPos(0);
         figur.setyPos(0);
+        for(int v = 0; SpielelementeEbene[aktiveTurmseite].length > v ; v++){        //  
+            for(int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h ; h++){ // 
+                SpielelementeEbene[aktiveTurmseite][v][h] = new Spielelement.Mauer();//  <--- NUR ZUM TESTEN
+            }                                                                        //
+            
+        }
+        
     }
     
     public void zeichneSpielElemente(Graphics g){
         figur.zeichne(g);
+
+        for(int v = 0; SpielelementeEbene[aktiveTurmseite].length > v ; v++){        //  v  <--- Durchlaufvariable für die Turmhöhe
+            for(int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h ; h++){ //  h  <--- Durchlaufvariable für die Turmbreite    
+                SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g);
+            }
+            System.out.println("");
+        }
     }
-    public void verarbeiteTastendruck(java.awt.event.KeyEvent evt){
-        
+    
+    
+   //--------------------reagiert auf tastendruck zum Bewegen---------------------
+    public void verarbeiteTastendruck(java.awt.event.KeyEvent evt){    
         figur.bewege(evt);
         o.repaint();
     }
-    
+  
+   //----------------prüft bei betreten eines Feldes oder bei Auswahl ob Aktion vorliegt----------------------
+
     private boolean pruefeAufAktion(int x, int y){
-        return AktionsEbene[y][x].getAktionVerfügbar();
+        return AktionsEbene[aktiveTurmseite][y][x].getAktionVerfügbar();
     }
-    
+      //----------------reagiert auf taste um gewollte Aktion auszulösen-------- 
     public void VerarbeiteAktionstaste(){
  //       if(pruefeAufAktion(f.getX, f.getY)){
  //           AktionsEbene[f.getY][f.getX].aktion();

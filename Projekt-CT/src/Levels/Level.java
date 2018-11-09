@@ -10,7 +10,7 @@ package Levels;
  * @author Simon Spittel
  */
 public abstract class Level {
-    private Aktionen.Aktion[][] AktionsEbene = new Aktionen.Aktion[30][15];
+    private Aktionen.Aktion[][][] AktionsEbene = new Aktionen.Aktion[4][30][15];
     
 //    projekt.ct.Steuerung steuerung;
 //    public Level(projekt.ct.Steuerung s){

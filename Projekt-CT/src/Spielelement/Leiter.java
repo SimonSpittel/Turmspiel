@@ -21,6 +21,6 @@ public class Leiter extends Spielelement{
 
     @Override
     public void zeichne(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.print("2");
     }
 }
