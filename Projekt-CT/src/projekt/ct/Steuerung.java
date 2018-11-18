@@ -17,6 +17,8 @@ public class Steuerung {
     
     private Oberflaeche o;
     private int Intervall =500;
+    private Levels.LoadLevel  loadLevel = new Levels.LoadLevel();
+    
     //------------------------------------------------AktionsEbene--------------------------------- 
     
     private Aktionen.Aktion[][][] AktionsEbene;   //<-- [1] gibt Turmseite; [2] gibt Höhe im Turm;  [3] gibt breite im Turm
@@ -42,17 +44,13 @@ public class Steuerung {
     private void initSpielelemente(){
         figur.setxPos(0);
         figur.setyPos(0);
-        for(int v = 0; SpielelementeEbene[aktiveTurmseite].length > v ; v++){        //  
-            for(int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h ; h++){ // 
-                SpielelementeEbene[aktiveTurmseite][v][h] = new Spielelement.Gang();//  <--- NUR ZUM TESTEN
-            }                                                                        //
-            
-        }
+        AktionsEbene = loadLevel.getAktionsEbene();
+        SpielelementeEbene = loadLevel.getSpielEbene();
         
     }
     
     public void zeichneSpielElemente(Graphics g){
-        figur.zeichne(g);
+        //figur.zeichne(g);
         System.out.println("-------------------------------------");
         for(int v = 0; SpielelementeEbene[aktiveTurmseite].length > v ; v++){        //  v  <--- Durchlaufvariable für die Turmhöhe
             for(int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h ; h++){ //  h  <--- Durchlaufvariable für die Turmbreite    
@@ -60,6 +58,7 @@ public class Steuerung {
             }
             System.out.println("");
         }
+        
     }
     
     

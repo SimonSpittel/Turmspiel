@@ -20,6 +20,6 @@ public class Leiter extends Spielelement{
 
     @Override
     public void zeichne(Graphics g) {
-        System.out.print("2");
+        System.out.print("L");
     }
 }

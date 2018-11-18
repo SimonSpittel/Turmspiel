@@ -22,7 +22,7 @@ public class Mauer extends Spielelement {
 
     @Override
     public void zeichne(Graphics g) {
-        System.out.print("[]");
+        System.out.print("M");
     }
     
 }

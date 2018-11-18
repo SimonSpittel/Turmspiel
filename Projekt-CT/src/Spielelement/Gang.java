@@ -20,7 +20,7 @@ public class Gang extends Spielelement {
 
     @Override
     public void zeichne(Graphics g) {
-        System.out.print("1");
+        System.out.print("G");
     }
     
 }
