@@ -123,10 +123,10 @@ public class Level {
                             SpielEbene[Turmseite][y][x] = new Spielelement.Gang();
                             break;
                         case 1:
-                            SpielEbene[Turmseite][y][x] = new Spielelement.Leiter();
+                            SpielEbene[Turmseite][y][x] = new Spielelement.Mauer();
                             break;
                         case 2:
-                            SpielEbene[Turmseite][y][x] = new Spielelement.Mauer();
+                            SpielEbene[Turmseite][y][x] = new Spielelement.Leiter();
                             break;
                         case 3:
                             SpielEbene[Turmseite][y][x] = new Spielelement.Tür();
