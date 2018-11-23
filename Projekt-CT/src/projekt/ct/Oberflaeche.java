@@ -29,7 +29,7 @@ public class Oberflaeche extends javax.swing.JPanel {
 
     protected void paintComponent(Graphics g){     
         super.paintComponent(g);
-        s.zeichneSpielElemente(g);
+        s.zeichneSpielElemente(g,this.getHeight(),this.getWidth());
     }
  
     @SuppressWarnings("unchecked")

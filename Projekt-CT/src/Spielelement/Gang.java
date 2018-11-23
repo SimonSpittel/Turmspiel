@@ -15,12 +15,16 @@ public class Gang extends Spielelement {
     
     public Gang(){
         Begehbarkeit = true;
+        
     }
 
 
     @Override
-    public void zeichne(Graphics g) {
-        System.out.print("G");
+    public void zeichne(Graphics g, int hoehe, int breite) {
+        this.breite = breite/19;
+        this.hoehe = hoehe/32;
+        g.drawImage(grafik.getGang(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, null);
+        
     }
     
 }

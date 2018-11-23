@@ -20,8 +20,8 @@ public class Spielfigur extends Spielelement{
 
 
     @Override
-    public void zeichne(Graphics g) {
-        System.out.print("F");
+    public void zeichne(Graphics g, int hoehe, int breite) {
+        
     }
     
     public void bewege(java.awt.event.KeyEvent evt){

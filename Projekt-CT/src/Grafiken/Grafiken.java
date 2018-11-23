@@ -17,6 +17,34 @@ import javax.imageio.ImageIO;
  * @author Simon.Spittel
  */
 public class Grafiken {
+
+    /**
+     * @return the Gang
+     */
+    public Image getGang() {
+        return Gang;
+    }
+
+    /**
+     * @return the Leiter
+     */
+    public Image getLeiter() {
+        return Leiter;
+    }
+
+    /**
+     * @return the Tür
+     */
+    public Image getTür() {
+        return Tür;
+    }
+
+    /**
+     * @return the Figur
+     */
+    public Image getFigur() {
+        return Figur;
+    }
     
     private Image Mauer;
     private Image Gang;

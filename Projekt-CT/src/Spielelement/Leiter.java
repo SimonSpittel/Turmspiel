@@ -19,7 +19,9 @@ public class Leiter extends Spielelement{
 
 
     @Override
-    public void zeichne(Graphics g) {
-        System.out.print("L");
+    public void zeichne(Graphics g, int hoehe, int breite) {
+        this.breite = breite/19;
+        this.hoehe = hoehe/32;
+        g.drawImage(grafik.getLeiter(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, null);
     }
 }

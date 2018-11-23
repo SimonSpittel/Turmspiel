@@ -17,9 +17,12 @@ public class Tür extends Spielelement{
         Begehbarkeit = true;
     }
 
+
     @Override
-    public void zeichne(Graphics g) {
-        System.out.print("T");
+    public void zeichne(Graphics g, int hoehe, int breite) {
+        this.breite = breite/19;
+        this.hoehe = hoehe/32;
+        g.drawImage(grafik.getTür(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, null);
     }
     
 }

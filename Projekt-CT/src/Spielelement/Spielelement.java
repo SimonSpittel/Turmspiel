@@ -19,10 +19,14 @@ public abstract class Spielelement {
     protected boolean Begehbarkeit = true;
     protected int xPos;
     protected int yPos;
+    protected int breite;
+    protected int hoehe;
+    protected Grafiken.Grafiken grafik = new Grafiken.Grafiken();
     
     
     
-    public abstract void zeichne(Graphics g);
+    
+    public abstract void zeichne(Graphics g, int hoehe, int breite);
 
 
     public int getxPos() {

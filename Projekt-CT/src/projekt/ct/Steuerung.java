@@ -42,12 +42,12 @@ public class Steuerung {
 
     }
 
-    public void zeichneSpielElemente(Graphics g) {
+    public void zeichneSpielElemente(Graphics g,int breite, int hoehe) {
         //figur.zeichne(g);
         System.out.println("-------------------------------------");
         for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
             for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
-                SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g);
+                SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
             }
             System.out.println("");
         }

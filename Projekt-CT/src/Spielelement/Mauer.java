@@ -21,8 +21,10 @@ public class Mauer extends Spielelement {
 
 
     @Override
-    public void zeichne(Graphics g) {
-        System.out.print("M");
+    public void zeichne(Graphics g, int hoehe, int breite) {
+        this.breite = breite/19;
+        this.hoehe = hoehe/32;
+        g.drawImage(grafik.getMauer(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, null);
     }
     
 }
