@@ -20,7 +20,7 @@ public class Steuerung {
 
     //------------------------------------------------AktionsEbene--------------------------------- 
     private Aktionen.Aktion[][][] AktionsEbene;   //<-- [1] gibt Turmseite; [2] gibt Höhe im Turm;  [3] gibt breite im Turm
-    private int aktiveTurmseite = 0;
+    private int aktiveTurmseite = 1;
 
     //--------------------------------------------SpielelementeEbene-------------------------------- 
     private Spielelement.Spielelement[][][] SpielelementeEbene = new Spielelement.Spielelement[4][30][15]; // <--- muss später aus Klasse Level geladen werden somit Array [][][][] erstes gibt die turmseite an um so auch wechseln zu können
