@@ -26,19 +26,58 @@ public class Grafiken {
     
     public Grafiken() {
         loadMauer();
-
+        loadGang();
+        loadLeiter();
+        loadTür();
+        loadFigur();
     }
     
 //----------------------Laden der Grafiken aus dem Ordner Pictures-------------   
     private void loadMauer() {
 
         try {
-            Mauer = ImageIO.read(new File("Pictures" + File.separator + "Mauer.png"));
+            Mauer = ImageIO.read(new File("Texturen" + File.separator + "Mauer.png"));
         } catch (IOException ex) {
             Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
+    private void loadGang() {
+
+        try {
+            Gang = ImageIO.read(new File("Texturen" + File.separator + "Gang.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    private void loadLeiter() {
+
+        try {
+            Leiter = ImageIO.read(new File("Texturen" + File.separator + "Leiter.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    private void loadTür() {
+
+        try {
+            Tür = ImageIO.read(new File("Texturen" + File.separator + "Tür.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    private void loadFigur() {
+
+        try {
+            Figur = ImageIO.read(new File("Texturen" + File.separator + "Figur.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }    
     
 //-----------------------Methoden um an Bilder zu kommen--------------    
         public Image getMauer() {
