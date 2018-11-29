@@ -18,33 +18,7 @@ import javax.imageio.ImageIO;
  */
 public class Grafiken {
 
-    /**
-     * @return the Gang
-     */
-    public Image getGang() {
-        return Gang;
-    }
 
-    /**
-     * @return the Leiter
-     */
-    public Image getLeiter() {
-        return Leiter;
-    }
-
-    /**
-     * @return the Tür
-     */
-    public Image getTür() {
-        return Tür;
-    }
-
-    /**
-     * @return the Figur
-     */
-    public Image getFigur() {
-        return Figur;
-    }
     
     private Image Mauer;
     private Image Gang;
@@ -108,8 +82,36 @@ public class Grafiken {
     }    
     
 //-----------------------Methoden um an Bilder zu kommen--------------    
-        public Image getMauer() {
+    public Image getMauer() {
         return Mauer;
+    }
+        
+        /**
+     * @return the Gang
+     */
+    public Image getGang() {
+        return Gang;
+    }
+
+    /**
+     * @return the Leiter
+     */
+    public Image getLeiter() {
+        return Leiter;
+    }
+
+    /**
+     * @return the Tür
+     */
+    public Image getTür() {
+        return Tür;
+    }
+
+    /**
+     * @return the Figur
+     */
+    public Image getFigur() {
+        return Figur;
     }
     
 }

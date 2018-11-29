@@ -20,7 +20,7 @@ public class Steuerung {
 
     //------------------------------------------------AktionsEbene--------------------------------- 
     private Aktionen.Aktion[][][] AktionsEbene;   //<-- [1] gibt Turmseite; [2] gibt Höhe im Turm;  [3] gibt breite im Turm
-    private int aktiveTurmseite = 1;
+    private int aktiveTurmseite = 0;
 
     //--------------------------------------------SpielelementeEbene-------------------------------- 
     private Spielelement.Spielelement[][][] SpielelementeEbene = new Spielelement.Spielelement[4][30][15]; // <--- muss später aus Klasse Level geladen werden somit Array [][][][] erstes gibt die turmseite an um so auch wechseln zu können
@@ -35,22 +35,22 @@ public class Steuerung {
     }
 
     private void initSpielelemente() {
-        figur.setxPos(0);
-        figur.setyPos(0);
+        figur.setxPos(7);
+        figur.setyPos(29);
         AktionsEbene = loadLevel.getAktionsEbene();
         SpielelementeEbene = loadLevel.getSpielEbene();
 
     }
 
     public void zeichneSpielElemente(Graphics g,int breite, int hoehe) {
-        //figur.zeichne(g);
-        System.out.println("-------------------------------------");
+        
+        
         for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
             for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
                 SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
-            }
-            System.out.println("");
+            }           
         }
+        figur.zeichne(g, breite, hoehe);
 
     }
 

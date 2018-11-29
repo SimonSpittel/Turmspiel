@@ -120,16 +120,16 @@ public class Level {
                 for(int x = 0 ; x < test[Turmseite][y].length ; x++){
                     switch((int)test[Turmseite][y][x]){
                         case 0:
-                            SpielEbene[Turmseite][y][x] = new Spielelement.Gang();
+                            SpielEbene[Turmseite][y][x] = new Spielelement.Gang(x,y);
                             break;
                         case 1:
-                            SpielEbene[Turmseite][y][x] = new Spielelement.Mauer();
+                            SpielEbene[Turmseite][y][x] = new Spielelement.Mauer(x,y);
                             break;
                         case 2:
-                            SpielEbene[Turmseite][y][x] = new Spielelement.Leiter();
+                            SpielEbene[Turmseite][y][x] = new Spielelement.Leiter(x,y);
                             break;
                         case 3:
-                            SpielEbene[Turmseite][y][x] = new Spielelement.Tür();
+                            SpielEbene[Turmseite][y][x] = new Spielelement.Tür(x,y);
                             break;
                         default: 
                             break;

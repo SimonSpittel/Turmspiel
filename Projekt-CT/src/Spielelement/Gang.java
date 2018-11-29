@@ -13,7 +13,9 @@ import java.awt.Graphics;
  */
 public class Gang extends Spielelement {
     
-    public Gang(){
+    public Gang(int x, int y){
+        xPos = x;
+        yPos = y;
         Begehbarkeit = true;
         
     }
@@ -23,7 +25,7 @@ public class Gang extends Spielelement {
     public void zeichne(Graphics g, int hoehe, int breite) {
         this.breite = breite/19;
         this.hoehe = hoehe/32;
-        g.drawImage(grafik.getGang(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, null);
+        g.drawImage(grafik.getGang(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, this.breite, this.hoehe, null);
         
     }
     

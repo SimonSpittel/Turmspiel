@@ -13,7 +13,9 @@ import java.awt.Graphics;
  */
 public class Tür extends Spielelement{
     
-    public Tür(){
+    public Tür(int x, int y){
+        xPos = x;
+        yPos = y;
         Begehbarkeit = true;
     }
 

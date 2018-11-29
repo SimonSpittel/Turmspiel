@@ -13,7 +13,9 @@ import java.awt.Graphics;
  */
 public class Mauer extends Spielelement {
     
-    public Mauer(){
+    public Mauer(int x, int y){
+        xPos = x;
+        yPos = y;
         Begehbarkeit = false;
     }
     
@@ -24,7 +26,7 @@ public class Mauer extends Spielelement {
     public void zeichne(Graphics g, int hoehe, int breite) {
         this.breite = breite/19;
         this.hoehe = hoehe/32;
-        g.drawImage(grafik.getMauer(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, null);
+        g.drawImage(grafik.getMauer(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, this.breite, this.hoehe, null);
     }
     
 }

@@ -13,7 +13,9 @@ import java.awt.Graphics;
  */
 public class Leiter extends Spielelement{
     
-    public Leiter(){
+    public Leiter(int x, int y){
+        xPos = x;
+        yPos = y;
         Begehbarkeit = true;
     }
 
@@ -22,6 +24,6 @@ public class Leiter extends Spielelement{
     public void zeichne(Graphics g, int hoehe, int breite) {
         this.breite = breite/19;
         this.hoehe = hoehe/32;
-        g.drawImage(grafik.getLeiter(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, null);
+        g.drawImage(grafik.getLeiter(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, this.breite, this.hoehe, null);
     }
 }

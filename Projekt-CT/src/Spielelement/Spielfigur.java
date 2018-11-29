@@ -20,8 +20,8 @@ public class Spielfigur extends Spielelement{
 
 
     @Override
-    public void zeichne(Graphics g, int hoehe, int breite) {
-        
+    public void zeichne(Graphics g, int breite, int hoehe) {
+        g.drawImage(grafik.getFigur(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, this.breite, this.hoehe, null);
     }
     
     public void bewege(java.awt.event.KeyEvent evt){
@@ -42,6 +42,8 @@ public class Spielfigur extends Spielelement{
                 break;
                 
         }
+        System.out.println("x:"+xPos);
+        System.out.println("y:"+yPos);
     }
     
     
