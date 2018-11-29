@@ -24,7 +24,7 @@ public class Level {
         Scanner scanIn =null;
         int Rowc = 0;
         String InputLine = "";
-  //      double xnum = 0;
+  
         String xfileLocation;
         
     

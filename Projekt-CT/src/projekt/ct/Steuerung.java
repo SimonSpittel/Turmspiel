@@ -54,10 +54,11 @@ public class Steuerung {
         
         for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
             for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
-                SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
+                SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);               
             }           
         }
         figur.zeichne(g, breite, hoehe);
+        
 
     }
 
