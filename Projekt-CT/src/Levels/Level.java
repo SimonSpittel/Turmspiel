@@ -53,28 +53,28 @@ public class Level {
                 for(int x = 0 ; x < test[Turmseite][y].length ; x++){
                     switch((int)test[Turmseite][y][x]){
                         case 0:
-                            AktionsEbene[Turmseite][y][x] = new Aktionen.KeineAktion();
+                            AktionsEbene[Turmseite][y][x] = new Aktionen.KeineAktion(x,y);
                             break;
                         case 1:
-                            AktionsEbene[Turmseite][y][x] = new Aktionen.schlüsselAblegen();
+                            AktionsEbene[Turmseite][y][x] = new Aktionen.schlüsselAblegen(x,y);
                             break;
                         case 2:
-                            AktionsEbene[Turmseite][y][x] = new Aktionen.schlüsselAufheben();
+                            AktionsEbene[Turmseite][y][x] = new Aktionen.schlüsselAufheben(x,y);
                             break;
                         case 3:
-                            AktionsEbene[Turmseite][y][x] = new Aktionen.starteMinigame();
+                            AktionsEbene[Turmseite][y][x] = new Aktionen.starteMinigame(x,y);
                             break;
                         case 4:
-                            AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(1);
+                            AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(1,x,y);
                             break;
                         case 5:
-                            AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(2);
+                            AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(2,x,y);
                             break;
                         case 6:
-                            AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(3);
+                            AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(3,x,y);
                             break;
                         case 7:
-                            AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(4);
+                            AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(4,x,y);
                             break;
                         default: 
                             break;

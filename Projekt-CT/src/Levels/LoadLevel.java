@@ -17,8 +17,8 @@ import java.io.IOException;
 public class LoadLevel {
     private FileReader fr;
     private BufferedReader br;
-    private Aktionen.Aktion[][][] AktionsEbene = new Aktionen.Aktion[4][30][15];
-    private Spielelement.Spielelement [][][] SpielEbene = new Spielelement.Spielelement[4][30][15];
+    private Aktionen.Aktion[][][] AktionsEbenen = new Aktionen.Aktion[4][30][15];
+    private Spielelement.Spielelement [][][] SpielEbenen = new Spielelement.Spielelement[4][30][15];
     public Levels.Level Level = new Levels.Level();
     
     public LoadLevel(){
@@ -30,8 +30,8 @@ public class LoadLevel {
         Level.loadSpielElementLvlTurmseite(1);
         Level.loadSpielElementLvlTurmseite(2);
         Level.loadSpielElementLvlTurmseite(3);
-        SpielEbene = Level.getSpielEbene();
-        AktionsEbene = Level.getAktionsEbene();
+        SpielEbenen = Level.getSpielEbene();
+        AktionsEbenen = Level.getAktionsEbene();
     }
 
       
@@ -39,15 +39,15 @@ public class LoadLevel {
     /**
      * @return the AktionsEbene
      */
-    public Aktionen.Aktion[][][] getAktionsEbene() {
-        return AktionsEbene;
+    public Aktionen.Aktion[][][] getAktionsEbenen() {
+        return AktionsEbenen;
     }
 
     /**
      * @return the SpielEbene
      */
-    public Spielelement.Spielelement[][][] getSpielEbene() {
-        return SpielEbene;
+    public Spielelement.Spielelement[][][] getSpielEbenen() {
+        return SpielEbenen;
     }
     
 }

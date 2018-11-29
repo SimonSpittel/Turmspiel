@@ -15,6 +15,7 @@ package Aktionen;
 public abstract class Aktion {
     protected int xPos;
     protected int yPos;
+    private Spielelement.Spielfigur f = new Spielelement.Spielfigur();
     protected boolean benutzt;
     protected boolean aktionVerfügbar = true; // <-- standardmäsig true nur bei Klasse KeineAktion wird dieser im Konstruktor auf false gesetzt
     
@@ -39,6 +40,13 @@ public abstract class Aktion {
      */
     public boolean getAktionVerfügbar() {
         return aktionVerfügbar;
+    }
+
+    /**
+     * @param f the f to set
+     */
+    public void setF(Spielelement.Spielfigur f) {
+        this.f = f;
     }
     
     

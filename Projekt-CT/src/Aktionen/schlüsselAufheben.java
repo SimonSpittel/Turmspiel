@@ -18,14 +18,15 @@ public class schlüsselAufheben extends Aktion {
     public void aktion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-//    private Figur f;
-//    public schlüsselAufheben(Figur f,){
-//        aktionVerfügbar = true;    
-//        this.f = f;
-//    }
-//    
+    
+    public schlüsselAufheben(int x, int y){
+        xPos = x;
+        yPos = y;
+        aktionVerfügbar = true;    
+    }
+   
 //    public void aktion(){
-//        Figur.setSchlüssel = true;
+//        f.setSchlüssel = true;        //<--- schlüssel muss noch als Ausrüstung erstellt werden
 //    }
     
 

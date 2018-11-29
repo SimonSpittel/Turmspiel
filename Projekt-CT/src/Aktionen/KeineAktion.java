@@ -10,7 +10,9 @@ package Aktionen;
  * @author Simon Spittel
  */
 public class KeineAktion extends Aktion{
-    public KeineAktion(){
+    public KeineAktion(int x, int y){
+        xPos = x;
+        yPos = y;
         aktionVerfügbar = false;
     }
 

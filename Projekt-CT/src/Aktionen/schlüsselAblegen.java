@@ -12,17 +12,19 @@ package Aktionen;
 public class schlüsselAblegen extends Aktion {
 
 
-    public void aktion() {
+    public void aktion(int x, int y) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-//    private Figur f;
-//    public schlüsselAblegen(Figur f){
-//        aktionVerfügbar = true;
-//        this.f = f;
-//    }
-//    
+    
+    public schlüsselAblegen(int x, int y){
+        xPos = x;
+        yPos = y;
+        aktionVerfügbar = true;
+        
+    }
+   
 //    public void aktion(){
-//        Figur.setSchlüssel = false;
+//        f.setSchlüssel = false;           //<--- schlüssel muss noch als Ausrüstung erstellt werden
 //    }
 
     
