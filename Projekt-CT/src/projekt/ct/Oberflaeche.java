@@ -13,25 +13,23 @@ import java.awt.Graphics;
  * @author Noah Hauke
  */
 public class Oberflaeche extends javax.swing.JPanel {
-    
+
     private Graphics g;
     private Steuerung s;
-    
 
     public Oberflaeche() {
-        
-        s= new Steuerung(this);
+
+        s = new Steuerung(this);
         initComponents();
         setFocusable(true);
-        requestFocus();     
+        requestFocus();
     }
 
-
-    protected void paintComponent(Graphics g){     
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        s.zeichneSpielElemente(g,this.getHeight(),this.getWidth());
+        s.zeichneSpielElemente(g, this.getHeight(), this.getWidth());
     }
- 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -55,7 +53,7 @@ public class Oberflaeche extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        switch (evt.getKeyCode()){
+        switch (evt.getKeyCode()) {
             case KeyEvent.VK_UP:
 
                 s.verarbeiteTastendruck(evt);
@@ -69,9 +67,12 @@ public class Oberflaeche extends javax.swing.JPanel {
             case KeyEvent.VK_RIGHT:
                 s.verarbeiteTastendruck(evt);
                 break;
-                    
+            case KeyEvent.VK_E:
+                s.VerarbeiteAktionstaste();
+                break;
+
         }
-        
+
     }//GEN-LAST:event_formKeyPressed
 
 

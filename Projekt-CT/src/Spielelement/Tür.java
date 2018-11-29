@@ -11,21 +11,20 @@ import java.awt.Graphics;
  *
  * @author Simon.Spittel
  */
-public class Tür extends Spielelement{
-    
-    public Tür(int x, int y){
+public class Tür extends Spielelement {
+
+    public Tür(int x, int y) {
         xPos = x;
         yPos = y;
         Begehbarkeit = true;
     }
 
-
     @Override
     public void zeichne(Graphics g, int hoehe, int breite) {
-        this.breite = breite/19;
-        this.hoehe = hoehe/32;
-       
-        g.drawImage(grafik.getTür(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, this.breite, this.hoehe, null);
+        this.breite = breite / 19;
+        this.hoehe = hoehe / 32;
+
+        g.drawImage(grafik.getTür(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
     }
-    
+
 }

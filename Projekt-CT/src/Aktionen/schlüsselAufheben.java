@@ -14,21 +14,14 @@ import java.awt.Graphics;
  */
 public class schlüsselAufheben extends Aktion {
 
-
-    public void aktion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public schlüsselAufheben(int x, int y){
+    public schlüsselAufheben(int x, int y) {
         xPos = x;
         yPos = y;
-        aktionVerfügbar = true;    
+        aktionVerfügbar = true;
     }
-   
-//    public void aktion(){
-//        f.setSchlüssel = true;        //<--- schlüssel muss noch als Ausrüstung erstellt werden
-//    }
-    
 
-    
+    public void aktion() {
+//        f.setSchlüssel = true;        //<--- schlüssel muss noch als Ausrüstung erstellt werden
+    }
+
 }

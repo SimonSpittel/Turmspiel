@@ -9,11 +9,17 @@ package Aktionen;
  *
  * @author Simon Spittel
  */
-public class KeineAktion extends Aktion{
-    public KeineAktion(int x, int y){
+public class KeineAktion extends Aktion {
+
+    public KeineAktion(int x, int y) {
         xPos = x;
         yPos = y;
         aktionVerfügbar = false;
+    }
+
+    @Override
+    public void aktion() {
+
     }
 
 }

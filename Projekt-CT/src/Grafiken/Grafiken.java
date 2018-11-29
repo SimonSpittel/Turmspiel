@@ -18,14 +18,12 @@ import javax.imageio.ImageIO;
  */
 public class Grafiken {
 
-
-    
     private Image Mauer;
     private Image Gang;
     private Image Leiter;
     private Image Tür;
     private Image Figur;
-    
+
     public Grafiken() {
         loadMauer();
         loadGang();
@@ -33,7 +31,7 @@ public class Grafiken {
         loadTür();
         loadFigur();
     }
-    
+
 //----------------------Laden der Grafiken aus dem Ordner Pictures-------------   
     private void loadMauer() {
 
@@ -44,6 +42,7 @@ public class Grafiken {
         }
 
     }
+
     private void loadGang() {
 
         try {
@@ -53,6 +52,7 @@ public class Grafiken {
         }
 
     }
+
     private void loadLeiter() {
 
         try {
@@ -62,6 +62,7 @@ public class Grafiken {
         }
 
     }
+
     private void loadTür() {
 
         try {
@@ -71,6 +72,7 @@ public class Grafiken {
         }
 
     }
+
     private void loadFigur() {
 
         try {
@@ -79,14 +81,14 @@ public class Grafiken {
             Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }    
-    
+    }
+
 //-----------------------Methoden um an Bilder zu kommen--------------    
     public Image getMauer() {
         return Mauer;
     }
-        
-        /**
+
+    /**
      * @return the Gang
      */
     public Image getGang() {
@@ -113,5 +115,5 @@ public class Grafiken {
     public Image getFigur() {
         return Figur;
     }
-    
+
 }

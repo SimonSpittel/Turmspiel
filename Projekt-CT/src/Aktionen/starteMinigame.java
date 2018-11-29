@@ -10,19 +10,15 @@ package Aktionen;
  * @author Simon Spittel
  */
 public class starteMinigame extends Aktion {
-    public starteMinigame(int x, int y){
+
+    public starteMinigame(int x, int y) {
         xPos = x;
         yPos = y;
         aktionVerfügbar = true;
     }
 
-
     public void aktion() {
-        
+
     }
 
-
-    
-    
-    
 }

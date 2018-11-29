@@ -15,13 +15,14 @@ import java.io.IOException;
  * @author Simon Spittel
  */
 public class LoadLevel {
+
     private FileReader fr;
     private BufferedReader br;
     private Aktionen.Aktion[][][] AktionsEbenen = new Aktionen.Aktion[4][30][15];
-    private Spielelement.Spielelement [][][] SpielEbenen = new Spielelement.Spielelement[4][30][15];
+    private Spielelement.Spielelement[][][] SpielEbenen = new Spielelement.Spielelement[4][30][15];
     public Levels.Level Level = new Levels.Level();
-    
-    public LoadLevel(){
+
+    public LoadLevel() {
         Level.loadAktionLvlTurmseite(0);
         Level.loadAktionLvlTurmseite(1);
         Level.loadAktionLvlTurmseite(2);
@@ -33,8 +34,6 @@ public class LoadLevel {
         SpielEbenen = Level.getSpielEbene();
         AktionsEbenen = Level.getAktionsEbene();
     }
-
-      
 
     /**
      * @return the AktionsEbene
@@ -49,5 +48,5 @@ public class LoadLevel {
     public Spielelement.Spielelement[][][] getSpielEbenen() {
         return SpielEbenen;
     }
-    
+
 }

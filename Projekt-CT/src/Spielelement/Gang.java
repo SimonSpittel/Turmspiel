@@ -12,22 +12,20 @@ import java.awt.Graphics;
  * @author Simon.Spittel
  */
 public class Gang extends Spielelement {
-    
-    public Gang(int x, int y){
+
+    public Gang(int x, int y) {
         xPos = x;
         yPos = y;
         Begehbarkeit = true;
-        
-    }
 
+    }
 
     @Override
     public void zeichne(Graphics g, int hoehe, int breite) {
-        this.breite = breite/19;
-        this.hoehe = hoehe/32;
-        g.drawImage(grafik.getGang(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, this.breite, this.hoehe, null);
-        
+        this.breite = breite / 19;
+        this.hoehe = hoehe / 32;
+        g.drawImage(grafik.getGang(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
+
     }
-    
+
 }
-     

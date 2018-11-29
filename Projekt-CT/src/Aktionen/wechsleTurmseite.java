@@ -10,20 +10,17 @@ package Aktionen;
  * @author Simon Spittel
  */
 public class wechsleTurmseite extends Aktion {
+
     private int neueTurmseite; //<--- gibt an zu welhcer turmseite gewechselt werden soll
-    
-    public wechsleTurmseite(int Turmseite,int x, int y){
+
+    public wechsleTurmseite(int Turmseite, int x, int y) {
         xPos = x;
         yPos = y;
         this.neueTurmseite = Turmseite;
     }
-    
-    
-    public int aktion() {
-        return neueTurmseite;
+
+    public void aktion() {
+        s.setAktiveTurmseite(neueTurmseite);
     }
 
-
-     
-    
 }

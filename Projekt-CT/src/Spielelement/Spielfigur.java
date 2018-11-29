@@ -9,46 +9,39 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 
-
-
 /**
  *
  * @author Simon.Spittel
  */
-public class Spielfigur extends Spielelement{
-    
+public class Spielfigur extends Spielelement {
 
-
-
-    
-    public void bewege(java.awt.event.KeyEvent evt){
-        switch(evt.getKeyCode()){
-            case KeyEvent.VK_UP :
+    public void bewege(java.awt.event.KeyEvent evt) {
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_UP:
                 yPos--;
                 break;
             case KeyEvent.VK_DOWN:
                 yPos++;
                 break;
-                
+
             case KeyEvent.VK_LEFT:
                 xPos--;
                 break;
-                
+
             case KeyEvent.VK_RIGHT:
                 xPos++;
                 break;
-                
+
         }
-        System.out.println("x:"+xPos);
-        System.out.println("y:"+yPos);
+        System.out.println("x:" + xPos);
+        System.out.println("y:" + yPos);
     }
-    
-    
-    public Point pruefeBegehbarkeit(java.awt.event.KeyEvent evt){
+
+    public Point pruefeBegehbarkeit(java.awt.event.KeyEvent evt) {
         int tempX = xPos;
         int tempY = yPos;
         Point p = new Point();
-        switch(evt.getKeyCode()){
+        switch (evt.getKeyCode()) {
             case KeyEvent.VK_UP:
                 tempY--;
                 break;
@@ -61,22 +54,20 @@ public class Spielfigur extends Spielelement{
             case KeyEvent.VK_RIGHT:
                 tempX++;
                 break;
-            default: 
-                break;               
+            default:
+                break;
         }
         p.x = tempX;
         p.y = tempY;
-        
+
         return p;
     }
 
     @Override
     public void zeichne(Graphics g, int hoehe, int breite) {
-        this.breite = breite/19;
-        this.hoehe = hoehe/32;
-        g.drawImage(grafik.getFigur(), (2+xPos)*this.breite, (yPos+2)*this.hoehe, this.breite, this.hoehe, null);
+        this.breite = breite / 19;
+        this.hoehe = hoehe / 32;
+        g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
     }
-    
-    
-    
+
 }

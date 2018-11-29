@@ -38,14 +38,15 @@ public class Steuerung {
         figur.setxPos(7);
         figur.setyPos(29);
         AktionsEbene = loadLevel.getAktionsEbenen();
+        SpielelementeEbene = loadLevel.getSpielEbenen();
         for (int i = 0; AktionsEbene.length > i; i++) {
             for (int v = 0; AktionsEbene[i].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
                 for (int h = 0; AktionsEbene[i][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
                     AktionsEbene[i][v][h].setF(figur);
+                    AktionsEbene[i][v][h].setS(this);
                 }
             }
         }
-        SpielelementeEbene = loadLevel.getSpielEbenen();
 
     }
 
@@ -68,38 +69,46 @@ public class Steuerung {
                     figur.bewege(evt);
                 }
             }
-      
+
         } else {
             figur.bewege(evt);
             if (figur.getxPos() == -1) {
                 figur.setxPos(14);
                 if (aktiveTurmseite == 0) {
-                    aktiveTurmseite = 3;
+                    setAktiveTurmseite(3);
                 } else {
                     aktiveTurmseite--;
                 }
             } else if (figur.getxPos() == 15) {
                 figur.setxPos(0);
                 if (aktiveTurmseite == 3) {
-                    aktiveTurmseite = 0;
+                    setAktiveTurmseite(0);
                 } else {
                     aktiveTurmseite++;
                 }
             }
-            
+
         }
         o.repaint();
-    }    
-        //----------------prüft bei betreten eines Feldes oder bei Auswahl ob Aktion vorliegt----------------------
+    }
+
+    //----------------prüft bei betreten eines Feldes oder bei Auswahl ob Aktion vorliegt----------------------
     private boolean pruefeAufAktion(int x, int y) {
         return AktionsEbene[aktiveTurmseite][y][x].getAktionVerfügbar();
     }
     //----------------reagiert auf taste um gewollte Aktion auszulösen-------- 
 
     public void VerarbeiteAktionstaste() {
-        //       if(pruefeAufAktion(f.getX, f.getY)){
-        //           AktionsEbene[f.getY][f.getX].aktion();
-        //       }
+        if (pruefeAufAktion(figur.getxPos(), figur.getyPos())) {
+            AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].aktion();
+        }
+    }
+
+    /**
+     * @param aktiveTurmseite the aktiveTurmseite to set
+     */
+    public void setAktiveTurmseite(int aktiveTurmseite) {
+        this.aktiveTurmseite = aktiveTurmseite;
     }
 
 }
