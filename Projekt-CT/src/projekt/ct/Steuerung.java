@@ -101,6 +101,7 @@ public class Steuerung {
     public void VerarbeiteAktionstaste() {
         if (pruefeAufAktion(figur.getxPos(), figur.getyPos())) {
             AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].aktion();
+            System.out.println("E");
         }
     }
 

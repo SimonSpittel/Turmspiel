@@ -52,10 +52,10 @@ public class Level {
             for (int x = 0; x < test[Turmseite][y].length; x++) {
                 switch ((int) test[Turmseite][y][x]) {
                     case 0:
-                        AktionsEbene[Turmseite][y][x] = new Aktionen.KeineAktion(x, y);
+                        AktionsEbene[Turmseite][y][x] = new Aktionen.schlüsselAblegen(x, y);                       
                         break;
                     case 1:
-                        AktionsEbene[Turmseite][y][x] = new Aktionen.schlüsselAblegen(x, y);
+                        AktionsEbene[Turmseite][y][x] = new Aktionen.KeineAktion(x, y);
                         break;
                     case 2:
                         AktionsEbene[Turmseite][y][x] = new Aktionen.schlüsselAufheben(x, y);
