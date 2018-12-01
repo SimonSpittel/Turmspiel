@@ -12,9 +12,9 @@ import java.awt.Graphics;
  *
  * @author Simon Spittel
  */
-public class schlüsselAufheben extends Aktion {
+public class ItemAufheben extends Aktion {
 
-    public schlüsselAufheben(int x, int y) {
+    public ItemAufheben(int x, int y) {
         xPos = x;
         yPos = y;
         aktionVerfügbar = true;

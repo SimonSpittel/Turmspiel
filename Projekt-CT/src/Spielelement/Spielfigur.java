@@ -8,12 +8,15 @@ package Spielelement;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 /**
  *
  * @author Simon.Spittel
  */
 public class Spielfigur extends Spielelement {
+    
+    private ArrayList Items = new ArrayList();
 
     public void bewege(java.awt.event.KeyEvent evt) {
         switch (evt.getKeyCode()) {
