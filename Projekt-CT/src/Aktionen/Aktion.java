@@ -5,8 +5,8 @@
  */
 package Aktionen;
 
-import Spielelement.Spielelement;
 import Spielelement.Spielfigur;
+import java.awt.Graphics;
 import projekt.ct.Steuerung;
 
 /**
@@ -16,6 +16,8 @@ import projekt.ct.Steuerung;
 public abstract class Aktion {
 
     protected Steuerung s;
+    protected int breite;
+    protected int hoehe;
     protected int xPos;
     protected int yPos;
     private Spielfigur f = new Spielfigur();
@@ -56,5 +58,7 @@ public abstract class Aktion {
     public void setS(Steuerung s) {
         this.s = s;
     }
+
+    public abstract void zeichne(Graphics g, int hoehe, int breite);
 
 }

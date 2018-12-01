@@ -57,6 +57,14 @@ public class Steuerung {
                 SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
             }
         }
+
+        //------------------------------------------dient zum darstellen der Aktionseben um zu überprüfen----------------------------
+        for (int v = 0; AktionsEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
+            for (int h = 0; AktionsEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
+                AktionsEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
+            }
+        }
+        //-------------------------------------------------------------------------------------------------------------------------------
         figur.zeichne(g, breite, hoehe);
 
     }
@@ -94,13 +102,16 @@ public class Steuerung {
 
     //----------------prüft bei betreten eines Feldes oder bei Auswahl ob Aktion vorliegt----------------------
     private boolean pruefeAufAktion(int x, int y) {
+
         return AktionsEbene[aktiveTurmseite][y][x].getAktionVerfügbar();
+
     }
     //----------------reagiert auf taste um gewollte Aktion auszulösen-------- 
 
     public void VerarbeiteAktionstaste() {
         if (pruefeAufAktion(figur.getxPos(), figur.getyPos())) {
             AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].aktion();
+            o.repaint();
         }
     }
 

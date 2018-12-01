@@ -5,6 +5,9 @@
  */
 package Aktionen;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  *
  * @author Simon Spittel
@@ -20,6 +23,15 @@ public class schlüsselAblegen extends Aktion {
 
     public void aktion() {
 //        f.setSchlüssel = false;           //<--- schlüssel muss noch als Ausrüstung erstellt werden
+    }
+
+    @Override
+    public void zeichne(Graphics g, int hoehe, int breite) {
+        this.breite = breite / 19;
+        this.hoehe = hoehe / 32;
+        g.setColor(Color.CYAN);
+
+        g.drawString("A", (2 + xPos) * this.breite, (yPos + 3) * this.hoehe);
     }
 
 }

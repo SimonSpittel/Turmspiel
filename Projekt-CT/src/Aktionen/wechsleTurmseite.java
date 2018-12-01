@@ -5,6 +5,9 @@
  */
 package Aktionen;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  *
  * @author Simon Spittel
@@ -20,7 +23,16 @@ public class wechsleTurmseite extends Aktion {
     }
 
     public void aktion() {
+        System.out.println("rea");
         s.setAktiveTurmseite(neueTurmseite);
+    }
+
+    @Override
+    public void zeichne(Graphics g, int hoehe, int breite) {
+        this.breite = breite / 19;
+        this.hoehe = hoehe / 32;
+        g.setColor(Color.CYAN);
+        g.drawString("W", (2 + xPos) * this.breite, (yPos + 3) * this.hoehe);
     }
 
 }

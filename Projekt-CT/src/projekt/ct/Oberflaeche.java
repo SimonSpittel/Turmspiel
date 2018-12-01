@@ -69,6 +69,7 @@ public class Oberflaeche extends javax.swing.JPanel {
                 break;
             case KeyEvent.VK_E:
                 s.VerarbeiteAktionstaste();
+
                 break;
 
         }

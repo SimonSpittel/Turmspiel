@@ -24,4 +24,12 @@ public class schlüsselAufheben extends Aktion {
 //        f.setSchlüssel = true;        //<--- schlüssel muss noch als Ausrüstung erstellt werden
     }
 
+    @Override
+    public void zeichne(Graphics g, int hoehe, int breite) {
+        this.breite = breite / 19;
+        this.hoehe = hoehe / 32;
+        g.setColor(Color.CYAN);
+        g.drawString("H", (2 + xPos) * this.breite, (yPos + 3) * this.hoehe);
+    }
+
 }

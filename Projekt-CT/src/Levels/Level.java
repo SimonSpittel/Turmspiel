@@ -19,7 +19,7 @@ public class Level {
     private Spielelement.Spielelement[][][] SpielEbene = new Spielelement.Spielelement[4][30][15];
     private double[][][] test = new double[4][30][15];
 
-                                                        //<-- Muss nacher in die einzelnen Levels
+    //<-- Muss nacher in die einzelnen Levels
     public void loadAktionLvlTurmseite(int Turmseite) {
         Scanner scanIn = null;
         int Rowc = 0;
@@ -52,10 +52,12 @@ public class Level {
             for (int x = 0; x < test[Turmseite][y].length; x++) {
                 switch ((int) test[Turmseite][y][x]) {
                     case 0:
-                        AktionsEbene[Turmseite][y][x] = new Aktionen.schlüsselAblegen(x, y);                       
+                        AktionsEbene[Turmseite][y][x] = new Aktionen.schlüsselAblegen(x, y);
+
                         break;
                     case 1:
                         AktionsEbene[Turmseite][y][x] = new Aktionen.KeineAktion(x, y);
+
                         break;
                     case 2:
                         AktionsEbene[Turmseite][y][x] = new Aktionen.schlüsselAufheben(x, y);
