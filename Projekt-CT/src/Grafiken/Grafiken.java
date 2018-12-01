@@ -18,14 +18,22 @@ import javax.imageio.ImageIO;
  */
 public class Grafiken {
 
-    private Image Mauer;
+    private Image Mauer1;
+    private Image Mauer2;
+    private Image Mauer3;
+    private Image Mauer4;
+    private Image Mauer5;
     private Image Gang;
     private Image Leiter;
     private Image Tür;
     private Image Figur;
 
     public Grafiken() {
-        loadMauer();
+        loadMauer1();
+        loadMauer2();
+        loadMauer3();
+        loadMauer4();
+        loadMauer5();
         loadGang();
         loadLeiter();
         loadTür();
@@ -33,14 +41,45 @@ public class Grafiken {
     }
 
 //----------------------Laden der Grafiken aus dem Ordner Pictures-------------   
-    private void loadMauer() {
+    private void loadMauer1() {
 
         try {
-            Mauer = ImageIO.read(new File("Texturen" + File.separator + "Mauer.png"));
+            Mauer1 = ImageIO.read(new File("Texturen" + File.separator + "Mauer1.png"));
         } catch (IOException ex) {
             Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    private void loadMauer2() {
+        try {
+            Mauer2 = ImageIO.read(new File("Texturen" + File.separator + "Mauer2.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void loadMauer3() {
+        try {
+            Mauer3 = ImageIO.read(new File("Texturen" + File.separator + "Mauer3.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void loadMauer4() {
+        try {
+            Mauer4 = ImageIO.read(new File("Texturen" + File.separator + "Mauer4.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void loadMauer5() {
+        try {
+            Mauer5 = ImageIO.read(new File("Texturen" + File.separator + "Mauer5.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void loadGang() {
@@ -84,9 +123,7 @@ public class Grafiken {
     }
 
 //-----------------------Methoden um an Bilder zu kommen--------------    
-    public Image getMauer() {
-        return Mauer;
-    }
+ 
 
     /**
      * @return the Gang
@@ -114,6 +151,41 @@ public class Grafiken {
      */
     public Image getFigur() {
         return Figur;
+    }
+
+    /**
+     * @return the Mauer1
+     */
+    public Image getMauer1() {
+        return Mauer1;
+    }
+
+    /**
+     * @return the Mauer2
+     */
+    public Image getMauer2() {
+        return Mauer2;
+    }
+
+    /**
+     * @return the Mauer3
+     */
+    public Image getMauer3() {
+        return Mauer3;
+    }
+
+    /**
+     * @return the Mauer4
+     */
+    public Image getMauer4() {
+        return Mauer4;
+    }
+
+    /**
+     * @return the MauerGras
+     */
+    public Image getMauer5() {
+        return Mauer5;
     }
 
 }
