@@ -64,16 +64,16 @@ public class Level {
                         AktionsEbene[Turmseite][y][x] = new Aktionen.starteMinigame(x, y);
                         break;
                     case 4:
-                        AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(1, x, y);
+                        AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(0, x, y);
                         break;
                     case 5:
-                        AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(2, x, y);
+                        AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(1, x, y);
                         break;
                     case 6:
-                        AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(3, x, y);
+                        AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(2, x, y);
                         break;
                     case 7:
-                        AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(4, x, y);
+                        AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(3, x, y);
                         break;
                     default:
                         break;
