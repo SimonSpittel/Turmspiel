@@ -53,8 +53,18 @@ public class Steuerung {
     public void zeichneSpielElemente(Graphics g, int breite, int hoehe) {
 
         for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
-            for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
-                SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
+            for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite 
+                
+                
+//-----------------------------------------dient um die Sichtweite der Spielfigur einzugrenzen ---------------------------
+//                if(h < figur.getxPos()-figur.getSichtweite() || h > figur.getxPos()+figur.getSichtweite() || v < figur.getyPos()-figur.getSichtweite() || v > figur.getyPos()+figur.getSichtweite()){
+//                    SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
+
+//                }else{
+
+                    SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
+                    
+//                }
             }
         }
 

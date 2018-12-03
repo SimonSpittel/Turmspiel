@@ -27,6 +27,7 @@ public class Grafiken {
     private Image Leiter;
     private Image Tür;
     private Image Figur;
+    private Image Unseen;
 
     public Grafiken() {
         loadMauer1();
@@ -38,6 +39,7 @@ public class Grafiken {
         loadLeiter();
         loadTür();
         loadFigur();
+        loadUnseen();
     }
 
 //----------------------Laden der Grafiken aus dem Ordner Pictures-------------   
@@ -50,6 +52,7 @@ public class Grafiken {
         }
 
     }
+
     private void loadMauer2() {
         try {
             Mauer2 = ImageIO.read(new File("Texturen" + File.separator + "Mauer2.png"));
@@ -121,6 +124,16 @@ public class Grafiken {
         }
 
     }
+    
+    private void loadUnseen() {
+
+        try {
+            Unseen = ImageIO.read(new File("Texturen" + File.separator + "unseen.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
 //-----------------------Methoden um an Bilder zu kommen--------------    
  
@@ -186,6 +199,13 @@ public class Grafiken {
      */
     public Image getMauer5() {
         return Mauer5;
+    }
+
+    /**
+     * @return the Unseen
+     */
+    public Image getUnseen() {
+        return Unseen;
     }
 
 }

@@ -21,7 +21,7 @@ public class ItemAufheben extends Aktion {
     }
 
     public void aktion() {
-//        f.setSchlüssel = true;        //<--- schlüssel muss noch als Ausrüstung erstellt werden
+        f.addItem(null);
     }
 
     @Override

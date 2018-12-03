@@ -52,7 +52,7 @@ public class Level {
             for (int x = 0; x < test[Turmseite][y].length; x++) {
                 switch ((int) test[Turmseite][y][x]) {
                     case 0:
-                        AktionsEbene[Turmseite][y][x] = new Aktionen.ItemAblegen(x, y);
+//                        AktionsEbene[Turmseite][y][x] = new Aktionen.ItemAblegen(x, y);
 
                         break;
                     case 1:
@@ -60,7 +60,7 @@ public class Level {
 
                         break;
                     case 2:
-                        AktionsEbene[Turmseite][y][x] = new Aktionen.ItemAufheben(x, y);
+//                        AktionsEbene[Turmseite][y][x] = new Aktionen.ItemAufheben(x, y);
                         break;
                     case 3:
                         AktionsEbene[Turmseite][y][x] = new Aktionen.starteMinigame(x, y);

@@ -15,8 +15,36 @@ public abstract class Item {
     protected String Art;  //-----------gibt an um welche art von Item es sich handelt
     
     //---------Falls abgelegt geben Attribute ablage Standort an-------------
-    protected int xPos;
-    protected int yPos;
+    private int xPos;
+    private int yPos;
+
+    /**
+     * @return the ID
+     */
+    public int getID() {
+        return ID;
+    }
+
+    /**
+     * @return the Art
+     */
+    public String getArt() {
+        return Art;
+    }
+
+    /**
+     * @return the xPos
+     */
+    public int getxPos() {
+        return xPos;
+    }
+
+    /**
+     * @return the yPos
+     */
+    public int getyPos() {
+        return yPos;
+    }
     
     
     

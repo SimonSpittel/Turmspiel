@@ -15,8 +15,9 @@ import java.util.ArrayList;
  * @author Simon.Spittel
  */
 public class Spielfigur extends Spielelement {
-    
-    private ArrayList Items = new ArrayList();
+
+    private ArrayList<Ausrüstung.Item> Items = new ArrayList<Ausrüstung.Item>();
+    private int Sichtweite = 1;
 
     public void bewege(java.awt.event.KeyEvent evt) {
         switch (evt.getKeyCode()) {
@@ -36,8 +37,8 @@ public class Spielfigur extends Spielelement {
                 break;
 
         }
-        System.out.println("x:" + xPos);
-        System.out.println("y:" + yPos);
+//        System.out.println("x:" + xPos);
+//        System.out.println("y:" + yPos);
     }
 
     public Point pruefeBegehbarkeit(java.awt.event.KeyEvent evt) {
@@ -71,6 +72,57 @@ public class Spielfigur extends Spielelement {
         this.breite = breite / 19;
         this.hoehe = hoehe / 32;
         g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
+    }
+
+    public void AktualisiereAttribute() {
+        Ausrüstung.Item tempItem;
+        for(int i = 0; i < Items.size(); i++){
+            tempItem = Items.get(i);
+            switch(tempItem.getArt()){
+                case "L":
+                        Sichtweite = 3;
+                        break;
+                case "S":
+                        //-------------------
+                        break;
+                default: 
+                        break;
+                        
+            }
+        }
+    }
+
+    /**
+     * @return the Sichtweite
+     */
+    public int getSichtweite() {
+        return Sichtweite;
+    }
+    
+    public void addItem(Ausrüstung.Item item){
+        Items.add(item);
+    }
+    
+    public void deleteItem(int ID){
+        Ausrüstung.Item tempItem;
+        for(int i = 0; i < Items.size(); i++){
+            tempItem = Items.get(i);
+            if(tempItem.getID() == ID){
+                Items.remove(i);
+            }
+        }
+    }
+    
+    //-----------------gibt alle IDs welche sich in dem Inventar befinden--------
+    
+    public int[] getIDs(){
+        int[] IDs = new int[Items.size()];
+        Ausrüstung.Item tempItem;
+        for(int i = 0; i< Items.size(); i++){
+            tempItem = Items.get(i);
+            IDs[i] = tempItem.getID();
+        }
+        return IDs;
     }
 
 }

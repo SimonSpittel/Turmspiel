@@ -20,7 +20,7 @@ public abstract class Aktion {
     protected int hoehe;
     protected int xPos;
     protected int yPos;
-    private Spielfigur f = new Spielfigur();
+    protected Spielfigur f;
     protected boolean benutzt;
     protected boolean aktionVerfügbar = true; // <-- standardmäsig true nur bei Klasse KeineAktion wird dieser im Konstruktor auf false gesetzt
 

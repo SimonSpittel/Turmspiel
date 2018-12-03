@@ -22,6 +22,12 @@ public abstract class Spielelement {
     protected Grafiken.Grafiken grafik = new Grafiken.Grafiken();
 
     public abstract void zeichne(Graphics g, int hoehe, int breite);
+    
+    public  void zeichneUnseen(Graphics g, int hoehe, int breite){
+        this.breite = breite / 19;
+        this.hoehe = hoehe / 32;
+        g.drawImage(grafik.getUnseen(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
+    }
 
     public int getxPos() {
         return xPos;
