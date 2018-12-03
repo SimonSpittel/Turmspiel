@@ -11,7 +11,7 @@ package Ausrüstung;
  */
 public abstract class Item {
     
-    protected int ID; //---------------Spzifiziert nummer des Items
+    protected int ID ; //---------------Spzifiziert nummer des Items
     protected String Art;  //-----------gibt an um welche art von Item es sich handelt
     
     //---------Falls abgelegt geben Attribute ablage Standort an-------------

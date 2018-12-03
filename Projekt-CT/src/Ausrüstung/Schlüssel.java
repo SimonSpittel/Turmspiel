@@ -10,5 +10,7 @@ package Ausrüstung;
  * @author Simon Spittel
  */
 public class Schlüssel extends Item{
-    
+    public Schlüssel(){
+        Art = "S";
+    }
 }
