@@ -9,10 +9,10 @@ package Ausrüstung;
  *
  * @author Simon Spittel
  */
-public class Schlüssel extends Item{
-    public Schlüssel(int x, int y){
+public class KeinItem extends Item{
+    public KeinItem(int x, int y){
         xPos = x;
         yPos = y;
-        Art = "S";
     }
+    
 }

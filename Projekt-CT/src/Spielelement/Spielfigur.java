@@ -15,9 +15,14 @@ import java.util.ArrayList;
  * @author Simon.Spittel
  */
 public class Spielfigur extends Spielelement {
-
+    
+    private Ausrüstung.Item[][][] ItemEbene = new Ausrüstung.Item[4][30][15];
     private ArrayList<Ausrüstung.Item> Items = new ArrayList<Ausrüstung.Item>();
     private int Sichtweite = 1;
+    
+    public Spielfigur(Ausrüstung.Item[][][] ItemEbene){
+        this.ItemEbene = ItemEbene;
+    }
 
     public void bewege(java.awt.event.KeyEvent evt) {
         switch (evt.getKeyCode()) {
@@ -101,6 +106,7 @@ public class Spielfigur extends Spielelement {
     
     public void addItem(Ausrüstung.Item item){
         Items.add(item);
+        System.out.println(Items.size());
     }
     
     public void deleteItem(int ID){
@@ -124,5 +130,18 @@ public class Spielfigur extends Spielelement {
         }
         return IDs;
     }
+
+    /**
+     * @param ItemEbene the ItemEbene to set
+     */
+    public void setItemEbene(Ausrüstung.Item[][][] ItemEbene) {
+        this.ItemEbene = ItemEbene;
+    }
+    
+    public boolean pruefeAufItem(int Turmseite, int x, int y){
+        return "L".equals(ItemEbene[Turmseite][y][x].getArt()) || "S".equals(ItemEbene[Turmseite][y][x].getArt());
+    }
+    
+    
 
 }

@@ -10,7 +10,9 @@ package Ausrüstung;
  * @author Simon Spittel
  */
 public class Laterne extends Item {
-    public Laterne(){
+    public Laterne(int x, int y){
+        xPos = x;
+        yPos = y;
         Art = "L";
     }
 }

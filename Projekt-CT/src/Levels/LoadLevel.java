@@ -20,6 +20,7 @@ public class LoadLevel {
     private BufferedReader br;
     private Aktionen.Aktion[][][] AktionsEbenen = new Aktionen.Aktion[4][30][15];
     private Spielelement.Spielelement[][][] SpielEbenen = new Spielelement.Spielelement[4][30][15];
+    private Ausrüstung.Item[][][] ItemEbene = new Ausrüstung.Item[4][30][15];
     public Levels.Level Level = new Levels.Level();
 
     public LoadLevel() {
@@ -31,6 +32,12 @@ public class LoadLevel {
         Level.loadSpielElementLvlTurmseite(1);
         Level.loadSpielElementLvlTurmseite(2);
         Level.loadSpielElementLvlTurmseite(3);
+        Level.loadItemLvlTurmseite(0);
+        Level.loadItemLvlTurmseite(1);
+        Level.loadItemLvlTurmseite(2);
+        Level.loadItemLvlTurmseite(3);
+        
+        ItemEbene = Level.getItemEbene();
         SpielEbenen = Level.getSpielEbene();
         AktionsEbenen = Level.getAktionsEbene();
     }
@@ -47,6 +54,13 @@ public class LoadLevel {
      */
     public Spielelement.Spielelement[][][] getSpielEbenen() {
         return SpielEbenen;
+    }
+
+    /**
+     * @return the ItemEbene
+     */
+    public Ausrüstung.Item[][][] getItemEbene() {
+        return ItemEbene;
     }
 
 }

@@ -17,6 +17,7 @@ public class Level {
 
     private Aktionen.Aktion[][][] AktionsEbene = new Aktionen.Aktion[4][30][15];
     private Spielelement.Spielelement[][][] SpielEbene = new Spielelement.Spielelement[4][30][15];
+    private Ausrüstung.Item[][][] ItemEbene = new Ausrüstung.Item[4][30][15];
     private double[][][] test = new double[4][30][15];
 
     //<-- Muss nacher in die einzelnen Levels
@@ -51,16 +52,8 @@ public class Level {
         for (int y = 0; y < test[Turmseite].length; y++) {
             for (int x = 0; x < test[Turmseite][y].length; x++) {
                 switch ((int) test[Turmseite][y][x]) {
-                    case 0:
-//                        AktionsEbene[Turmseite][y][x] = new Aktionen.ItemAblegen(x, y);
-
-                        break;
                     case 1:
                         AktionsEbene[Turmseite][y][x] = new Aktionen.KeineAktion(x, y);
-
-                        break;
-                    case 2:
-//                        AktionsEbene[Turmseite][y][x] = new Aktionen.ItemAufheben(x, y);
                         break;
                     case 3:
                         AktionsEbene[Turmseite][y][x] = new Aktionen.starteMinigame(x, y);
@@ -136,6 +129,53 @@ public class Level {
         }
 
     }
+    
+    public void loadItemLvlTurmseite(int Turmseite) {
+        Scanner scanIn = null;
+        int Rowc = 0;
+        String InputLine = "";
+        //      double xnum = 0;
+        String xfileLocation;
+
+        xfileLocation = "Dateien/Lvl1_Item_Turmseite" + (Turmseite + 1) + ".txt";
+        try {
+            scanIn = new Scanner(new BufferedReader(new FileReader(xfileLocation)));
+
+            while (scanIn.hasNextLine()) {
+
+                InputLine = scanIn.nextLine();
+                String[] InArray = InputLine.split(",");
+
+                for (int x = 0; x < test[Turmseite][Rowc].length; x++) {
+                    test[Turmseite][Rowc][x] = Double.parseDouble(InArray[x]);
+                }
+
+                Rowc++;
+
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e);
+        }
+
+        for (int y = 0; y < test[Turmseite].length; y++) {
+            for (int x = 0; x < test[Turmseite][y].length; x++) {
+                switch ((int) test[Turmseite][y][x]) {
+                    case 1:
+                        ItemEbene[Turmseite][y][x] = new Ausrüstung.KeinItem(x, y);
+                    case 2:
+                        ItemEbene[Turmseite][y][x] = new Ausrüstung.Laterne(x, y);
+                        break;
+                    case 3:
+                        ItemEbene[Turmseite][y][x] = new Ausrüstung.Schlüssel(x, y);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+        }
+
+    }
 
     public void printLvl() {
         for (int Turmseite = 0; Turmseite < test.length; Turmseite++) {
@@ -161,6 +201,11 @@ public class Level {
      */
     public Spielelement.Spielelement[][][] getSpielEbene() {
         return SpielEbene;
+    }
+
+
+    public Ausrüstung.Item[][][] getItemEbene() {
+        return ItemEbene;
     }
 
 }

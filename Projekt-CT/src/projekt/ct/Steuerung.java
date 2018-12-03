@@ -24,21 +24,22 @@ public class Steuerung {
 
     //--------------------------------------------SpielelementeEbene-------------------------------- 
     private Spielelement.Spielelement[][][] SpielelementeEbene; // <--- muss später aus Klasse Level geladen werden somit Array [][][][] erstes gibt die turmseite an um so auch wechseln zu können
-    private Spielelement.Spielfigur figur = new Spielelement.Spielfigur();                                   // <-- nur zum test
+    private Spielelement.Spielfigur figur;                                  // <-- nur zum test
 
+    //------------------------------------ItemEbene----------------------------
+    private Ausrüstung.Item[][][] ItemEbene;
     //-----------------------------------------------EndeAtribute-----------------------------------
     public Steuerung(Oberflaeche o) {
         this.o = o;
-
+        
         initSpielelemente();
-
+        
     }
 
     private void initSpielelemente() {
-        figur.setxPos(7);
-        figur.setyPos(29);
         AktionsEbene = loadLevel.getAktionsEbenen();
         SpielelementeEbene = loadLevel.getSpielEbenen();
+        ItemEbene = loadLevel.getItemEbene();
         for (int i = 0; AktionsEbene.length > i; i++) {
             for (int v = 0; AktionsEbene[i].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
                 for (int h = 0; AktionsEbene[i][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
@@ -47,6 +48,9 @@ public class Steuerung {
                 }
             }
         }
+        figur = new Spielelement.Spielfigur(ItemEbene);
+        figur.setxPos(7);
+        figur.setyPos(29);
 
     }
 
@@ -122,6 +126,10 @@ public class Steuerung {
         if (pruefeAufAktion(figur.getxPos(), figur.getyPos())) {
             AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].aktion();
             o.repaint();
+        }
+        if(figur.pruefeAufItem(aktiveTurmseite, figur.getxPos(), figur.getyPos())){
+            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()]);
+            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
         }
     }
 
