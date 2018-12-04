@@ -44,6 +44,11 @@ public class Grafiken {
     
     //------------Schlüssel------
     private Image key;
+    
+    //------------Fallen------------
+    private Image Netzfalle;
+    private Image Speerfalle;
+    private Image Auslößer;
 
     public Grafiken() {
         loadMauer1();
@@ -64,6 +69,9 @@ public class Grafiken {
         loadOpenChest();
         loadClosedChest();
         loadKey();
+        loadNetzfalle();
+        loadSpeerfalle();
+        loadAuslößer();
     }
 
 //----------------------Laden der Grafiken aus dem Ordner Pictures-------------   
@@ -245,6 +253,37 @@ public class Grafiken {
 
     }
     
+    //---------------FALLEN------------
+    private void loadNetzfalle() {
+
+        try {
+            Netzfalle = ImageIO.read(new File("Texturen" + File.separator + "trap_net.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    } 
+    
+    private void loadSpeerfalle() {
+
+        try {
+            Speerfalle = ImageIO.read(new File("Texturen" + File.separator + "trap_spear.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    private void loadAuslößer() {
+
+        try {
+            Auslößer = ImageIO.read(new File("Texturen" + File.separator + "pressure_plate.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
     
 //-----------------------Methoden um an Bilder zu kommen--------------    
  
@@ -373,6 +412,27 @@ public class Grafiken {
      */
     public Image getKey() {
         return key;
+    }
+
+    /**
+     * @return the Netzfalle
+     */
+    public Image getNetzfalle() {
+        return Netzfalle;
+    }
+
+    /**
+     * @return the Speerfalle
+     */
+    public Image getSpeerfalle() {
+        return Speerfalle;
+    }
+
+    /**
+     * @return the Auslößer
+     */
+    public Image getAuslößer() {
+        return Auslößer;
     }
 
 }
