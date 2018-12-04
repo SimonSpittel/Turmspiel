@@ -41,6 +41,9 @@ public class Grafiken {
     
     private Image openChest;
     private Image closedChest;
+    
+    //------------Schlüssel------
+    private Image key;
 
     public Grafiken() {
         loadMauer1();
@@ -60,6 +63,7 @@ public class Grafiken {
         loadFackel4();
         loadOpenChest();
         loadClosedChest();
+        loadKey();
     }
 
 //----------------------Laden der Grafiken aus dem Ordner Pictures-------------   
@@ -230,6 +234,17 @@ public class Grafiken {
 
     }
     
+    //------------Schlüssel------
+    private void loadKey() {
+
+        try {
+            key = ImageIO.read(new File("Texturen" + File.separator + "key.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
     
 //-----------------------Methoden um an Bilder zu kommen--------------    
  
@@ -351,6 +366,13 @@ public class Grafiken {
      */
     public Image getClosedChest() {
         return closedChest;
+    }
+
+    /**
+     * @return the key
+     */
+    public Image getKey() {
+        return key;
     }
 
 }

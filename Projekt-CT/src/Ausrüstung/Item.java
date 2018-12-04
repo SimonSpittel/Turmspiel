@@ -13,12 +13,13 @@ import java.awt.Graphics;
  */
 public abstract class Item {
     
-    private int ID ; //---------------Spezifiziert nummer des Items
+    protected int ID ; //---------------Spezifiziert nummer des Items
     protected String Art;  //-----------gibt an um welche art von Item es sich handelt
     protected Grafiken.Grafiken grafik = new Grafiken.Grafiken();
     protected boolean brennt = false;
     protected int breite;
     protected int hoehe;
+    protected int[] FigurID;
     
     
     //---------Falls abgelegt geben Attribute ablage Standort an-------------
@@ -71,6 +72,13 @@ public abstract class Item {
      */
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    /**
+     * @param FigurID the FigurID to set
+     */
+    public void setFigurID(int[] FigurID) {
+        this.FigurID = FigurID;
     }
 
   

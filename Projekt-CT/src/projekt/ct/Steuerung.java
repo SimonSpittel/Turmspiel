@@ -63,7 +63,7 @@ public class Steuerung {
 //-----------------------------------------dient um die Sichtweite der Spielfigur einzugrenzen ---------------------------
                 if(h < figur.getxPos()-figur.getSichtweite() || h > figur.getxPos()+figur.getSichtweite() || v < figur.getyPos()-figur.getSichtweite() || v > figur.getyPos()+figur.getSichtweite()){
                     SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
-                    ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
+                    
 
                 }else{
 
@@ -79,6 +79,7 @@ public class Steuerung {
 //                ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
 //            }
 //        }
+        
         //------------------------------------------dient zum darstellen der Aktionseben um zu überprüfen----------------------------
         for (int v = 0; AktionsEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
             for (int h = 0; AktionsEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
@@ -141,7 +142,10 @@ public class Steuerung {
         }
         
         if(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "T"){
-            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].setFigurID(figur.getIDs());
+            if(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem() != null){
+                figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+            }
         }
         
         if(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "F"){

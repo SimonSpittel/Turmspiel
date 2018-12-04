@@ -16,6 +16,7 @@ public class Truhe extends Item{
     private Item inhalt;
     private int benötigteID;
     
+    
     public Truhe(int x, int y, Item inhalt, int ID){
         xPos = x;
         yPos = y;
@@ -28,9 +29,9 @@ public class Truhe extends Item{
         return benötigteID == ID;
     }
     
-    public Item getItem(int ID[]){
-        for(int i = 0; i < ID.length; i++){
-            if(pruefeID(ID[i])){
+    public Item getItem(){        
+        for(int i = 0; i < FigurID.length; i++){
+            if(pruefeID(FigurID[i])){
                 geöffnet = true;
                 return inhalt;
             }
@@ -49,5 +50,7 @@ public class Truhe extends Item{
         }
            
     }
+
+
     
 }

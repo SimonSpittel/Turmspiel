@@ -12,15 +12,18 @@ import java.awt.Graphics;
  * @author Simon Spittel
  */
 public class Schlüssel extends Item{
-    public Schlüssel(int x, int y){
+    public Schlüssel(int x, int y, int ID){
         xPos = x;
         yPos = y;
+        this.ID = ID;
         Art = "S";
         
     }
 
     @Override
     public void zeichne(Graphics g, int hoehe, int breite) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.breite = breite / 19;
+        this.hoehe = hoehe / 32;
+        g.drawImage(grafik.getKey(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
     }
 }

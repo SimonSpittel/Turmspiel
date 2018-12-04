@@ -20,7 +20,7 @@ public class KeinItem extends Item{
 
     @Override
     public void zeichne(Graphics g, int hoehe, int breite) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }
