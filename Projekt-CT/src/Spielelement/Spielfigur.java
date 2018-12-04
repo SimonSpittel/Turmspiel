@@ -7,8 +7,11 @@ package Spielelement;
 
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.Timer;
 
 /**
  *
@@ -19,9 +22,17 @@ public class Spielfigur extends Spielelement {
     private Ausrüstung.Item[][][] ItemEbene = new Ausrüstung.Item[4][30][15];
     private ArrayList<Ausrüstung.Item> Items = new ArrayList<Ausrüstung.Item>();
     private int Sichtweite = 1;
+    private Timer refresh;
+    private boolean leuchtmittel = false;
     
     public Spielfigur(Ausrüstung.Item[][][] ItemEbene){
         this.ItemEbene = ItemEbene;
+        refresh = new Timer(1, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                AktualisiereAttribute();
+            }
+        });
+        refresh.start();
     }
 
     public void bewege(java.awt.event.KeyEvent evt) {
@@ -81,20 +92,31 @@ public class Spielfigur extends Spielelement {
 
     public void AktualisiereAttribute() {
         Ausrüstung.Item tempItem;
+        
         for(int i = 0; i < Items.size(); i++){
             tempItem = Items.get(i);
+      
             switch(tempItem.getArt()){
                 case "L":
-                        Sichtweite = 3;
+                        if(Sichtweite < 3){
+                            Sichtweite = 3;
+                            
+                        }
                         break;
-                case "S":
-                        //-------------------
+                case "F":
+                        if(tempItem.isBrennt()){
+                            Sichtweite = 2;                            
+                        }else{
+                            Sichtweite = 1;
+                        }                      
                         break;
-                default: 
+                default:                       
                         break;
                         
             }
+            
         }
+
     }
 
     /**
@@ -105,8 +127,10 @@ public class Spielfigur extends Spielelement {
     }
     
     public void addItem(Ausrüstung.Item item){
-        Items.add(item);
         System.out.println(Items.size());
+        System.out.println(item.getArt());
+        Items.add(item);
+        
     }
     
     public void deleteItem(int ID){
@@ -137,9 +161,25 @@ public class Spielfigur extends Spielelement {
     public void setItemEbene(Ausrüstung.Item[][][] ItemEbene) {
         this.ItemEbene = ItemEbene;
     }
+       
+    public void pruefeAufFackel(){
+        Ausrüstung.Item tempItem;
+        for(int i = 0; i < Items.size(); i++){
+            tempItem = Items.get(i);
+            if(tempItem.getArt() == "F"){
+                Items.remove(i);
+            }
+        }
+    }
     
-    public boolean pruefeAufItem(int Turmseite, int x, int y){
-        return "L".equals(ItemEbene[Turmseite][y][x].getArt()) || "S".equals(ItemEbene[Turmseite][y][x].getArt());
+    public void pruefeAufLaterne(){
+        Ausrüstung.Item tempItem;
+        for(int i = 0; i < Items.size(); i++){
+            tempItem = Items.get(i);
+            if(tempItem.getArt() == "L"){
+                Items.remove(i);
+            }
+        }
     }
     
     

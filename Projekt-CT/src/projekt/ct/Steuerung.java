@@ -48,6 +48,7 @@ public class Steuerung {
                 }
             }
         }
+        
         figur = new Spielelement.Spielfigur(ItemEbene);
         figur.setxPos(7);
         figur.setyPos(29);
@@ -58,27 +59,34 @@ public class Steuerung {
 
         for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
             for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite 
-                
-                
+       
 //-----------------------------------------dient um die Sichtweite der Spielfigur einzugrenzen ---------------------------
-//                if(h < figur.getxPos()-figur.getSichtweite() || h > figur.getxPos()+figur.getSichtweite() || v < figur.getyPos()-figur.getSichtweite() || v > figur.getyPos()+figur.getSichtweite()){
-//                    SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
+                if(h < figur.getxPos()-figur.getSichtweite() || h > figur.getxPos()+figur.getSichtweite() || v < figur.getyPos()-figur.getSichtweite() || v > figur.getyPos()+figur.getSichtweite()){
+                    SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
+                    ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
 
-//                }else{
+                }else{
 
                     SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
+                    ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
                     
-//                }
+                }
             }
         }
-
+                //------------------------------------------------Darstellen der Items an der Wand----------------------------------------------
+//        for (int v = 0; ItemEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
+//            for (int h = 0; ItemEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
+//                ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
+//            }
+//        }
         //------------------------------------------dient zum darstellen der Aktionseben um zu überprüfen----------------------------
         for (int v = 0; AktionsEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
             for (int h = 0; AktionsEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
                 AktionsEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
             }
         }
-        //-------------------------------------------------------------------------------------------------------------------------------
+
+        //----------------------------------------------------
         figur.zeichne(g, breite, hoehe);
 
     }
@@ -127,10 +135,52 @@ public class Steuerung {
             AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].aktion();
             o.repaint();
         }
-        if(figur.pruefeAufItem(aktiveTurmseite, figur.getxPos(), figur.getyPos())){
-            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()]);
+        if(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "S"){
+            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
             ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
         }
+        
+        if(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "T"){
+            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+        }
+        
+        if(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "F"){
+            figur.pruefeAufFackel();            
+            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
+            
+        }
+        
+        if(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "L"){
+            figur.pruefeAufLaterne();
+            figur.pruefeAufFackel();
+            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
+        }
+        figur.AktualisiereAttribute();
+        
+//        switch(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt()){
+//            case "S":
+//                        figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+//                        ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
+//                        break;
+//            case "L":
+//                        figur.pruefeAufLaterne();
+//                        figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+//                        ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
+//                        break;
+//            case "T":
+//                        figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+//                        break;
+//            case "F":
+//                        figur.pruefeAufFackel();
+//                        figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+//                        ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
+//                        break;
+//            default:    
+//                        break;
+//                
+//        }
     }
 
     /**

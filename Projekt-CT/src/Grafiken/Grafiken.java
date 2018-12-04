@@ -28,6 +28,19 @@ public class Grafiken {
     private Image Tür;
     private Image Figur;
     private Image Unseen;
+    
+    //-----------------------------FACKEL----------------------
+    private Image Fackel1;
+    private Image Fackel2;
+    private Image Fackel3;
+    private Image Fackel4;
+    private Image Fackel0;
+    
+    
+    //-----------------truhen----------
+    
+    private Image openChest;
+    private Image closedChest;
 
     public Grafiken() {
         loadMauer1();
@@ -40,6 +53,13 @@ public class Grafiken {
         loadTür();
         loadFigur();
         loadUnseen();
+        loadFackel0();
+        loadFackel1();
+        loadFackel2();
+        loadFackel3();
+        loadFackel4();
+        loadOpenChest();
+        loadClosedChest();
     }
 
 //----------------------Laden der Grafiken aus dem Ordner Pictures-------------   
@@ -135,6 +155,82 @@ public class Grafiken {
 
     }
 
+    
+//--------------------------FACKELN-------------------------
+    private void loadFackel0() {
+
+        try {
+            Fackel0 = ImageIO.read(new File("Texturen" + File.separator + "torch_0.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    private void loadFackel1() {
+
+        try {
+            Fackel1 = ImageIO.read(new File("Texturen" + File.separator + "torch_1.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    private void loadFackel2() {
+
+        try {
+            Fackel2 = ImageIO.read(new File("Texturen" + File.separator + "torch_2.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    private void loadFackel3() {
+
+        try {
+            Fackel3 = ImageIO.read(new File("Texturen" + File.separator + "torch_3.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    private void loadFackel4() {
+
+        try {
+            Fackel4 = ImageIO.read(new File("Texturen" + File.separator + "torch_4.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    
+    //-------------TRUHEN-----------
+    
+    private void loadOpenChest() {
+
+        try {
+            openChest = ImageIO.read(new File("Texturen" + File.separator + "chest_2_open.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    private void loadClosedChest() {
+
+        try {
+            closedChest = ImageIO.read(new File("Texturen" + File.separator + "chest_2_closed.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    
 //-----------------------Methoden um an Bilder zu kommen--------------    
  
 
@@ -206,6 +302,55 @@ public class Grafiken {
      */
     public Image getUnseen() {
         return Unseen;
+    }
+
+    /**
+     * @return the Fackel1
+     */
+    public Image getFackel1() {
+        return Fackel1;
+    }
+
+    /**
+     * @return the Fackel2
+     */
+    public Image getFackel2() {
+        return Fackel2;
+    }
+
+    /**
+     * @return the Fackel3
+     */
+    public Image getFackel3() {
+        return Fackel3;
+    }
+
+    /**
+     * @return the Fackel4
+     */
+    public Image getFackel4() {
+        return Fackel4;
+    }
+
+    /**
+     * @return the Fackel5
+     */
+    public Image getFackel0() {
+        return Fackel0;
+    }
+
+    /**
+     * @return the openChest
+     */
+    public Image getOpenChest() {
+        return openChest;
+    }
+
+    /**
+     * @return the closedChest
+     */
+    public Image getClosedChest() {
+        return closedChest;
     }
 
 }

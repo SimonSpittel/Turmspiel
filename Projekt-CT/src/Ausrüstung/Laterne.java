@@ -5,14 +5,26 @@
  */
 package Ausrüstung;
 
+import java.awt.Graphics;
+import javax.swing.Timer;
+
 /**
  *
  * @author Simon Spittel
  */
 public class Laterne extends Item {
+    private boolean brennt = true;
+    
+    
     public Laterne(int x, int y){
         xPos = x;
         yPos = y;
         Art = "L";
+        brennt = true;
+    }
+
+    @Override
+    public void zeichne(Graphics g, int hoehe, int breite) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

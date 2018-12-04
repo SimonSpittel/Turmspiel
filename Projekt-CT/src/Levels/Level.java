@@ -160,10 +160,11 @@ public class Level {
         for (int y = 0; y < test[Turmseite].length; y++) {
             for (int x = 0; x < test[Turmseite][y].length; x++) {
                 switch ((int) test[Turmseite][y][x]) {
-                    case 1:
-                        ItemEbene[Turmseite][y][x] = new Ausrüstung.KeinItem(x, y);
                     case 2:
-                        ItemEbene[Turmseite][y][x] = new Ausrüstung.Laterne(x, y);
+                        ItemEbene[Turmseite][y][x] = new Ausrüstung.KeinItem(x, y);
+                    case 1:
+                        //ItemEbene[Turmseite][y][x] = new Ausrüstung.Laterne(x, y);
+                        ItemEbene[Turmseite][y][x] = new Ausrüstung.Fackel(x, y);
                         break;
                     case 3:
                         ItemEbene[Turmseite][y][x] = new Ausrüstung.Schlüssel(x, y);

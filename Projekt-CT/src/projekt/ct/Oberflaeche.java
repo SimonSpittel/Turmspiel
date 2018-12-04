@@ -7,6 +7,9 @@ package projekt.ct;
 
 import com.sun.glass.events.KeyEvent;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 /**
  *
@@ -16,6 +19,7 @@ public class Oberflaeche extends javax.swing.JPanel {
 
     private Graphics g;
     private Steuerung s;
+    private Timer animation;
 
     public Oberflaeche() {
 
@@ -23,9 +27,17 @@ public class Oberflaeche extends javax.swing.JPanel {
         initComponents();
         setFocusable(true);
         requestFocus();
+        animation = new Timer(33, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                repaint();
+            }
+        });
+        animation.start();
     }
 
     protected void paintComponent(Graphics g) {
+        
+        
         super.paintComponent(g);
         s.zeichneSpielElemente(g, this.getHeight(), this.getWidth());
     }

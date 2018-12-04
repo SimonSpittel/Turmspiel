@@ -5,6 +5,8 @@
  */
 package Ausrüstung;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author Simon Spittel
@@ -13,6 +15,12 @@ public class KeinItem extends Item{
     public KeinItem(int x, int y){
         xPos = x;
         yPos = y;
+        
+    }
+
+    @Override
+    public void zeichne(Graphics g, int hoehe, int breite) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

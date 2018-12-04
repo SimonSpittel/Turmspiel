@@ -5,24 +5,37 @@
  */
 package Ausrüstung;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author Simon Spittel
  */
 public abstract class Item {
     
-    protected int ID ; //---------------Spezifiziert nummer des Items
+    private int ID ; //---------------Spezifiziert nummer des Items
     protected String Art;  //-----------gibt an um welche art von Item es sich handelt
+    protected Grafiken.Grafiken grafik = new Grafiken.Grafiken();
+    protected boolean brennt = false;
+    protected int breite;
+    protected int hoehe;
+    
     
     //---------Falls abgelegt geben Attribute ablage Standort an-------------
     protected int xPos;
     protected int yPos;
+    
+    public abstract void zeichne(Graphics g, int hoehe, int breite);
 
     /**
      * @return the ID
      */
     public int getID() {
         return ID;
+    }
+    
+    public Item getItem(){
+        return this;
     }
 
     /**
@@ -45,8 +58,20 @@ public abstract class Item {
     public int getyPos() {
         return yPos;
     }
-    
-    
-    
-    
+
+    /**
+     * @return the brennt
+     */
+    public boolean isBrennt() {
+        return brennt;
+    }
+
+    /**
+     * @param ID the ID to set
+     */
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+  
 }
