@@ -23,7 +23,6 @@ public class wechsleTurmseite extends Aktion {
     }
 
     public void aktion() {
-        System.out.println("rea");
         s.setAktiveTurmseite(neueTurmseite);
     }
 
