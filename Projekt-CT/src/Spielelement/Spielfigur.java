@@ -18,14 +18,16 @@ import javax.swing.Timer;
  * @author Simon.Spittel
  */
 public class Spielfigur extends Spielelement {
-    
+
     private Ausrüstung.Item[][][] ItemEbene = new Ausrüstung.Item[4][30][15];
     private ArrayList<Ausrüstung.Item> Items = new ArrayList<Ausrüstung.Item>();
     private int Sichtweite = 1;
     private Timer refresh;
     private boolean leuchtmittel = false;
-    
-    public Spielfigur(Ausrüstung.Item[][][] ItemEbene){
+
+    private int Lebenspunkte = 100;
+
+    public Spielfigur(Ausrüstung.Item[][][] ItemEbene) {
         this.ItemEbene = ItemEbene;
         refresh = new Timer(1, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -87,34 +89,35 @@ public class Spielfigur extends Spielelement {
     public void zeichne(Graphics g, int hoehe, int breite) {
         this.breite = breite / 19;
         this.hoehe = hoehe / 32;
-        g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
+        //g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
+        g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, 0, 0, 32, 32, null);
     }
 
     public void AktualisiereAttribute() {
         Ausrüstung.Item tempItem;
-        
-        for(int i = 0; i < Items.size(); i++){
+
+        for (int i = 0; i < Items.size(); i++) {
             tempItem = Items.get(i);
-      
-            switch(tempItem.getArt()){
+
+            switch (tempItem.getArt()) {
                 case "L":
-                        if(Sichtweite < 3){
-                            Sichtweite = 3;
-                            
-                        }
-                        break;
+                    if (Sichtweite < 3) {
+                        Sichtweite = 3;
+
+                    }
+                    break;
                 case "F":
-                        if(tempItem.isBrennt()){
-                            Sichtweite = 2;                            
-                        }else{
-                            Sichtweite = 1;
-                        }                      
-                        break;
-                default:                       
-                        break;
-                        
+                    if (tempItem.isBrennt()) {
+                        Sichtweite = 2;
+                    } else {
+                        Sichtweite = 1;
+                    }
+                    break;
+                default:
+                    break;
+
             }
-            
+
         }
 
     }
@@ -125,30 +128,29 @@ public class Spielfigur extends Spielelement {
     public int getSichtweite() {
         return Sichtweite;
     }
-    
-    public void addItem(Ausrüstung.Item item){
+
+    public void addItem(Ausrüstung.Item item) {
         System.out.println(Items.size());
         System.out.println(item.getArt());
         Items.add(item);
-        
+
     }
-    
-    public void deleteItem(int ID){
+
+    public void deleteItem(int ID) {
         Ausrüstung.Item tempItem;
-        for(int i = 0; i < Items.size(); i++){
+        for (int i = 0; i < Items.size(); i++) {
             tempItem = Items.get(i);
-            if(tempItem.getID() == ID){
+            if (tempItem.getID() == ID) {
                 Items.remove(i);
             }
         }
     }
-    
+
     //-----------------gibt alle IDs welche sich in dem Inventar befinden--------
-    
-    public int[] getIDs(){
+    public int[] getIDs() {
         int[] IDs = new int[Items.size()];
         Ausrüstung.Item tempItem;
-        for(int i = 0; i< Items.size(); i++){
+        for (int i = 0; i < Items.size(); i++) {
             tempItem = Items.get(i);
             IDs[i] = tempItem.getID();
         }
@@ -161,27 +163,30 @@ public class Spielfigur extends Spielelement {
     public void setItemEbene(Ausrüstung.Item[][][] ItemEbene) {
         this.ItemEbene = ItemEbene;
     }
-       
-    public void pruefeAufFackel(){
+
+    public void pruefeAufFackel() {
         Ausrüstung.Item tempItem;
-        for(int i = 0; i < Items.size(); i++){
+        for (int i = 0; i < Items.size(); i++) {
             tempItem = Items.get(i);
-            if(tempItem.getArt() == "F"){
+            if (tempItem.getArt() == "F") {
                 Items.remove(i);
             }
         }
     }
-    
-    public void pruefeAufLaterne(){
+
+    public void pruefeAufLaterne() {
         Ausrüstung.Item tempItem;
-        for(int i = 0; i < Items.size(); i++){
+        for (int i = 0; i < Items.size(); i++) {
             tempItem = Items.get(i);
-            if(tempItem.getArt() == "L"){
+            if (tempItem.getArt() == "L") {
                 Items.remove(i);
             }
         }
     }
-    
-    
+
+    public void fügeSchadenZu(int schaden) {
+        Lebenspunkte = Lebenspunkte - schaden;
+        System.out.println("Leben: " + Lebenspunkte);
+    }
 
 }

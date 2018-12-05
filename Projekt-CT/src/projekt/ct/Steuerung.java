@@ -28,18 +28,21 @@ public class Steuerung {
 
     //------------------------------------ItemEbene----------------------------
     private Ausrüstung.Item[][][] ItemEbene;
+
     //-----------------------------------------------EndeAtribute-----------------------------------
     public Steuerung(Oberflaeche o) {
         this.o = o;
-        
+
         initSpielelemente();
-        
+
     }
 
     private void initSpielelemente() {
         AktionsEbene = loadLevel.getAktionsEbenen();
         SpielelementeEbene = loadLevel.getSpielEbenen();
         ItemEbene = loadLevel.getItemEbene();
+        figur = new Spielelement.Spielfigur(ItemEbene);
+
         for (int i = 0; AktionsEbene.length > i; i++) {
             for (int v = 0; AktionsEbene[i].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
                 for (int h = 0; AktionsEbene[i][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
@@ -48,8 +51,7 @@ public class Steuerung {
                 }
             }
         }
-        
-        figur = new Spielelement.Spielfigur(ItemEbene);
+
         figur.setxPos(7);
         figur.setyPos(29);
 
@@ -59,17 +61,16 @@ public class Steuerung {
 
         for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
             for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite 
-       
-//-----------------------------------------dient um die Sichtweite der Spielfigur einzugrenzen ---------------------------
-                if(h < figur.getxPos()-figur.getSichtweite() || h > figur.getxPos()+figur.getSichtweite() || v < figur.getyPos()-figur.getSichtweite() || v > figur.getyPos()+figur.getSichtweite()){
-                    SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
-                    
 
-                }else{
+//-----------------------------------------dient um die Sichtweite der Spielfigur einzugrenzen ---------------------------
+                if (h < figur.getxPos() - figur.getSichtweite() || h > figur.getxPos() + figur.getSichtweite() || v < figur.getyPos() - figur.getSichtweite() || v > figur.getyPos() + figur.getSichtweite()) {
+                    SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
+
+                } else {
 
                     SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
                     ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
-                    
+
                 }
             }
         }
@@ -79,7 +80,7 @@ public class Steuerung {
 //                ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
 //            }
 //        }
-        
+
         //------------------------------------------dient zum darstellen der Aktionseben um zu überprüfen----------------------------
         for (int v = 0; AktionsEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
             for (int h = 0; AktionsEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
@@ -98,6 +99,23 @@ public class Steuerung {
             if (figur.pruefeBegehbarkeit(evt).x < 15 && figur.pruefeBegehbarkeit(evt).y < 30 && figur.pruefeBegehbarkeit(evt).x >= 0 && figur.pruefeBegehbarkeit(evt).y >= 0) {   //<--- prüft ob Figur die Außenmase des Turms verlassen würde                                            // <--- prüft ob er die Turmmaße verlässt )
                 if (SpielelementeEbene[aktiveTurmseite][figur.pruefeBegehbarkeit(evt).y][figur.pruefeBegehbarkeit(evt).x].isBegehbarkeit()) {   //<---- prüft ob nächstes Feld begehbar ist oder nicht
                     figur.bewege(evt);
+                    //----------------------Falls falle vorhanden wird sie ausgelöst-----------------
+                    if (figur.getxPos() != 0 && figur.getxPos() != 14 && figur.getyPos() != 0 && figur.getyPos() != 29) {
+                        if (AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() + 1].isFalle()) {
+                            AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() + 1].aktion();
+                        }
+                        if (AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() - 1].isFalle()) {
+                            AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() - 1].aktion();
+                        }
+                        if (AktionsEbene[aktiveTurmseite][figur.getyPos() + 1][figur.getxPos()].isFalle()) {
+                            AktionsEbene[aktiveTurmseite][figur.getyPos() + 1][figur.getxPos()].aktion();
+                        }
+                        if (AktionsEbene[aktiveTurmseite][figur.getyPos() - 1][figur.getxPos()].isFalle()) {
+                            AktionsEbene[aktiveTurmseite][figur.getyPos() - 1][figur.getxPos()].aktion();
+                        }
+                    }
+                    //----------------------------------------------------------------------------
+
                 }
             }
 
@@ -136,33 +154,33 @@ public class Steuerung {
             AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].aktion();
             o.repaint();
         }
-        if(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "S"){
+        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "S") {
             figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
             ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
         }
-        
-        if(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "T"){
+
+        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "T") {
             ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].setFigurID(figur.getIDs());
-            if(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem() != null){
+            if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem() != null) {
                 figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
             }
         }
-        
-        if(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "F"){
-            figur.pruefeAufFackel();            
+
+        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "F") {
+            figur.pruefeAufFackel();
             figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
             ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
-            
+
         }
-        
-        if(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "L"){
+
+        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "L") {
             figur.pruefeAufLaterne();
             figur.pruefeAufFackel();
             figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
             ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
         }
         figur.AktualisiereAttribute();
-        
+
 //        switch(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt()){
 //            case "S":
 //                        figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());

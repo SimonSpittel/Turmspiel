@@ -11,13 +11,14 @@ import java.awt.Graphics;
  *
  * @author Simon Spittel
  */
-public class Schlüssel extends Item{
-    public Schlüssel(int x, int y, int ID){
+public class Schlüssel extends Item {
+
+    public Schlüssel(int x, int y, int ID) {
         xPos = x;
         yPos = y;
         this.ID = ID;
         Art = "S";
-        
+
     }
 
     @Override

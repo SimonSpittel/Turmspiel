@@ -70,6 +70,9 @@ public class Level {
                     case 7:
                         AktionsEbene[Turmseite][y][x] = new Aktionen.wechsleTurmseite(3, x, y);
                         break;
+                    case 8:
+                        AktionsEbene[Turmseite][y][x] = new Aktionen.Fallen.Speerfalle(x, y);
+                        break;
                     default:
                         break;
                 }
@@ -129,7 +132,7 @@ public class Level {
         }
 
     }
-    
+
     public void loadItemLvlTurmseite(int Turmseite) {
         Scanner scanIn = null;
         int Rowc = 0;
@@ -163,16 +166,16 @@ public class Level {
                     case 1:
                         ItemEbene[Turmseite][y][x] = new Ausrüstung.KeinItem(x, y);
                         break;
-                    case 2:                        
+                    case 2:
                         ItemEbene[Turmseite][y][x] = new Ausrüstung.Fackel(x, y);
                         break;
                     case 3:
-                        ItemEbene[Turmseite][y][x] = new Ausrüstung.Schlüssel(x, y,1);
+                        ItemEbene[Turmseite][y][x] = new Ausrüstung.Schlüssel(x, y, 1);
                         break;
                     case 4:
                         Ausrüstung.Item lat = new Ausrüstung.Laterne(x, y);
-                        ItemEbene[Turmseite][y][x] = new Ausrüstung.Truhe(x, y, lat,1);
-                        break;   
+                        ItemEbene[Turmseite][y][x] = new Ausrüstung.Truhe(x, y, lat, 1);
+                        break;
                     default:
                         break;
                 }
@@ -207,7 +210,6 @@ public class Level {
     public Spielelement.Spielelement[][][] getSpielEbene() {
         return SpielEbene;
     }
-
 
     public Ausrüstung.Item[][][] getItemEbene() {
         return ItemEbene;

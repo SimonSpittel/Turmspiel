@@ -23,6 +23,8 @@ public abstract class Aktion {
     protected Spielfigur f;
     protected boolean benutzt;
     protected boolean aktionVerfügbar = true; // <-- standardmäsig true nur bei Klasse KeineAktion wird dieser im Konstruktor auf false gesetzt
+    protected boolean Falle = false;
+    protected Grafiken.Grafiken grafik = new Grafiken.Grafiken();
 
     public int getxPos() {
         return xPos;
@@ -60,5 +62,12 @@ public abstract class Aktion {
     }
 
     public abstract void zeichne(Graphics g, int hoehe, int breite);
+
+    /**
+     * @return the Falle
+     */
+    public boolean isFalle() {
+        return Falle;
+    }
 
 }

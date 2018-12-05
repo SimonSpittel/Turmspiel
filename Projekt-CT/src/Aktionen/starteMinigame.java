@@ -21,7 +21,7 @@ public class starteMinigame extends Aktion {
     }
 
     public void aktion() {
-        
+
     }
 
     @Override

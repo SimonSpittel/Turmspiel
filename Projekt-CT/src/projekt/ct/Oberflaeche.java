@@ -36,8 +36,7 @@ public class Oberflaeche extends javax.swing.JPanel {
     }
 
     protected void paintComponent(Graphics g) {
-        
-        
+
         super.paintComponent(g);
         s.zeichneSpielElemente(g, this.getHeight(), this.getWidth());
     }
@@ -87,7 +86,6 @@ public class Oberflaeche extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_formKeyPressed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

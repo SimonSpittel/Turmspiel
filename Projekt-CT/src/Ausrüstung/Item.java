@@ -12,20 +12,19 @@ import java.awt.Graphics;
  * @author Simon Spittel
  */
 public abstract class Item {
-    
-    protected int ID ; //---------------Spezifiziert nummer des Items
+
+    protected int ID; //---------------Spezifiziert nummer des Items
     protected String Art;  //-----------gibt an um welche art von Item es sich handelt
     protected Grafiken.Grafiken grafik = new Grafiken.Grafiken();
     protected boolean brennt = false;
     protected int breite;
     protected int hoehe;
     protected int[] FigurID;
-    
-    
+
     //---------Falls abgelegt geben Attribute ablage Standort an-------------
     protected int xPos;
     protected int yPos;
-    
+
     public abstract void zeichne(Graphics g, int hoehe, int breite);
 
     /**
@@ -34,8 +33,8 @@ public abstract class Item {
     public int getID() {
         return ID;
     }
-    
-    public Item getItem(){
+
+    public Item getItem() {
         return this;
     }
 
@@ -81,5 +80,4 @@ public abstract class Item {
         this.FigurID = FigurID;
     }
 
-  
 }

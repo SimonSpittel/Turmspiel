@@ -13,10 +13,10 @@ import javax.swing.Timer;
  * @author Simon Spittel
  */
 public class Laterne extends Item {
+
     private boolean brennt = true;
-    
-    
-    public Laterne(int x, int y){
+
+    public Laterne(int x, int y) {
         xPos = x;
         yPos = y;
         Art = "L";
@@ -25,6 +25,6 @@ public class Laterne extends Item {
 
     @Override
     public void zeichne(Graphics g, int hoehe, int breite) {
-        
+
     }
 }

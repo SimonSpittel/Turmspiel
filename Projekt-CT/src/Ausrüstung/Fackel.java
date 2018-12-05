@@ -15,16 +15,15 @@ import javax.swing.Timer;
  *
  * @author Simon Spittel
  */
-public class Fackel extends Item{
+public class Fackel extends Item {
+
     private Timer Lebensdauer;
     private Timer animation;
     private int animationsbild = 0;
-    
-    
+
     private int Brenndauer;
-    
-    
-    public Fackel(int x, int y){
+
+    public Fackel(int x, int y) {
         Random wuerfel = new Random();
         Brenndauer = wuerfel.nextInt(10);
         xPos = x;
@@ -33,9 +32,9 @@ public class Fackel extends Item{
         Art = "F";
         animation = new Timer(99, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                
+
                 animationsbild++;
-                if(animationsbild == 4){
+                if (animationsbild == 4) {
                     animationsbild = 0;
                 }
             }
@@ -43,41 +42,41 @@ public class Fackel extends Item{
         animation.start();
         Lebensdauer = new Timer(1000, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                if(Brenndauer <= 0){
+                if (Brenndauer <= 0) {
                     brennt = false;
                     Lebensdauer.stop();
-                }else{
+                } else {
                     Brenndauer--;
                 }
             }
         });
-        
+
     }
-    
-    public Item getItem(){
+
+    public Item getItem() {
         Lebensdauer.start();
         return this;
     }
-    
+
     @Override
     public void zeichne(Graphics g, int hoehe, int breite) {
         this.breite = breite / 19;
         this.hoehe = hoehe / 32;
-        switch(animationsbild){
-            case 0:    
+        switch (animationsbild) {
+            case 0:
                 g.drawImage(grafik.getFackel1(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
                 break;
-            case 1:    
+            case 1:
                 g.drawImage(grafik.getFackel2(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
                 break;
-            case 2:    
+            case 2:
                 g.drawImage(grafik.getFackel3(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
                 break;
-            case 3:    
+            case 3:
                 g.drawImage(grafik.getFackel4(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
                 break;
 
         }
     }
-    
+
 }

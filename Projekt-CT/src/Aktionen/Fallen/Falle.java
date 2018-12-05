@@ -7,20 +7,16 @@ package Aktionen.Fallen;
 
 import Aktionen.Aktion;
 import java.awt.Graphics;
-import javax.swing.Timer;
 
 /**
  *
  * @author Simon Spittel
  */
-public class Falle extends Aktion{
-    
+public class Falle extends Aktion {
+
     //protected Timer Intervall;
     protected int Schaden;
     protected boolean aktiv;
-    
-    
-    
 
     @Override
     public void aktion() {
@@ -31,5 +27,5 @@ public class Falle extends Aktion{
     public void zeichne(Graphics g, int hoehe, int breite) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

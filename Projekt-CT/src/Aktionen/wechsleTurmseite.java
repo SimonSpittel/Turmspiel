@@ -33,6 +33,7 @@ public class wechsleTurmseite extends Aktion {
         this.hoehe = hoehe / 32;
         g.setColor(Color.CYAN);
         g.drawString("W", (2 + xPos) * this.breite, (yPos + 3) * this.hoehe);
+        //g.drawImage(grafik.getTür(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
     }
 
 }

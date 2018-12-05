@@ -11,16 +11,17 @@ import java.awt.Graphics;
  *
  * @author Simon Spittel
  */
-public class KeinItem extends Item{
-    public KeinItem(int x, int y){
+public class KeinItem extends Item {
+
+    public KeinItem(int x, int y) {
         xPos = x;
         yPos = y;
-        
+
     }
 
     @Override
     public void zeichne(Graphics g, int hoehe, int breite) {
-        
+
     }
-    
+
 }

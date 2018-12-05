@@ -36,7 +36,7 @@ public class LoadLevel {
         Level.loadItemLvlTurmseite(1);
         Level.loadItemLvlTurmseite(2);
         Level.loadItemLvlTurmseite(3);
-        
+
         ItemEbene = Level.getItemEbene();
         SpielEbenen = Level.getSpielEbene();
         AktionsEbenen = Level.getAktionsEbene();
