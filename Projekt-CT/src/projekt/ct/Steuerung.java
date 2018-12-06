@@ -90,6 +90,7 @@ public class Steuerung {
 
         //----------------------------------------------------
         figur.zeichne(g, breite, hoehe);
+        figur.zeichneInventar(g, breite, hoehe);
 
     }
 
@@ -149,7 +150,7 @@ public class Steuerung {
     }
     //----------------reagiert auf taste um gewollte Aktion auszulösen-------- 
 
-    public void VerarbeiteAktionstaste() {
+    public void verarbeiteAktionstaste() {
         if (pruefeAufAktion(figur.getxPos(), figur.getyPos())) {
             AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].aktion();
             o.repaint();
@@ -205,9 +206,10 @@ public class Steuerung {
 //        }
     }
 
-    /**
-     * @param aktiveTurmseite the aktiveTurmseite to set
-     */
+    public void verarbeiteInventarTaste(int platz){
+        figur.setAktiverInventarplatz(platz);
+    }
+    
     public void setAktiveTurmseite(int aktiveTurmseite) {
         this.aktiveTurmseite = aktiveTurmseite;
     }

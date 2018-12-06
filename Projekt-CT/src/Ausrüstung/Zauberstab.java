@@ -5,28 +5,30 @@
  */
 package Ausrüstung;
 
-import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 /**
  *
  * @author Simon Spittel
  */
-public class Schlüssel extends Item {
-
-    public Schlüssel(int x, int y, int ID) {
+public class Zauberstab extends Item{
+    
+    private int Schaden;
+    private int Haltbarkeit;
+    private Random wuerfel = new Random();
+    
+    public Zauberstab(int x, int y){
         xPos = x;
         yPos = y;
-        this.ID = ID;
-        Art = "S";
-
+        Art = "Z";
+        Schaden = wuerfel.nextInt(10)+1;
+        Haltbarkeit = wuerfel.nextInt(20)+1;
     }
 
     @Override
     public void zeichne(Graphics g, int hoehe, int breite) {
-        this.breite = breite / 19;
-        this.hoehe = hoehe / 32;
-        g.drawImage(grafik.getKey(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -34,7 +36,7 @@ public class Schlüssel extends Item {
         this.breite = breite / 19;
         this.hoehe = hoehe / 32;
         
-        g.drawImage(grafik.getKey(), ((17) * this.breite)+(this.breite/2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
-        
+        g.drawImage(grafik.getOpenChest(), ((17) * this.breite)+(this.breite/2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
     }
+    
 }

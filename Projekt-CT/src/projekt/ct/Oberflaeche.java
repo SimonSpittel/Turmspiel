@@ -79,10 +79,35 @@ public class Oberflaeche extends javax.swing.JPanel {
                 s.verarbeiteTastendruck(evt);
                 break;
             case KeyEvent.VK_E:
-                s.VerarbeiteAktionstaste();
-
+                s.verarbeiteAktionstaste();
                 break;
-
+            case KeyEvent.VK_1:
+                s.verarbeiteInventarTaste(1);
+                break;
+            case KeyEvent.VK_2:
+                s.verarbeiteInventarTaste(2);
+                break;
+            case KeyEvent.VK_3:
+                s.verarbeiteInventarTaste(3);
+                break;
+            case KeyEvent.VK_4:
+                s.verarbeiteInventarTaste(4);
+                break;
+            case KeyEvent.VK_5:
+                s.verarbeiteInventarTaste(5);
+                break;    
+            case KeyEvent.VK_6:
+                s.verarbeiteInventarTaste(6);
+                break;
+            case KeyEvent.VK_7:
+                s.verarbeiteInventarTaste(7);
+                break;    
+            case KeyEvent.VK_8:
+                s.verarbeiteInventarTaste(8);
+                break;
+            case KeyEvent.VK_9:
+                s.verarbeiteInventarTaste(9);
+                break;
         }
 
     }//GEN-LAST:event_formKeyPressed

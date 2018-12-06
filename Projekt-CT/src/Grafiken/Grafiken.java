@@ -182,7 +182,7 @@ public class Grafiken {
     private void loadFackel0() {
 
         try {
-            Fackel0 = ImageIO.read(new File("Texturen" + File.separator + "Fackel" + File.separator + "torch_0.png"));
+            Fackel0 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_0.png"));
         } catch (IOException ex) {
             Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -192,7 +192,7 @@ public class Grafiken {
     private void loadFackel1() {
 
         try {
-            Fackel1 = ImageIO.read(new File("Texturen" + File.separator + "Fackel" + File.separator + "torch_1.png"));
+            Fackel1 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_1.png"));
         } catch (IOException ex) {
             Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -202,7 +202,7 @@ public class Grafiken {
     private void loadFackel2() {
 
         try {
-            Fackel2 = ImageIO.read(new File("Texturen" + File.separator + "Fackel" + File.separator + "torch_2.png"));
+            Fackel2 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_2.png"));
         } catch (IOException ex) {
             Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -212,7 +212,7 @@ public class Grafiken {
     private void loadFackel3() {
 
         try {
-            Fackel3 = ImageIO.read(new File("Texturen" + File.separator + "Fackel" + File.separator + "torch_3.png"));
+            Fackel3 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_3.png"));
         } catch (IOException ex) {
             Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -222,7 +222,7 @@ public class Grafiken {
     private void loadFackel4() {
 
         try {
-            Fackel4 = ImageIO.read(new File("Texturen" + File.separator + "Fackel" + File.separator + "torch_4.png"));
+            Fackel4 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_4.png"));
         } catch (IOException ex) {
             Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
         }

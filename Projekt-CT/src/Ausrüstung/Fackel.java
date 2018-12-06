@@ -79,4 +79,12 @@ public class Fackel extends Item {
         }
     }
 
+    @Override
+    public void zeichneInventarIcon(Graphics g, int hoehe, int breite, int Inventarstelle) {
+        this.breite = breite / 19;
+        this.hoehe = hoehe / 32;
+        
+        g.drawImage(grafik.getFackel0(), ((17) * this.breite)+(this.breite/2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
+    }
+
 }

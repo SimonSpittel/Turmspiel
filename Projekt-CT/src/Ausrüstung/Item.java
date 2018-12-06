@@ -11,7 +11,7 @@ import java.awt.Graphics;
  *
  * @author Simon Spittel
  */
-public abstract class Item {
+public abstract class Item implements Comparable<Item>{
 
     protected int ID; //---------------Spezifiziert nummer des Items
     protected String Art;  //-----------gibt an um welche art von Item es sich handelt
@@ -79,5 +79,14 @@ public abstract class Item {
     public void setFigurID(int[] FigurID) {
         this.FigurID = FigurID;
     }
+
+    @Override
+    public int compareTo(Item o) {
+        return this.Art.compareTo(o.getArt());
+    }
+    
+    public abstract void zeichneInventarIcon(Graphics g, int hoehe, int breite, int Inventarstelle);
+        
+    
 
 }

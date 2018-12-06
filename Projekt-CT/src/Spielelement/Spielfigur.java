@@ -5,12 +5,14 @@
  */
 package Spielelement;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.Timer;
 
 /**
@@ -24,6 +26,7 @@ public class Spielfigur extends Spielelement {
     private int Sichtweite = 1;
     private Timer refresh;
     private boolean leuchtmittel = false;
+    private int aktiverInventarplatz = 1;
 
     private int Lebenspunkte = 100;
 
@@ -35,6 +38,7 @@ public class Spielfigur extends Spielelement {
             }
         });
         refresh.start();
+        
     }
 
     public void bewege(java.awt.event.KeyEvent evt) {
@@ -183,10 +187,52 @@ public class Spielfigur extends Spielelement {
             }
         }
     }
+    
+    public void pruefeAufSchwert(){
+        Ausrüstung.Item tempItem;
+        for (int i = 0; i < Items.size(); i++) {
+            tempItem = Items.get(i);
+            if (tempItem.getArt() == "SCH") {
+                Items.remove(i);
+            }
+        }
+    }
+    
+    public void pruefeAufZauberstab(){
+        Ausrüstung.Item tempItem;
+        for (int i = 0; i < Items.size(); i++) {
+            tempItem = Items.get(i);
+            if (tempItem.getArt() == "Z") {
+                Items.remove(i);
+            }
+        }
+    }
 
+    public void sortiereInventar(){
+        Collections.sort(Items);
+    }
+    
     public void fügeSchadenZu(int schaden) {
         Lebenspunkte = Lebenspunkte - schaden;
         System.out.println("Leben: " + Lebenspunkte);
+    }
+    
+    public void zeichneInventar(Graphics g, int hoehe, int breite){
+        sortiereInventar();
+        for (int i = 0; i < Items.size(); i++) {
+            Items.get(i).zeichneInventarIcon(g, hoehe, breite, i);
+        }
+        for (int i = 0; i < 10; i++) {
+            g.setColor(Color.black);
+            g.drawRect((17*(breite/19))+(breite/48), (i+2)*(hoehe/32), breite/19, hoehe/32);
+        }
+    }
+
+    /**
+     * @param aktiverInventarplatz the aktiverInventarplatz to set
+     */
+    public void setAktiverInventarplatz(int aktiverInventarplatz) {
+        this.aktiverInventarplatz = aktiverInventarplatz;
     }
 
 }
