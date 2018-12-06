@@ -15,18 +15,17 @@ public class Truhe extends Item {
 
     boolean geöffnet = false;
     private Item inhalt;
-    private int benötigteID;
 
     public Truhe(int x, int y, Item inhalt, int ID) {
         xPos = x;
         yPos = y;
         this.inhalt = inhalt;
-        benötigteID = ID;
+        this.ID = ID;
         Art = "T";
     }
 
     private boolean pruefeID(int ID) {
-        return benötigteID == ID;
+        return this.ID == ID;
     }
 
     public Item getItem() {
@@ -55,8 +54,18 @@ public class Truhe extends Item {
     public void zeichneInventarIcon(Graphics g, int hoehe, int breite, int Inventarstelle) {
         this.breite = breite / 19;
         this.hoehe = hoehe / 32;
-        
-        g.drawImage(grafik.getOpenChest(), (17 * this.breite)+(this.breite/2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
+
+        g.drawImage(grafik.getOpenChest(), (17 * this.breite) + (this.breite / 2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
+    }
+
+    @Override
+    public void nutzen() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void inaktiv() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -38,7 +38,7 @@ public class Spielfigur extends Spielelement {
             }
         });
         refresh.start();
-        
+
     }
 
     public void bewege(java.awt.event.KeyEvent evt) {
@@ -98,12 +98,8 @@ public class Spielfigur extends Spielelement {
     }
 
     public void AktualisiereAttribute() {
-        Ausrüstung.Item tempItem;
-
-        for (int i = 0; i < Items.size(); i++) {
-            tempItem = Items.get(i);
-
-            switch (tempItem.getArt()) {
+        if (Items.size() != 0 && Items.size() > aktiverInventarplatz - 1) {
+            switch (Items.get(aktiverInventarplatz - 1).getArt()) {
                 case "L":
                     if (Sichtweite < 3) {
                         Sichtweite = 3;
@@ -111,18 +107,32 @@ public class Spielfigur extends Spielelement {
                     }
                     break;
                 case "F":
-                    if (tempItem.isBrennt()) {
+                    if (Items.get(aktiverInventarplatz - 1).isBrennt()) {
+                        Items.get(aktiverInventarplatz - 1).nutzen();
                         Sichtweite = 2;
                     } else {
                         Sichtweite = 1;
+                        Items.remove(aktiverInventarplatz - 1);
                     }
                     break;
                 default:
+                    Sichtweite = 1;
                     break;
 
             }
+        } else {
+            Sichtweite = 1;
 
         }
+        Ausrüstung.Item tempItem;
+        for (int i = 0; i < Items.size(); i++) {
+            tempItem = Items.get(i);
+            if (tempItem.getArt() == "F" && i != aktiverInventarplatz - 1) {
+                Items.get(i).inaktiv();
+
+            }
+        }
+        pruefeAufAusgebrannteFackeln();
 
     }
 
@@ -146,6 +156,18 @@ public class Spielfigur extends Spielelement {
             tempItem = Items.get(i);
             if (tempItem.getID() == ID) {
                 Items.remove(i);
+            }
+        }
+    }
+
+    public void pruefeAufAusgebrannteFackeln() {
+        Ausrüstung.Item tempItem;
+        for (int i = 0; i < Items.size(); i++) {
+            tempItem = Items.get(i);
+            if (tempItem.getArt() == "F") {
+                if (!tempItem.isBrennt()) {
+                    Items.remove(i);
+                }
             }
         }
     }
@@ -187,8 +209,8 @@ public class Spielfigur extends Spielelement {
             }
         }
     }
-    
-    public void pruefeAufSchwert(){
+
+    public void pruefeAufSchwert() {
         Ausrüstung.Item tempItem;
         for (int i = 0; i < Items.size(); i++) {
             tempItem = Items.get(i);
@@ -197,8 +219,8 @@ public class Spielfigur extends Spielelement {
             }
         }
     }
-    
-    public void pruefeAufZauberstab(){
+
+    public void pruefeAufZauberstab() {
         Ausrüstung.Item tempItem;
         for (int i = 0; i < Items.size(); i++) {
             tempItem = Items.get(i);
@@ -208,24 +230,25 @@ public class Spielfigur extends Spielelement {
         }
     }
 
-    public void sortiereInventar(){
+    public void sortiereInventar() {
         Collections.sort(Items);
     }
-    
+
     public void fügeSchadenZu(int schaden) {
         Lebenspunkte = Lebenspunkte - schaden;
         System.out.println("Leben: " + Lebenspunkte);
     }
-    
-    public void zeichneInventar(Graphics g, int hoehe, int breite){
+
+    public void zeichneInventar(Graphics g, int hoehe, int breite) {
         sortiereInventar();
+        for (int i = 0; i < 10; i++) {
+            g.drawImage(grafik.getInventarhintergrund(), (17 * (breite / 19)) + (breite / 48), (i + 2) * (hoehe / 32), breite / 19, hoehe / 32, null);
+        }
         for (int i = 0; i < Items.size(); i++) {
             Items.get(i).zeichneInventarIcon(g, hoehe, breite, i);
         }
-        for (int i = 0; i < 10; i++) {
-            g.setColor(Color.black);
-            g.drawRect((17*(breite/19))+(breite/48), (i+2)*(hoehe/32), breite/19, hoehe/32);
-        }
+
+        g.drawImage(grafik.getCursor(), (17 * (breite / 19)) + (breite / 48), (aktiverInventarplatz + 1) * (hoehe / 32), breite / 19, hoehe / 32, null);
     }
 
     /**

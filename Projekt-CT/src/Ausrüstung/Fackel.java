@@ -48,13 +48,14 @@ public class Fackel extends Item {
                 } else {
                     Brenndauer--;
                 }
+                System.out.println(Brenndauer);
             }
         });
 
     }
 
     public Item getItem() {
-        Lebensdauer.start();
+//        Lebensdauer.start();
         return this;
     }
 
@@ -83,8 +84,36 @@ public class Fackel extends Item {
     public void zeichneInventarIcon(Graphics g, int hoehe, int breite, int Inventarstelle) {
         this.breite = breite / 19;
         this.hoehe = hoehe / 32;
-        
-        g.drawImage(grafik.getFackel0(), ((17) * this.breite)+(this.breite/2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
+
+        if (Lebensdauer.isRunning()) {
+            switch (animationsbild) {
+                case 0:
+                    g.drawImage(grafik.getFackel1(), ((17) * this.breite) + (this.breite / 2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
+                    break;
+                case 1:
+                    g.drawImage(grafik.getFackel2(), ((17) * this.breite) + (this.breite / 2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
+                    break;
+                case 2:
+                    g.drawImage(grafik.getFackel3(), ((17) * this.breite) + (this.breite / 2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
+                    break;
+                case 3:
+                    g.drawImage(grafik.getFackel4(), ((17) * this.breite) + (this.breite / 2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
+                    break;
+
+            }
+        } else {
+            g.drawImage(grafik.getFackel0(), ((17) * this.breite) + (this.breite / 2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
+        }
+    }
+
+    @Override
+    public void nutzen() {
+        Lebensdauer.start();
+    }
+
+    @Override
+    public void inaktiv() {
+        Lebensdauer.stop();
     }
 
 }

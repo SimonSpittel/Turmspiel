@@ -44,10 +44,16 @@ public class Grafiken {
     //------------Schlüssel------
     private Image key;
 
+    //------------Laterne----------
+    private Image Laterne;
+
+    //---------Inventar----
+    private Image cursor;
+    private Image Inventarhintergrund;
+
     //------------Fallen------------
     private Image Netzfalle;
     private Image Speerfalle;
-    private Image Auslößer;
 
     public Grafiken() {
         loadMauer1();
@@ -70,8 +76,10 @@ public class Grafiken {
         loadKey();
         loadNetzfalle();
         loadSpeerfalle();
-        loadAuslößer();
+        loadCursor();
+        loadInventarhintergrund();
         loadWand();
+        loadLaterne();
     }
 //----------------------------Figuren-------------------
 
@@ -261,6 +269,17 @@ public class Grafiken {
 
     }
 
+    //---------------Laterne----------
+    private void loadLaterne() {
+
+        try {
+            Laterne = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Laterne" + File.separator + "misc_lamp_new.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     //---------------FALLEN------------
     private void loadNetzfalle() {
 
@@ -282,10 +301,21 @@ public class Grafiken {
 
     }
 
-    private void loadAuslößer() {
+    //---------------Inventar-------------
+    private void loadCursor() {
 
         try {
-            Auslößer = ImageIO.read(new File("Texturen" + File.separator + "Fallen" + File.separator + "pressure_plate.png"));
+            cursor = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Inventar" + File.separator + "cursor.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private void loadInventarhintergrund() {
+
+        try {
+            Inventarhintergrund = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Inventar" + File.separator + "mirrored_wall_new.png"));
         } catch (IOException ex) {
             Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -434,17 +464,31 @@ public class Grafiken {
     }
 
     /**
-     * @return the Auslößer
-     */
-    public Image getAuslößer() {
-        return Auslößer;
-    }
-
-    /**
      * @return the Wand
      */
     public Image getWand() {
         return Wand;
+    }
+
+    /**
+     * @return the cursor
+     */
+    public Image getCursor() {
+        return cursor;
+    }
+
+    /**
+     * @return the Inventarhintergrund
+     */
+    public Image getInventarhintergrund() {
+        return Inventarhintergrund;
+    }
+
+    /**
+     * @return the Laterne
+     */
+    public Image getLaterne() {
+        return Laterne;
     }
 
 }

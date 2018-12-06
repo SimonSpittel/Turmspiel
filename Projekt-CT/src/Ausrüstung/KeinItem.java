@@ -24,13 +24,22 @@ public class KeinItem extends Item {
 
     }
 
-
     @Override
     public void zeichneInventarIcon(Graphics g, int hoehe, int breite, int Inventarstelle) {
         this.breite = breite / 19;
         this.hoehe = hoehe / 32;
-        
-        g.drawImage(grafik.getOpenChest(), ((17) * this.breite)+(this.breite/2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
+
+        g.drawImage(grafik.getOpenChest(), ((17) * this.breite) + (this.breite / 2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
+    }
+
+    @Override
+    public void nutzen() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void inaktiv() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

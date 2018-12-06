@@ -95,18 +95,21 @@ public class Oberflaeche extends javax.swing.JPanel {
                 break;
             case KeyEvent.VK_5:
                 s.verarbeiteInventarTaste(5);
-                break;    
+                break;
             case KeyEvent.VK_6:
                 s.verarbeiteInventarTaste(6);
                 break;
             case KeyEvent.VK_7:
                 s.verarbeiteInventarTaste(7);
-                break;    
+                break;
             case KeyEvent.VK_8:
                 s.verarbeiteInventarTaste(8);
                 break;
             case KeyEvent.VK_9:
                 s.verarbeiteInventarTaste(9);
+                break;
+            case KeyEvent.VK_0:
+                s.verarbeiteInventarTaste(10);
                 break;
         }
 

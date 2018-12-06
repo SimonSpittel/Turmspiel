@@ -155,61 +155,66 @@ public class Steuerung {
             AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].aktion();
             o.repaint();
         }
-        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "S") {
-            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
-            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
-        }
+//        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "S") {
+//            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+//            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
+//        }
+//        
+//        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "T") {
+//            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].setFigurID(figur.getIDs());
+//            if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem() != null) {
+//                figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+//            }
+//        }
 
-        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "T") {
-            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].setFigurID(figur.getIDs());
-            if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem() != null) {
-                figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
-            }
-        }
-
-        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "F") {
-            figur.pruefeAufFackel();
-            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
-            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
-
-        }
-
-        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "L") {
-            figur.pruefeAufLaterne();
-            figur.pruefeAufFackel();
-            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
-            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
-        }
+//        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "F") {
+//            figur.pruefeAufFackel();
+//            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+//            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
+//            
+//        }
+//        
+//        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "L") {
+//            figur.pruefeAufLaterne();
+//            figur.pruefeAufFackel();
+//            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+//            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
+//        }
         figur.AktualisiereAttribute();
 
-//        switch(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt()){
-//            case "S":
-//                        figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
-//                        ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
-//                        break;
-//            case "L":
-//                        figur.pruefeAufLaterne();
-//                        figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
-//                        ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
-//                        break;
-//            case "T":
-//                        figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
-//                        break;
-//            case "F":
-//                        figur.pruefeAufFackel();
-//                        figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
-//                        ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
-//                        break;
-//            default:    
-//                        break;
-//                
-//        }
+        switch (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt()) {
+            case "S":
+                figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+                ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
+                break;
+            case "F":
+                figur.pruefeAufFackel();
+                figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+                ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
+                break;
+            case "T":
+                ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].setFigurID(figur.getIDs());
+                if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem() != null) {
+                    figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+                    figur.deleteItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getID());
+                }
+                break;
+            case "L":
+                figur.pruefeAufLaterne();
+                figur.pruefeAufFackel();
+                figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
+                ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
+                break;
+            default:
+                break;
+
+        }
     }
 
-    public void verarbeiteInventarTaste(int platz){
+    public void verarbeiteInventarTaste(int platz) {
         figur.setAktiverInventarplatz(platz);
     }
-    
+
     public void setAktiveTurmseite(int aktiveTurmseite) {
         this.aktiveTurmseite = aktiveTurmseite;
     }

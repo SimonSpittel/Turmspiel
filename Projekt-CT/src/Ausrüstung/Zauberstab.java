@@ -12,18 +12,18 @@ import java.util.Random;
  *
  * @author Simon Spittel
  */
-public class Zauberstab extends Item{
-    
+public class Zauberstab extends Item {
+
     private int Schaden;
     private int Haltbarkeit;
     private Random wuerfel = new Random();
-    
-    public Zauberstab(int x, int y){
+
+    public Zauberstab(int x, int y) {
         xPos = x;
         yPos = y;
         Art = "Z";
-        Schaden = wuerfel.nextInt(10)+1;
-        Haltbarkeit = wuerfel.nextInt(20)+1;
+        Schaden = wuerfel.nextInt(10) + 1;
+        Haltbarkeit = wuerfel.nextInt(20) + 1;
     }
 
     @Override
@@ -35,8 +35,18 @@ public class Zauberstab extends Item{
     public void zeichneInventarIcon(Graphics g, int hoehe, int breite, int Inventarstelle) {
         this.breite = breite / 19;
         this.hoehe = hoehe / 32;
-        
-        g.drawImage(grafik.getOpenChest(), ((17) * this.breite)+(this.breite/2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
+
+        g.drawImage(grafik.getOpenChest(), ((17) * this.breite) + (this.breite / 2), (Inventarstelle + 2) * this.hoehe, this.breite, this.hoehe, null);
     }
-    
+
+    @Override
+    public void nutzen() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void inaktiv() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
