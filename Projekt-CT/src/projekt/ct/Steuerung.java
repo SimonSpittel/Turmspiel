@@ -6,6 +6,7 @@
 package projekt.ct;
 
 import java.awt.Graphics;
+import java.awt.Point;
 
 /**
  *
@@ -41,7 +42,7 @@ public class Steuerung {
         AktionsEbene = loadLevel.getAktionsEbenen();
         SpielelementeEbene = loadLevel.getSpielEbenen();
         ItemEbene = loadLevel.getItemEbene();
-        figur = new SpielFigur.Spielfigur(ItemEbene);
+        figur = new SpielFigur.Spielfigur(ItemEbene,aktiveTurmseite );
 
         for (int i = 0; AktionsEbene.length > i; i++) {
             for (int v = 0; AktionsEbene[i].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
@@ -98,10 +99,13 @@ public class Steuerung {
 
     //--------------------reagiert auf tastendruck zum Bewegen---------------------
     public void verarbeiteTastendruck(java.awt.event.KeyEvent evt) {
-        if (!(figur.pruefeBegehbarkeit(evt).x < 0 || figur.pruefeBegehbarkeit(evt).x > 14)) {
-            if (figur.pruefeBegehbarkeit(evt).x < 15 && figur.pruefeBegehbarkeit(evt).y < 30 && figur.pruefeBegehbarkeit(evt).x >= 0 && figur.pruefeBegehbarkeit(evt).y >= 0) {   //<--- prüft ob Figur die Außenmase des Turms verlassen würde                                            // <--- prüft ob er die Turmmaße verlässt )
-                if (SpielelementeEbene[aktiveTurmseite][figur.pruefeBegehbarkeit(evt).y][figur.pruefeBegehbarkeit(evt).x].isBegehbarkeit()) {   //<---- prüft ob nächstes Feld begehbar ist oder nicht
-                    figur.bewege(evt);
+        
+                Point p = figur.pruefeBegehbarkeit(evt,aktiveTurmseite);
+                int akT = figur.getAktiveTurmseite();
+                
+                if (SpielelementeEbene[akT][p.y][p.x].isBegehbarkeit()) {   //<---- prüft ob nächstes Feld begehbar ist oder nicht
+                    aktiveTurmseite = figur.bewege(evt, aktiveTurmseite);
+                    
                     //----------------------Falls falle vorhanden wird sie ausgelöst-----------------
                     if (figur.getxPos() != 0 && figur.getxPos() != 14 && figur.getyPos() != 0 && figur.getyPos() != 29) {
                         if (AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() + 1].isFalle()) {
@@ -118,29 +122,7 @@ public class Steuerung {
                         }
                     }
                     //----------------------------------------------------------------------------
-
                 }
-            }
-
-        } else {
-            figur.bewege(evt);
-            if (figur.getxPos() == -1) {
-                figur.setxPos(14);
-                if (aktiveTurmseite == 0) {
-                    setAktiveTurmseite(3);
-                } else {
-                    aktiveTurmseite--;
-                }
-            } else if (figur.getxPos() == 15) {
-                figur.setxPos(0);
-                if (aktiveTurmseite == 3) {
-                    setAktiveTurmseite(0);
-                } else {
-                    aktiveTurmseite++;
-                }
-            }
-
-        }
         o.repaint();
     }
 
@@ -155,33 +137,10 @@ public class Steuerung {
     public void verarbeiteAktionstaste() {
         if (pruefeAufAktion(figur.getxPos(), figur.getyPos())) {
             AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].aktion();
+            figur.setAktiveTurmseite(aktiveTurmseite);
             o.repaint();
         }
-//        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "S") {
-//            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
-//            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
-//        }
-//        
-//        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "T") {
-//            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].setFigurID(figur.getIDs());
-//            if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem() != null) {
-//                figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
-//            }
-//        }
 
-//        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "F") {
-//            figur.pruefeAufFackel();
-//            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
-//            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
-//            
-//        }
-//        
-//        if (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt() == "L") {
-//            figur.pruefeAufLaterne();
-//            figur.pruefeAufFackel();
-//            figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
-//            ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
-//        }
         figur.AktualisiereAttribute();
 
         switch (ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getArt()) {

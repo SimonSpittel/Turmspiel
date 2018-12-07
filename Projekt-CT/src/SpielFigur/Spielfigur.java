@@ -22,16 +22,25 @@ import javax.swing.Timer;
  */
 public class Spielfigur extends Spielelement {
 
+    public void setAktiveTurmseite(int aktiveTurmseite) {
+        this.aktiveTurmseite = aktiveTurmseite;
+    }
+
+    public int getAktiveTurmseite() {
+        return aktiveTurmseite;
+    }
+
     private Ausrüstung.Item[][][] ItemEbene = new Ausrüstung.Item[4][30][15];
     private ArrayList<Ausrüstung.Item> Items = new ArrayList<Ausrüstung.Item>();
     private int Sichtweite = 1;
     private Timer refresh;
     private boolean leuchtmittel = false;
     private int aktiverInventarplatz = 1;
+    private int aktiveTurmseite;
 
     private int Lebenspunkte = 100;
 
-    public Spielfigur(Ausrüstung.Item[][][] ItemEbene) {
+    public Spielfigur(Ausrüstung.Item[][][] ItemEbene, int Turmseite) {
         this.ItemEbene = ItemEbene;
         refresh = new Timer(1, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -39,10 +48,11 @@ public class Spielfigur extends Spielelement {
             }
         });
         refresh.start();
+        aktiveTurmseite = Turmseite;
 
     }
 
-    public void bewege(java.awt.event.KeyEvent evt) {
+    public int bewege(java.awt.event.KeyEvent evt, int aktiveTurmseite) {
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_UP:
                 yPos--;
@@ -60,13 +70,32 @@ public class Spielfigur extends Spielelement {
                 break;
 
         }
+        if (getxPos() > 14) {
+            setxPos(0);
+            if (aktiveTurmseite == 3) {
+                return 0;
+            } else {
+                return(aktiveTurmseite + 1);
+            }
+        } else if (getxPos() < 0) {
+            setxPos(14);
+            if (aktiveTurmseite == 0) {
+                return 3;
+            } else {
+                return(aktiveTurmseite - 1);
+            }
+        }else{
+            return aktiveTurmseite;
+        }
+        
 //        System.out.println("x:" + xPos);
 //        System.out.println("y:" + yPos);
     }
 
-    public Point pruefeBegehbarkeit(java.awt.event.KeyEvent evt) {
+    public Point pruefeBegehbarkeit(java.awt.event.KeyEvent evt, int aktiveTurmseite) {
         int tempX = xPos;
         int tempY = yPos;
+        this.setAktiveTurmseite(aktiveTurmseite);
         Point p = new Point();
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_UP:
@@ -84,6 +113,23 @@ public class Spielfigur extends Spielelement {
             default:
                 break;
         }
+        if(tempX < 0){
+            tempX= 14;
+            if (this.aktiveTurmseite == 0) {
+                this.setAktiveTurmseite(3);
+            } else {
+                this.setAktiveTurmseite(this.aktiveTurmseite - 1);
+            }
+        }
+        if(tempX > 14){
+            tempX = 0;
+            if (this.aktiveTurmseite == 3) {
+                this.setAktiveTurmseite(0);
+            } else {
+                this.setAktiveTurmseite(this.aktiveTurmseite + 1);
+            }
+        }
+        
         p.x = tempX;
         p.y = tempY;
 
