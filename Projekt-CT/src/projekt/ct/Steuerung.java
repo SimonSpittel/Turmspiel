@@ -24,7 +24,7 @@ public class Steuerung {
 
     //--------------------------------------------SpielelementeEbene-------------------------------- 
     private Spielelement.Spielelement[][][] SpielelementeEbene; // <--- muss später aus Klasse Level geladen werden somit Array [][][][] erstes gibt die turmseite an um so auch wechseln zu können
-    private Spielelement.Spielfigur figur;                                  // <-- nur zum test
+    private SpielFigur.Spielfigur figur;                                  // <-- nur zum test
 
     //------------------------------------ItemEbene----------------------------
     private Ausrüstung.Item[][][] ItemEbene;
@@ -41,7 +41,7 @@ public class Steuerung {
         AktionsEbene = loadLevel.getAktionsEbenen();
         SpielelementeEbene = loadLevel.getSpielEbenen();
         ItemEbene = loadLevel.getItemEbene();
-        figur = new Spielelement.Spielfigur(ItemEbene);
+        figur = new SpielFigur.Spielfigur(ItemEbene);
 
         for (int i = 0; AktionsEbene.length > i; i++) {
             for (int v = 0; AktionsEbene[i].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe

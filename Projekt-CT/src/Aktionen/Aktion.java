@@ -5,7 +5,7 @@
  */
 package Aktionen;
 
-import Spielelement.Spielfigur;
+import SpielFigur.Spielfigur;
 import java.awt.Graphics;
 import projekt.ct.Steuerung;
 
