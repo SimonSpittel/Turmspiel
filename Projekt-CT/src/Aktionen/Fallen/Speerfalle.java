@@ -56,7 +56,7 @@ public class Speerfalle extends Falle {
         public void actionPerformed(ActionEvent evt) {
 
             animationsbild++;
-            if (animationsbild == 4) {
+            if (animationsbild == 5) {
                 animationsbild = 0;
             }
         }

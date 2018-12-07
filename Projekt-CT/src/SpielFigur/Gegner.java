@@ -27,15 +27,14 @@ public abstract class Gegner {
     protected Gegner[] gegner;
     protected SpielFigur.Spielfigur figur;
     protected int aktiveTurmseite;
-    protected int animationsbild = 0;
+    protected int animationsbild = 8;
     protected Random wuerfel = new Random();
-    protected int Richtung = wuerfel.nextInt(4) + 1;
-    protected Timer AttackeAnimation= new Timer(33, new ActionListener() {
+    protected int Richtung = 1;
+    protected Timer AttackeAnimation = new Timer(99, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
-            
-            if(animationsbild < 9 ){
-                animationsbild++;
-            }else{
+
+            animationsbild++;
+            if (animationsbild == 9) {
                 animationsbild = 0;
             }
         }
@@ -43,20 +42,28 @@ public abstract class Gegner {
     protected Timer Bewege = new Timer(1000, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
             bewege();
-            if(pruefeAufFeind()){
+            if (pruefeAufFeind()) {
                 Attackiere.start();
+                Bewege.stop();
             }
-            Attackiere.stop(); 
-            AttackeAnimation.stop();
-            
+
         }
     });
     protected Timer Attackiere = new Timer(1000, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
-            AttackeAnimation.start();
-            
+            if (pruefeAufFeind()) {
+                if (!Attackiere.isRunning()) {
+                    AttackeAnimation.start();
+                }
+                figur.fügeSchadenZu(schaden);
+            } else {
+                AttackeAnimation.stop();
+                Bewege.start();
+                Attackiere.stop();
+            }
         }
     });
+    protected Grafiken.Grafiken grafik = new Grafiken.Grafiken();
 
     public void bewege() {
         berechneRichtung();
@@ -91,12 +98,13 @@ public abstract class Gegner {
                 setAktiveTurmseite(getAktiveTurmseite() - 1);
             }
         }
+        
 
     }
 
     public void berechneRichtung() {
         while (!pruefeNaechstenSchritt()) {
-            switch(wuerfel.nextInt(2)){
+            switch (wuerfel.nextInt(2)) {
                 case 0:
                     Richtung = 1;
                     break;
@@ -161,14 +169,12 @@ public abstract class Gegner {
 
     public boolean pruefeAufFeind() {
         if ((getxPos() + 1 == figur.getxPos() && getyPos() == figur.getyPos()) || (getxPos() - 1 == figur.getyPos() && getyPos() == figur.getyPos()) || (getyPos() + 1 == figur.getyPos() && getxPos() == figur.getxPos()) || (getyPos() - 1 == figur.getyPos() && getxPos() == figur.getxPos())) {
-            Bewege.stop();
+            
             return true;
-        }else{
+        } else {
             return false;
         }
-       
-            
- 
+
     }
 
     public void BewegeStart() {

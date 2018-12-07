@@ -48,7 +48,7 @@ public class Steuerung {
 //            Minotaurus[i] = new Minotaurus(derPacMan);    
 //        }
         Gegner[0] = new SpielFigur.Minotaurus(2, 28, aktiveTurmseite);
-        Gegner[1] = new SpielFigur.Minotaurus(2, 27, aktiveTurmseite);
+        Gegner[1] = new SpielFigur.Minotaurus(2, 26, aktiveTurmseite);
 
         SpielFigur.Gegner[] m = new SpielFigur.Minotaurus[1];
         int k = 0;

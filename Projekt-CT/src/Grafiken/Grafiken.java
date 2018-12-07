@@ -54,6 +54,9 @@ public class Grafiken {
     //------------Fallen------------
     private static Image Netzfalle;
     private static Image Speerfalle;
+    
+    //-----------Gegner--------
+    private static Image Minotaur;
 
     static {
         loadGrafik("Mauer");
@@ -70,8 +73,11 @@ public class Grafiken {
         loadGrafik("Laterne");
         loadGrafik("Cursor");
         loadGrafik("Inventarhintergrund");
+        loadGrafik("Minotaur");
 
     }
+
+
 
     public Grafiken() {
 
@@ -145,6 +151,9 @@ public class Grafiken {
 
                 case "Figur":
                     Figur = ImageIO.read(new File("Texturen" + File.separator + "Adventurer" + File.separator + "AdventurerSpriteMove.png"));
+                    break;
+                case "Minotaur":
+                    Minotaur = ImageIO.read(new File("Texturen" + File.separator + "Minotaur" + File.separator + "Minotaur.png"));
                     break;
 
             }
@@ -321,6 +330,13 @@ public class Grafiken {
      */
     public Image getLaterne() {
         return Laterne;
+    }
+    
+        /**
+     * @return the Minotaur
+     */
+    public Image getMinotaur() {
+        return Minotaur;
     }
 
 }

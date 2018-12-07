@@ -26,8 +26,17 @@ public class Minotaurus extends Gegner {
     public void zeichne(Graphics g, int hoehe, int breite) {
         this.breite = breite / 19;
         this.hoehe = hoehe / 32;
-        g.setColor(Color.red);
-        g.fillRect((2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe);
+          
+        if((getxPos() + 1 == figur.getxPos() && getyPos() == figur.getyPos()) && Attackiere.isRunning()){
+            g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (890/9) * animationsbild,(1920/20)*3 , (890/9) * (animationsbild + 1), (1920/20)*4, null);
+        }else if((getxPos() - 1 == figur.getyPos() && getyPos() == figur.getyPos()) && Attackiere.isRunning()){
+            g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (890/9) * animationsbild,(1920/20)*13 , (890/9) * (animationsbild + 1), (1920/20)*14, null);
+        }else{
+            g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, 0,0 , (890/9) , (1920/20), null);
+        }
+        
+        
+        
 
     }
 
