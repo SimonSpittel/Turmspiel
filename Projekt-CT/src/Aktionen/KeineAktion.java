@@ -17,6 +17,7 @@ public class KeineAktion extends Aktion {
     public KeineAktion(int x, int y) {
         xPos = x;
         yPos = y;
+
         aktionVerfügbar = false;
     }
 

@@ -14,7 +14,7 @@ import java.awt.Graphics;
 public abstract class Item implements Comparable<Item> {
 
     protected int ID; //---------------Spezifiziert nummer des Items
-    protected String Art;  //-----------gibt an um welche art von Item es sich handelt
+    protected String Art = "K";  //-----------gibt an um welche art von Item es sich handelt
     protected Grafiken.Grafiken grafik = new Grafiken.Grafiken();
     protected boolean brennt = false;
     protected int breite;

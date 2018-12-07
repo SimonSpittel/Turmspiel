@@ -74,7 +74,7 @@ public class Steuerung {
                 }
             }
         }
-                //------------------------------------------------Darstellen der Items an der Wand----------------------------------------------
+        //------------------------------------------------Darstellen der Items an der Wand----------------------------------------------
 //        for (int v = 0; ItemEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
 //            for (int h = 0; ItemEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
 //                ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
@@ -204,6 +204,8 @@ public class Steuerung {
                 figur.pruefeAufFackel();
                 figur.addItem(ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()].getItem());
                 ItemEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos()] = new Ausrüstung.KeinItem(figur.getxPos(), figur.getyPos());
+                break;
+            case "K":
                 break;
             default:
                 break;
