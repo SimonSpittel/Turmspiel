@@ -6,6 +6,8 @@
 package SpielFigur;
 
 import java.awt.Graphics;
+import java.util.Random;
+import javax.swing.Timer;
 
 /**
  *
@@ -14,14 +16,16 @@ import java.awt.Graphics;
 public abstract class Gegner {
 
 
-    private int xPos;
-    private int yPos;
+    protected int xPos;
+    protected int yPos;
     protected int Richtung;
     protected int schaden;
-    private Spielelement.Spielelement[][][] SpielelementeEbene;
-    private Gegner[] gegner;
-    private SpielFigur.Spielfigur figur;
-    private int aktiveTurmseite;
+    protected Spielelement.Spielelement[][][] SpielelementeEbene;
+    protected Gegner[] gegner;
+    protected SpielFigur.Spielfigur figur;
+    protected int aktiveTurmseite;
+    protected Random wuerfel = new Random();
+    protected Timer AttackeAnimation;
 
     public void bewege() {
 
@@ -116,9 +120,11 @@ public abstract class Gegner {
 
     }
 
-    public void pruefeAufFeind() {
+    public boolean pruefeAufFeind() {
         if ((getxPos() + 1 == figur.getxPos() && getyPos() == figur.getyPos()) || (getxPos() - 1 == figur.getyPos() && getyPos() == figur.getyPos()) || (getyPos() + 1 == figur.getyPos() && getxPos() == figur.getxPos()) || (getyPos() - 1 == figur.getyPos() && getxPos() == figur.getxPos())) {
-            figur.fügeSchadenZu(schaden);
+            return true;
+        }else{
+            return false;
         }
     }
 
