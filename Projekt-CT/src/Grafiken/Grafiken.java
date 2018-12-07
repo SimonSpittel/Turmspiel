@@ -18,45 +18,45 @@ import javax.imageio.ImageIO;
  */
 public class Grafiken {
 
-    private Image Mauer1;
-    private Image Mauer2;
-    private Image Mauer3;
-    private Image Mauer4;
-    private Image Mauer5;
-    private Image Gang;
-    private Image Leiter;
-    private Image Tür;
-    private Image Wand;
-    private Image Figur;
-    private Image Unseen;
+    private static Image Mauer1;
+    private static  Image Mauer2;
+    private  static Image Mauer3;
+    private  static Image Mauer4;
+    private  static Image Mauer5;
+    private static  Image Gang;
+    private static  Image Leiter;
+    private  static Image Tür;
+    private static  Image Wand;
+    private static  Image Figur;
+    private static  Image Unseen;
 
     //-----------------------------FACKEL----------------------
-    private Image Fackel1;
-    private Image Fackel2;
-    private Image Fackel3;
-    private Image Fackel4;
-    private Image Fackel0;
+    private  static Image Fackel1;
+    private static  Image Fackel2;
+    private static  Image Fackel3;
+    private  static Image Fackel4;
+    private static  Image Fackel0;
 
     //-----------------truhen----------
-    private Image openChest;
-    private Image closedChest;
+    private  static Image openChest;
+    private  static Image closedChest;
 
     //------------Schlüssel------
-    private Image key;
+    private  static Image key;
 
     //------------Laterne----------
-    private Image Laterne;
+    private static  Image Laterne;
 
     //---------Inventar----
-    private Image cursor;
-    private Image Inventarhintergrund;
+    private  static Image cursor;
+    private  static Image Inventarhintergrund;
 
     //------------Fallen------------
-    private Image Netzfalle;
-    private Image Speerfalle;
+    private  static Image Netzfalle;
+    private  static Image Speerfalle;
 
-    public Grafiken() {
-        loadMauer1();
+    static{
+         loadMauer1();
         loadMauer2();
         loadMauer3();
         loadMauer4();
@@ -81,9 +81,35 @@ public class Grafiken {
         loadWand();
         loadLaterne();
     }
+    public Grafiken() {
+//        loadMauer1();
+//        loadMauer2();
+//        loadMauer3();
+//        loadMauer4();
+//        loadMauer5();
+//        loadGang();
+//        loadLeiter();
+//        loadTür();
+//        loadFigur();
+//        loadUnseen();
+//        loadFackel0();
+//        loadFackel1();
+//        loadFackel2();
+//        loadFackel3();
+//        loadFackel4();
+//        loadOpenChest();
+//        loadClosedChest();
+//        loadKey();
+//        loadNetzfalle();
+//        loadSpeerfalle();
+//        loadCursor();
+//        loadInventarhintergrund();
+//        loadWand();
+//        loadLaterne();
+    }
 //----------------------------Figuren-------------------
 
-    private void loadFigur() {
+    private static  void loadFigur() {
 
         try {
             Figur = ImageIO.read(new File("Texturen" + File.separator + "Adventurer" + File.separator + "AdventurerSpriteMove.png"));
@@ -94,7 +120,7 @@ public class Grafiken {
     }
 //----------------------Laden der Grafiken aus dem Ordner Pictures-------------   
 
-    private void loadMauer1() {
+    private  static void loadMauer1() {
 
         try {
             Mauer1 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer1.png"));
@@ -104,7 +130,7 @@ public class Grafiken {
 
     }
 
-    private void loadMauer2() {
+    private  static void loadMauer2() {
         try {
             Mauer2 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer2.png"));
         } catch (IOException ex) {
@@ -112,7 +138,7 @@ public class Grafiken {
         }
     }
 
-    private void loadMauer3() {
+    private static  void loadMauer3() {
         try {
             Mauer3 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer3.png"));
         } catch (IOException ex) {
@@ -120,7 +146,7 @@ public class Grafiken {
         }
     }
 
-    private void loadMauer4() {
+    private static  void loadMauer4() {
         try {
             Mauer4 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer4.png"));
         } catch (IOException ex) {
@@ -128,7 +154,7 @@ public class Grafiken {
         }
     }
 
-    private void loadMauer5() {
+    private static  void loadMauer5() {
         try {
             Mauer5 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer5.png"));
         } catch (IOException ex) {
@@ -136,7 +162,7 @@ public class Grafiken {
         }
     }
 
-    private void loadGang() {
+    private  static void loadGang() {
 
         try {
             Gang = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Gang.png"));
@@ -146,7 +172,7 @@ public class Grafiken {
 
     }
 
-    private void loadLeiter() {
+    private  static void loadLeiter() {
 
         try {
             Leiter = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "ladder.png"));
@@ -156,7 +182,7 @@ public class Grafiken {
 
     }
 
-    private void loadTür() {
+    private static  void loadTür() {
 
         try {
             Tür = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Tür.png"));
@@ -166,7 +192,7 @@ public class Grafiken {
 
     }
 
-    private void loadWand() {
+    private static  void loadWand() {
 
         try {
             Wand = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "stone_brick_2.png"));
@@ -176,7 +202,7 @@ public class Grafiken {
 
     }
 
-    private void loadUnseen() {
+    private static  void loadUnseen() {
 
         try {
             Unseen = ImageIO.read(new File("Texturen" + File.separator + "Schatten" + File.separator + "unseen.png"));
@@ -187,7 +213,7 @@ public class Grafiken {
     }
 
 //--------------------------FACKELN-------------------------
-    private void loadFackel0() {
+    private  static void loadFackel0() {
 
         try {
             Fackel0 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_0.png"));
@@ -197,7 +223,7 @@ public class Grafiken {
 
     }
 
-    private void loadFackel1() {
+    private static  void loadFackel1() {
 
         try {
             Fackel1 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_1.png"));
@@ -207,7 +233,7 @@ public class Grafiken {
 
     }
 
-    private void loadFackel2() {
+    private  static void loadFackel2() {
 
         try {
             Fackel2 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_2.png"));
@@ -217,7 +243,7 @@ public class Grafiken {
 
     }
 
-    private void loadFackel3() {
+    private  static void loadFackel3() {
 
         try {
             Fackel3 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_3.png"));
@@ -227,7 +253,7 @@ public class Grafiken {
 
     }
 
-    private void loadFackel4() {
+    private  static void loadFackel4() {
 
         try {
             Fackel4 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_4.png"));
@@ -238,7 +264,7 @@ public class Grafiken {
     }
 
     //-------------TRUHEN-----------
-    private void loadOpenChest() {
+    private  static void loadOpenChest() {
 
         try {
             openChest = ImageIO.read(new File("Texturen" + File.separator + "Kiste" + File.separator + "chest_2_open.png"));
@@ -248,7 +274,7 @@ public class Grafiken {
 
     }
 
-    private void loadClosedChest() {
+    private  static void loadClosedChest() {
 
         try {
             closedChest = ImageIO.read(new File("Texturen" + File.separator + "Kiste" + File.separator + "chest_2_closed.png"));
@@ -259,7 +285,7 @@ public class Grafiken {
     }
 
     //------------Schlüssel------
-    private void loadKey() {
+    private static  void loadKey() {
 
         try {
             key = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "key.png"));
@@ -270,7 +296,7 @@ public class Grafiken {
     }
 
     //---------------Laterne----------
-    private void loadLaterne() {
+    private  static void loadLaterne() {
 
         try {
             Laterne = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Laterne" + File.separator + "misc_lamp_new.png"));
@@ -281,7 +307,7 @@ public class Grafiken {
     }
 
     //---------------FALLEN------------
-    private void loadNetzfalle() {
+    private  static void loadNetzfalle() {
 
         try {
             Netzfalle = ImageIO.read(new File("Texturen" + File.separator + "Fallen" + File.separator + "trap_net.png"));
@@ -291,7 +317,7 @@ public class Grafiken {
 
     }
 
-    private void loadSpeerfalle() {
+    private  static void loadSpeerfalle() {
 
         try {
             Speerfalle = ImageIO.read(new File("Texturen" + File.separator + "Fallen" + File.separator + "spike-animation.png"));
@@ -302,7 +328,7 @@ public class Grafiken {
     }
 
     //---------------Inventar-------------
-    private void loadCursor() {
+    private static  void loadCursor() {
 
         try {
             cursor = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Inventar" + File.separator + "cursor.png"));
@@ -312,7 +338,7 @@ public class Grafiken {
 
     }
 
-    private void loadInventarhintergrund() {
+    private  static void loadInventarhintergrund() {
 
         try {
             Inventarhintergrund = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Inventar" + File.separator + "mirrored_wall_new.png"));
