@@ -24,7 +24,7 @@ public class wechsleTurmseite extends Aktion {
 
     public void aktion() {
         s.setAktiveTurmseite(neueTurmseite);
-        
+
     }
 
     @Override

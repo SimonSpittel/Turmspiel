@@ -5,22 +5,30 @@
  */
 package SpielFigur;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 /**
  *
  * @author Simon.Spittel
  */
-public class Minotaurus extends Gegner{
-    
-    public Minotaurus(int x, int y){
+public class Minotaurus extends Gegner {
+
+    public Minotaurus(int x, int y, int Turmseite) {
         xPos = x;
         yPos = y;
-        schaden = wuerfel.nextInt(16)+5;
+        schaden = wuerfel.nextInt(16) + 5;
+        aktiveTurmseite = Turmseite;
+
     }
+
     @Override
     public void zeichne(Graphics g, int hoehe, int breite) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.breite = breite / 19;
+        this.hoehe = hoehe / 32;
+        g.setColor(Color.red);
+        g.fillRect((2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe);
+
     }
-    
+
 }

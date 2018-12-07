@@ -81,7 +81,7 @@ public class Grafiken {
     public static void loadGrafik(String name) {
         try {
             switch (name) {
-    
+
                 case "Mauer":
                     Mauer1 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer1.png"));
                     Mauer2 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer2.png"));
@@ -89,23 +89,23 @@ public class Grafiken {
                     Mauer4 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer4.png"));
                     Mauer5 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer5.png"));
                     break;
-                    
+
                 case "Gang":
                     Gang = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Gang.png"));
                     break;
-                    
+
                 case "Leiter":
                     Leiter = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Leiter.png"));
                     Wand = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "stone_brick_2.png"));
                     break;
-                    
+
                 case "Tür":
                     Tür = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Tür.png"));
                     break;
                 case "Unseen":
                     Unseen = ImageIO.read(new File("Texturen" + File.separator + "Schatten" + File.separator + "unseen.png"));
                     break;
-                    
+
                 case "Fackel":
                     Fackel0 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_0.png"));
                     Fackel1 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_1.png"));
@@ -113,47 +113,46 @@ public class Grafiken {
                     Fackel3 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_3.png"));
                     Fackel4 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_4.png"));
                     break;
-                    
+
                 case "Chest":
                     openChest = ImageIO.read(new File("Texturen" + File.separator + "Kiste" + File.separator + "chest_2_open.png"));
                     closedChest = ImageIO.read(new File("Texturen" + File.separator + "Kiste" + File.separator + "chest_2_closed.png"));
                     break;
-                    
+
                 case "Key":
                     key = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "key.png"));
                     break;
-                    
+
                 case "Laterne":
                     Laterne = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Laterne" + File.separator + "misc_lamp_new.png"));
                     break;
-                    
+
                 case "Netzfalle":
                     Netzfalle = ImageIO.read(new File("Texturen" + File.separator + "Fallen" + File.separator + "trap_net.png"));
                     break;
-                    
+
                 case "Speerfalle":
                     Speerfalle = ImageIO.read(new File("Texturen" + File.separator + "Fallen" + File.separator + "spike-animation.png"));
                     break;
-                    
+
                 case "Cursor":
                     cursor = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Inventar" + File.separator + "cursor.png"));
                     break;
-                    
+
                 case "Inventarhintergrund":
                     Inventarhintergrund = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Inventar" + File.separator + "mirrored_wall_new.png"));
                     break;
-                    
+
                 case "Figur":
                     Figur = ImageIO.read(new File("Texturen" + File.separator + "Adventurer" + File.separator + "AdventurerSpriteMove.png"));
                     break;
-                    
+
             }
         } catch (IOException ex) {
             Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-
 
 //-----------------------Methoden um an Bilder zu kommen--------------    
     /**

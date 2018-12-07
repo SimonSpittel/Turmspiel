@@ -26,7 +26,7 @@ public class Steuerung {
     //--------------------------------------------SpielelementeEbene-------------------------------- 
     private Spielelement.Spielelement[][][] SpielelementeEbene; // <--- muss später aus Klasse Level geladen werden somit Array [][][][] erstes gibt die turmseite an um so auch wechseln zu können
     private SpielFigur.Spielfigur figur;                                  // <-- nur zum test
-
+    private SpielFigur.Minotaurus[] Gegner = new SpielFigur.Minotaurus[2];
     //------------------------------------ItemEbene----------------------------
     private Ausrüstung.Item[][][] ItemEbene;
 
@@ -42,7 +42,33 @@ public class Steuerung {
         AktionsEbene = loadLevel.getAktionsEbenen();
         SpielelementeEbene = loadLevel.getSpielEbenen();
         ItemEbene = loadLevel.getItemEbene();
-        figur = new SpielFigur.Spielfigur(ItemEbene,aktiveTurmseite );
+        figur = new SpielFigur.Spielfigur(ItemEbene, aktiveTurmseite);
+
+//        for (int i = 0; i < Minotaurus.length; i++) {
+//            Minotaurus[i] = new Minotaurus(derPacMan);    
+//        }
+        Gegner[0] = new SpielFigur.Minotaurus(2, 28, aktiveTurmseite);
+        Gegner[1] = new SpielFigur.Minotaurus(2, 27, aktiveTurmseite);
+
+        SpielFigur.Gegner[] m = new SpielFigur.Minotaurus[1];
+        int k = 0;
+        for (int s = 0; s < Gegner.length; s++) {
+            k = 0;
+            for (int i = 0; i < Gegner.length; i++) {
+
+                if (s == i) {
+                    i++;
+                }
+
+                if (i != Gegner.length) {
+
+                    m[k] = Gegner[i];
+                }
+                k++;
+
+            }
+            Gegner[s].setGegner(m);
+        }
 
         for (int i = 0; AktionsEbene.length > i; i++) {
             for (int v = 0; AktionsEbene[i].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
@@ -55,6 +81,12 @@ public class Steuerung {
 
         figur.setxPos(7);
         figur.setyPos(29);
+
+        for (int i = 0; Gegner.length > i; i++) {
+            Gegner[i].setSpielelementeEbene(SpielelementeEbene);
+            Gegner[i].setFigur(figur);
+            Gegner[i].BewegeStart();
+        }
 
     }
 
@@ -91,38 +123,43 @@ public class Steuerung {
             }
         }
 
-        //----------------------------------------------------
+        //-----------------Zeichne Figur----------------------
         figur.zeichne(g, breite, hoehe);
         figur.zeichneInventar(g, breite, hoehe);
+
+        //-----------Zeichne Gegner------------
+        for (int i = 0; Gegner.length > i; i++) {
+            Gegner[i].zeichne(g, breite, hoehe);
+        }
 
     }
 
     //--------------------reagiert auf tastendruck zum Bewegen---------------------
     public void verarbeiteTastendruck(java.awt.event.KeyEvent evt) {
-        
-                Point p = figur.pruefeBegehbarkeit(evt,aktiveTurmseite);
-                int akT = figur.getAktiveTurmseite();
-                
-                if (SpielelementeEbene[akT][p.y][p.x].isBegehbarkeit()) {   //<---- prüft ob nächstes Feld begehbar ist oder nicht
-                    aktiveTurmseite = figur.bewege(evt, aktiveTurmseite);
-                    
-                    //----------------------Falls falle vorhanden wird sie ausgelöst-----------------
-                    if (figur.getxPos() != 0 && figur.getxPos() != 14 && figur.getyPos() != 0 && figur.getyPos() != 29) {
-                        if (AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() + 1].isFalle()) {
-                            AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() + 1].aktion();
-                        }
-                        if (AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() - 1].isFalle()) {
-                            AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() - 1].aktion();
-                        }
-                        if (AktionsEbene[aktiveTurmseite][figur.getyPos() + 1][figur.getxPos()].isFalle()) {
-                            AktionsEbene[aktiveTurmseite][figur.getyPos() + 1][figur.getxPos()].aktion();
-                        }
-                        if (AktionsEbene[aktiveTurmseite][figur.getyPos() - 1][figur.getxPos()].isFalle()) {
-                            AktionsEbene[aktiveTurmseite][figur.getyPos() - 1][figur.getxPos()].aktion();
-                        }
-                    }
-                    //----------------------------------------------------------------------------
+
+        Point p = figur.pruefeBegehbarkeit(evt, aktiveTurmseite);
+        int akT = figur.getAktiveTurmseite();
+
+        if (SpielelementeEbene[akT][p.y][p.x].isBegehbarkeit()) {   //<---- prüft ob nächstes Feld begehbar ist oder nicht
+            aktiveTurmseite = figur.bewege(evt, aktiveTurmseite);
+
+            //----------------------Falls falle vorhanden wird sie ausgelöst-----------------
+            if (figur.getxPos() != 0 && figur.getxPos() != 14 && figur.getyPos() != 0 && figur.getyPos() != 29) {
+                if (AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() + 1].isFalle()) {
+                    AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() + 1].aktion();
                 }
+                if (AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() - 1].isFalle()) {
+                    AktionsEbene[aktiveTurmseite][figur.getyPos()][figur.getxPos() - 1].aktion();
+                }
+                if (AktionsEbene[aktiveTurmseite][figur.getyPos() + 1][figur.getxPos()].isFalle()) {
+                    AktionsEbene[aktiveTurmseite][figur.getyPos() + 1][figur.getxPos()].aktion();
+                }
+                if (AktionsEbene[aktiveTurmseite][figur.getyPos() - 1][figur.getxPos()].isFalle()) {
+                    AktionsEbene[aktiveTurmseite][figur.getyPos() - 1][figur.getxPos()].aktion();
+                }
+            }
+            //----------------------------------------------------------------------------
+        }
         o.repaint();
     }
 
