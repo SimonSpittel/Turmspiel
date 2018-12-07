@@ -19,334 +19,141 @@ import javax.imageio.ImageIO;
 public class Grafiken {
 
     private static Image Mauer1;
-    private static  Image Mauer2;
-    private  static Image Mauer3;
-    private  static Image Mauer4;
-    private  static Image Mauer5;
-    private static  Image Gang;
-    private static  Image Leiter;
-    private  static Image Tür;
-    private static  Image Wand;
-    private static  Image Figur;
-    private static  Image Unseen;
+    private static Image Mauer2;
+    private static Image Mauer3;
+    private static Image Mauer4;
+    private static Image Mauer5;
+    private static Image Gang;
+    private static Image Leiter;
+    private static Image Tür;
+    private static Image Wand;
+    private static Image Figur;
+    private static Image Unseen;
 
     //-----------------------------FACKEL----------------------
-    private  static Image Fackel1;
-    private static  Image Fackel2;
-    private static  Image Fackel3;
-    private  static Image Fackel4;
-    private static  Image Fackel0;
+    private static Image Fackel1;
+    private static Image Fackel2;
+    private static Image Fackel3;
+    private static Image Fackel4;
+    private static Image Fackel0;
 
     //-----------------truhen----------
-    private  static Image openChest;
-    private  static Image closedChest;
+    private static Image openChest;
+    private static Image closedChest;
 
     //------------Schlüssel------
-    private  static Image key;
+    private static Image key;
 
     //------------Laterne----------
-    private static  Image Laterne;
+    private static Image Laterne;
 
     //---------Inventar----
-    private  static Image cursor;
-    private  static Image Inventarhintergrund;
+    private static Image cursor;
+    private static Image Inventarhintergrund;
 
     //------------Fallen------------
-    private  static Image Netzfalle;
-    private  static Image Speerfalle;
+    private static Image Netzfalle;
+    private static Image Speerfalle;
 
-    static{
-         loadMauer1();
-        loadMauer2();
-        loadMauer3();
-        loadMauer4();
-        loadMauer5();
-        loadGang();
-        loadLeiter();
-        loadTür();
-        loadFigur();
-        loadUnseen();
-        loadFackel0();
-        loadFackel1();
-        loadFackel2();
-        loadFackel3();
-        loadFackel4();
-        loadOpenChest();
-        loadClosedChest();
-        loadKey();
-        loadNetzfalle();
-        loadSpeerfalle();
-        loadCursor();
-        loadInventarhintergrund();
-        loadWand();
-        loadLaterne();
+    static {
+        loadGrafik("Mauer");
+        loadGrafik("Gang");
+        loadGrafik("Leiter");
+        loadGrafik("Tür");
+        loadGrafik("Figur");
+        loadGrafik("Unseen");
+        loadGrafik("Fackel");
+        loadGrafik("Chest");
+        loadGrafik("Key");
+        loadGrafik("Netzfalle");
+        loadGrafik("Speerfalle");
+        loadGrafik("Laterne");
+        loadGrafik("Cursor");
+        loadGrafik("Inventarhintergrund");
+
     }
+
     public Grafiken() {
-//        loadMauer1();
-//        loadMauer2();
-//        loadMauer3();
-//        loadMauer4();
-//        loadMauer5();
-//        loadGang();
-//        loadLeiter();
-//        loadTür();
-//        loadFigur();
-//        loadUnseen();
-//        loadFackel0();
-//        loadFackel1();
-//        loadFackel2();
-//        loadFackel3();
-//        loadFackel4();
-//        loadOpenChest();
-//        loadClosedChest();
-//        loadKey();
-//        loadNetzfalle();
-//        loadSpeerfalle();
-//        loadCursor();
-//        loadInventarhintergrund();
-//        loadWand();
-//        loadLaterne();
+
     }
 //----------------------------Figuren-------------------
 
-    private static  void loadFigur() {
-
+    public static void loadGrafik(String name) {
         try {
-            Figur = ImageIO.read(new File("Texturen" + File.separator + "Adventurer" + File.separator + "AdventurerSpriteMove.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-//----------------------Laden der Grafiken aus dem Ordner Pictures-------------   
-
-    private  static void loadMauer1() {
-
-        try {
-            Mauer1 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer1.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private  static void loadMauer2() {
-        try {
-            Mauer2 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer2.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private static  void loadMauer3() {
-        try {
-            Mauer3 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer3.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private static  void loadMauer4() {
-        try {
-            Mauer4 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer4.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private static  void loadMauer5() {
-        try {
-            Mauer5 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer5.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private  static void loadGang() {
-
-        try {
-            Gang = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Gang.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private  static void loadLeiter() {
-
-        try {
-            Leiter = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "ladder.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private static  void loadTür() {
-
-        try {
-            Tür = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Tür.png"));
+            switch (name) {
+    
+                case "Mauer":
+                    Mauer1 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer1.png"));
+                    Mauer2 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer2.png"));
+                    Mauer3 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer3.png"));
+                    Mauer4 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer4.png"));
+                    Mauer5 = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Mauer5.png"));
+                    break;
+                    
+                case "Gang":
+                    Gang = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Gang.png"));
+                    break;
+                    
+                case "Leiter":
+                    Leiter = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Leiter.png"));
+                    Wand = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "stone_brick_2.png"));
+                    break;
+                    
+                case "Tür":
+                    Tür = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "Tür.png"));
+                    break;
+                case "Unseen":
+                    Unseen = ImageIO.read(new File("Texturen" + File.separator + "Schatten" + File.separator + "unseen.png"));
+                    break;
+                    
+                case "Fackel":
+                    Fackel0 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_0.png"));
+                    Fackel1 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_1.png"));
+                    Fackel2 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_2.png"));
+                    Fackel3 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_3.png"));
+                    Fackel4 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_4.png"));
+                    break;
+                    
+                case "Chest":
+                    openChest = ImageIO.read(new File("Texturen" + File.separator + "Kiste" + File.separator + "chest_2_open.png"));
+                    closedChest = ImageIO.read(new File("Texturen" + File.separator + "Kiste" + File.separator + "chest_2_closed.png"));
+                    break;
+                    
+                case "Key":
+                    key = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "key.png"));
+                    break;
+                    
+                case "Laterne":
+                    Laterne = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Laterne" + File.separator + "misc_lamp_new.png"));
+                    break;
+                    
+                case "Netzfalle":
+                    Netzfalle = ImageIO.read(new File("Texturen" + File.separator + "Fallen" + File.separator + "trap_net.png"));
+                    break;
+                    
+                case "Speerfalle":
+                    Speerfalle = ImageIO.read(new File("Texturen" + File.separator + "Fallen" + File.separator + "spike-animation.png"));
+                    break;
+                    
+                case "Cursor":
+                    cursor = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Inventar" + File.separator + "cursor.png"));
+                    break;
+                    
+                case "Inventarhintergrund":
+                    Inventarhintergrund = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Inventar" + File.separator + "mirrored_wall_new.png"));
+                    break;
+                    
+                case "Figur":
+                    Figur = ImageIO.read(new File("Texturen" + File.separator + "Adventurer" + File.separator + "AdventurerSpriteMove.png"));
+                    break;
+                    
+            }
         } catch (IOException ex) {
             Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    private static  void loadWand() {
-
-        try {
-            Wand = ImageIO.read(new File("Texturen" + File.separator + "Spielelemente" + File.separator + "stone_brick_2.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private static  void loadUnseen() {
-
-        try {
-            Unseen = ImageIO.read(new File("Texturen" + File.separator + "Schatten" + File.separator + "unseen.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-//--------------------------FACKELN-------------------------
-    private  static void loadFackel0() {
-
-        try {
-            Fackel0 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_0.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private static  void loadFackel1() {
-
-        try {
-            Fackel1 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_1.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private  static void loadFackel2() {
-
-        try {
-            Fackel2 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_2.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private  static void loadFackel3() {
-
-        try {
-            Fackel3 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_3.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private  static void loadFackel4() {
-
-        try {
-            Fackel4 = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Fackel" + File.separator + "torch_4.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    //-------------TRUHEN-----------
-    private  static void loadOpenChest() {
-
-        try {
-            openChest = ImageIO.read(new File("Texturen" + File.separator + "Kiste" + File.separator + "chest_2_open.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private  static void loadClosedChest() {
-
-        try {
-            closedChest = ImageIO.read(new File("Texturen" + File.separator + "Kiste" + File.separator + "chest_2_closed.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    //------------Schlüssel------
-    private static  void loadKey() {
-
-        try {
-            key = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "key.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    //---------------Laterne----------
-    private  static void loadLaterne() {
-
-        try {
-            Laterne = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Laterne" + File.separator + "misc_lamp_new.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    //---------------FALLEN------------
-    private  static void loadNetzfalle() {
-
-        try {
-            Netzfalle = ImageIO.read(new File("Texturen" + File.separator + "Fallen" + File.separator + "trap_net.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private  static void loadSpeerfalle() {
-
-        try {
-            Speerfalle = ImageIO.read(new File("Texturen" + File.separator + "Fallen" + File.separator + "spike-animation.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    //---------------Inventar-------------
-    private static  void loadCursor() {
-
-        try {
-            cursor = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Inventar" + File.separator + "cursor.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private  static void loadInventarhintergrund() {
-
-        try {
-            Inventarhintergrund = ImageIO.read(new File("Texturen" + File.separator + "Items" + File.separator + "Inventar" + File.separator + "mirrored_wall_new.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Grafiken.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
 
 //-----------------------Methoden um an Bilder zu kommen--------------    
     /**
