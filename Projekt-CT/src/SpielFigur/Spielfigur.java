@@ -143,10 +143,10 @@ public class Spielfigur extends Spielelement {
         //g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
         g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, 0, 0, 32, 32, null);
         //-------------------------------Sichtbereich-------------------------
-        for (int i = 0; i < hoehe; i++) {
-        //    g.drawOval( ((2 + xPos) * this.breite)-i, ((yPos + 2) * this.hoehe)-i,  this.breite+(i*2),  this.hoehe+(i*2));   
+            g.drawImage(grafik.getUnseen(), ((2 + xPos-Sichtweite) * this.breite), ((yPos + 2-Sichtweite) * this.hoehe), this.breite*(2*Sichtweite+1), this.hoehe*(2*Sichtweite+1), null);
+//            g.drawOval( ((2 + xPos) * this.breite), ((yPos + 2) * this.hoehe),  this.breite,  this.hoehe);   
             
-        }
+        
         
     }
 

@@ -26,7 +26,7 @@ public abstract class Spielelement {
     public void zeichneUnseen(Graphics g, int hoehe, int breite) {
         this.breite = breite / 19;
         this.hoehe = hoehe / 32;
-        g.drawImage(grafik.getUnseen(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
+        g.drawImage(grafik.getDark(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
     }
 
     public int getxPos() {

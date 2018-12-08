@@ -91,21 +91,23 @@ public class Steuerung {
     }
 
     public void zeichneSpielElemente(Graphics g, int breite, int hoehe) {
-
+        for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
+            for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite 
+                    SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
+                    ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);      
+            }
+        }        
+        //-----------Zeichne Gegner------------
+        for (int i = 0; Gegner.length > i; i++) {
+            Gegner[i].zeichne(g, breite, hoehe);
+        }
+        
         for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
             for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite 
 
 //-----------------------------------------dient um die Sichtweite der Spielfigur einzugrenzen ---------------------------
-                if (h < figur.getxPos() - figur.getSichtweite() || h > figur.getxPos() + figur.getSichtweite() || v < figur.getyPos() - figur.getSichtweite() || v > figur.getyPos() + figur.getSichtweite()) {
-                    //SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
-                    SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
-                    ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
-
-                } else {
-
-                    SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
-                    ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
-
+                if (h < figur.getxPos() - figur.getSichtweite() || h > figur.getxPos() + figur.getSichtweite() || v < figur.getyPos() - figur.getSichtweite() || v > figur.getyPos() + figur.getSichtweite()) {                 
+                    SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
                 }
             }
         }
@@ -127,10 +129,7 @@ public class Steuerung {
         figur.zeichne(g, breite, hoehe);
         figur.zeichneInventar(g, breite, hoehe);
 
-        //-----------Zeichne Gegner------------
-        for (int i = 0; Gegner.length > i; i++) {
-            Gegner[i].zeichne(g, breite, hoehe);
-        }
+
 
     }
 

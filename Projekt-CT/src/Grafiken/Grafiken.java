@@ -29,6 +29,7 @@ public class Grafiken {
     private static Image Wand;
     private static Image Figur;
     private static Image Unseen;
+    private static Image Dark;
 
     //-----------------------------FACKEL----------------------
     private static Image Fackel1;
@@ -110,6 +111,7 @@ public class Grafiken {
                     break;
                 case "Unseen":
                     Unseen = ImageIO.read(new File("Texturen" + File.separator + "Schatten" + File.separator + "unseen.png"));
+                    Dark = ImageIO.read(new File("Texturen" + File.separator + "Schatten" + File.separator + "Dark.png"));
                     break;
 
                 case "Fackel":
@@ -330,6 +332,10 @@ public class Grafiken {
      */
     public Image getLaterne() {
         return Laterne;
+    }
+
+    public static Image getDark() {
+        return Dark;
     }
     
         /**
