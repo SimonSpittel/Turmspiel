@@ -138,9 +138,18 @@ public class Steuerung {
 
         Point p = figur.pruefeBegehbarkeit(evt, aktiveTurmseite);
         int akT = figur.getAktiveTurmseite();
+        boolean bewege = true;
 
         if (SpielelementeEbene[akT][p.y][p.x].isBegehbarkeit()) {   //<---- prüft ob nächstes Feld begehbar ist oder nicht
-            aktiveTurmseite = figur.bewege(evt, aktiveTurmseite);
+            for (int i = 0; Gegner.length > i; i++) {
+                if(Gegner[i].getAktiveTurmseite() == akT && p.x == Gegner[i].getxPos() && p.y == Gegner[i].getyPos()){
+                    bewege = false;
+                }
+            }
+            
+            if(bewege){
+                aktiveTurmseite = figur.bewege(evt, aktiveTurmseite);
+            }
 
             //----------------------Falls falle vorhanden wird sie ausgelöst-----------------
             if (figur.getxPos() != 0 && figur.getxPos() != 14 && figur.getyPos() != 0 && figur.getyPos() != 29) {
