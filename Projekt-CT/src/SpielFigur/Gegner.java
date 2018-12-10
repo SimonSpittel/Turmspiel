@@ -34,6 +34,7 @@ public abstract class Gegner {
         public void actionPerformed(ActionEvent evt) {
 
             animationsbild++;
+            
             if (animationsbild == 9) {
                 animationsbild = 0;
             }
@@ -42,8 +43,9 @@ public abstract class Gegner {
     protected Timer Bewege = new Timer(1000, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
             bewege();
-            if (pruefeAufFeind()) {
+            if (pruefeAufFeind() && !Attackiere.isRunning()) {
                 Attackiere.start();
+                
                 Bewege.stop();
             }
 
@@ -52,8 +54,10 @@ public abstract class Gegner {
     protected Timer Attackiere = new Timer(1000, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
             if (pruefeAufFeind()) {
-                if (!Attackiere.isRunning()) {
+                
+                if (!AttackeAnimation.isRunning()) {
                     AttackeAnimation.start();
+                    
                 }
                 figur.fügeSchadenZu(schaden);
             } else {
@@ -168,7 +172,7 @@ public abstract class Gegner {
     }
 
     public boolean pruefeAufFeind() {
-        if ((getxPos() + 1 == figur.getxPos() && getyPos() == figur.getyPos()) || (getxPos() - 1 == figur.getyPos() && getyPos() == figur.getyPos()) || (getyPos() + 1 == figur.getyPos() && getxPos() == figur.getxPos()) || (getyPos() - 1 == figur.getyPos() && getxPos() == figur.getxPos())) {
+        if ((getxPos() + 1 == figur.getxPos() && getyPos() == figur.getyPos()) || (getxPos() - 1 == figur.getxPos() && getyPos() == figur.getyPos())) {
             
             return true;
         } else {

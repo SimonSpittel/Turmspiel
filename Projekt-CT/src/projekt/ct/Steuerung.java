@@ -107,7 +107,7 @@ public class Steuerung {
 
 //-----------------------------------------dient um die Sichtweite der Spielfigur einzugrenzen ---------------------------
                 if (h < figur.getxPos() - figur.getSichtweite() || h > figur.getxPos() + figur.getSichtweite() || v < figur.getyPos() - figur.getSichtweite() || v > figur.getyPos() + figur.getSichtweite()) {                 
-                    SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
+                    //SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
                 }
             }
         }
