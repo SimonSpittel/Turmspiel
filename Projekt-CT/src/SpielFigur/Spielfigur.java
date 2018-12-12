@@ -6,7 +6,6 @@
 package SpielFigur;
 
 import Spielelement.Spielelement;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -41,11 +40,11 @@ public class Spielfigur extends Spielelement {
     private Timer AttackeAnimation = new Timer(99, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
             animationsbild++;
-            if (animationsbild == 9) {
-                BewegeAnimation.start();
+            if (animationsbild == 8) {
                 animationsbild = 0;
+                BewegeAnimation.start();
                 AttackeAnimation.stop();
-                
+
             }
         }
     });
@@ -60,7 +59,7 @@ public class Spielfigur extends Spielelement {
         }
     });
     private int Richtung;
-    private int schaden;
+    private int schaden = 1;
 
     private int Lebenspunkte = 100;
 
@@ -81,11 +80,11 @@ public class Spielfigur extends Spielelement {
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_UP:
                 yPos--;
-                Richtung = 1;
+
                 break;
             case KeyEvent.VK_DOWN:
                 yPos++;
-                Richtung = 2;
+
                 break;
 
             case KeyEvent.VK_LEFT:
@@ -129,14 +128,18 @@ public class Spielfigur extends Spielelement {
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_UP:
                 tempY--;
+
                 break;
             case KeyEvent.VK_DOWN:
+
                 tempY++;
                 break;
             case KeyEvent.VK_LEFT:
+                Richtung = 3;
                 tempX--;
                 break;
             case KeyEvent.VK_RIGHT:
+                Richtung = 4;
                 tempX++;
                 break;
             default:
@@ -170,21 +173,30 @@ public class Spielfigur extends Spielelement {
         this.breite = breite / 19;
         this.hoehe = hoehe / 32;
         //g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
-        g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, 0, 0, 32, 32, null);
+        //g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, 0, 0, 32, 32, null);
         if (AttackeAnimation.isRunning()) {
             switch (Richtung) {
-                case 3:
-                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 2, (258 / 8) * animationsbild + 1, (320 / 10) * 3, null);
-                    break;
                 case 4:
-                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 7, (258 / 8) * animationsbild + 1, (320 / 10) * 8, null);
+                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 2, (258 / 8) * (animationsbild + 1), (315 / 10) * 3, null);
                     break;
-                default:    
-                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 7, (258 / 8) * animationsbild + 1, (320 / 10) * 8, null);
+                case 3:
+                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 7, (258 / 8) * (animationsbild + 1), (315 / 10) * 8, null);
+                    break;
+                default:
+                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 7, (258 / 8) * (animationsbild + 1), (315 / 10) * 8, null);
                     break;
             }
         } else {
-            g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 3, (258 / 8) * animationsbild + 1, (320 / 10) * 4, null);
+            switch (Richtung) {
+                case 4:
+                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 3, (258 / 8) * (animationsbild + 1), (315 / 10) * 4, null);
+                    break;
+                case 3:
+                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 8, (258 / 8) * (animationsbild + 1), (315 / 10) * 9, null);
+                    break;
+
+            }
+
         }
         //-------------------------------Sichtbereich-------------------------
 //            g.drawImage(grafik.getUnseen(), ((2 + xPos-Sichtweite) * this.breite), ((yPos + 2-Sichtweite) * this.hoehe), this.breite*(2*Sichtweite+1), this.hoehe*(2*Sichtweite+1), null);
@@ -231,9 +243,6 @@ public class Spielfigur extends Spielelement {
 
     }
 
-    /**
-     * @return the Sichtweite
-     */
     public int getSichtweite() {
         return Sichtweite;
     }
@@ -278,9 +287,6 @@ public class Spielfigur extends Spielelement {
         return IDs;
     }
 
-    /**
-     * @param ItemEbene the ItemEbene to set
-     */
     public void setItemEbene(Ausrüstung.Item[][][] ItemEbene) {
         this.ItemEbene = ItemEbene;
     }
@@ -346,9 +352,6 @@ public class Spielfigur extends Spielelement {
         g.drawImage(grafik.getCursor(), (17 * (breite / 19)) + (breite / 48), (aktiverInventarplatz + 1) * (hoehe / 32), breite / 19, hoehe / 32, null);
     }
 
-    /**
-     * @param aktiverInventarplatz the aktiverInventarplatz to set
-     */
     public void setAktiverInventarplatz(int aktiverInventarplatz) {
         this.aktiverInventarplatz = aktiverInventarplatz;
     }
@@ -393,9 +396,6 @@ public class Spielfigur extends Spielelement {
 
     }
 
-    /**
-     * @return the schaden
-     */
     public int getSchaden() {
         return schaden;
     }

@@ -35,7 +35,7 @@ public abstract class Gegner {
         public void actionPerformed(ActionEvent evt) {
 
             animationsbild++;
-            
+
             if (animationsbild == 9) {
                 animationsbild = 0;
             }
@@ -46,7 +46,7 @@ public abstract class Gegner {
             bewege();
             if (pruefeAufFeind() && !Attackiere.isRunning()) {
                 Attackiere.start();
-                
+
                 Bewege.stop();
             }
 
@@ -55,10 +55,10 @@ public abstract class Gegner {
     protected Timer Attackiere = new Timer(1000, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
             if (pruefeAufFeind()) {
-                
+
                 if (!AttackeAnimation.isRunning()) {
                     AttackeAnimation.start();
-                    
+
                 }
                 figur.fügeSchadenZu(schaden);
             } else {
@@ -103,7 +103,6 @@ public abstract class Gegner {
                 setAktiveTurmseite(getAktiveTurmseite() - 1);
             }
         }
-        
 
     }
 
@@ -174,7 +173,7 @@ public abstract class Gegner {
 
     public boolean pruefeAufFeind() {
         if ((getxPos() + 1 == figur.getxPos() && getyPos() == figur.getyPos()) || (getxPos() - 1 == figur.getxPos() && getyPos() == figur.getyPos())) {
-            
+
             return true;
         } else {
             return false;
@@ -223,7 +222,7 @@ public abstract class Gegner {
     public int getAktiveTurmseite() {
         return aktiveTurmseite;
     }
-    
+
     public void fügeSchadenZu(int schaden) {
         Lebenspunkte = Lebenspunkte - schaden;
         System.out.println("Leben-Gegner: " + Lebenspunkte);

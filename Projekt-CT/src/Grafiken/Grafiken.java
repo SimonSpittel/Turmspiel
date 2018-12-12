@@ -55,7 +55,7 @@ public class Grafiken {
     //------------Fallen------------
     private static Image Netzfalle;
     private static Image Speerfalle;
-    
+
     //-----------Gegner--------
     private static Image Minotaur;
 
@@ -77,8 +77,6 @@ public class Grafiken {
         loadGrafik("Minotaur");
 
     }
-
-
 
     public Grafiken() {
 
@@ -337,8 +335,8 @@ public class Grafiken {
     public static Image getDark() {
         return Dark;
     }
-    
-        /**
+
+    /**
      * @return the Minotaur
      */
     public Image getMinotaur() {

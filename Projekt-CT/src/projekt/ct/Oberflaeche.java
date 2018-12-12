@@ -118,13 +118,13 @@ public class Oberflaeche extends javax.swing.JPanel {
                 break;
             case KeyEvent.VK_F:
                 s.verarbeiteAngriffsTaste();
-                break;    
+                break;
         }
 
     }//GEN-LAST:event_formKeyPressed
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        
+
     }//GEN-LAST:event_formMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
