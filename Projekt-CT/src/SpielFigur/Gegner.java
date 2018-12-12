@@ -23,6 +23,7 @@ public abstract class Gegner {
     protected int schaden;
     protected int breite;
     protected int hoehe;
+    protected int Lebenspunkte = 100;
     protected Spielelement.Spielelement[][][] SpielelementeEbene;
     protected Gegner[] gegner;
     protected SpielFigur.Spielfigur figur;
@@ -221,6 +222,11 @@ public abstract class Gegner {
 
     public int getAktiveTurmseite() {
         return aktiveTurmseite;
+    }
+    
+    public void fügeSchadenZu(int schaden) {
+        Lebenspunkte = Lebenspunkte - schaden;
+        System.out.println("Leben-Gegner: " + Lebenspunkte);
     }
 
 }

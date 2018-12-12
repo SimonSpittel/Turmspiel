@@ -45,6 +45,11 @@ public class Oberflaeche extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
+            }
+        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -111,9 +116,16 @@ public class Oberflaeche extends javax.swing.JPanel {
             case KeyEvent.VK_0:
                 s.verarbeiteInventarTaste(10);
                 break;
+            case KeyEvent.VK_F:
+                s.verarbeiteAngriffsTaste();
+                break;    
         }
 
     }//GEN-LAST:event_formKeyPressed
+
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        
+    }//GEN-LAST:event_formMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

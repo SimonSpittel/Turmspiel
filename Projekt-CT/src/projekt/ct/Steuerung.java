@@ -93,20 +93,20 @@ public class Steuerung {
     public void zeichneSpielElemente(Graphics g, int breite, int hoehe) {
         for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
             for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite 
-                    SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
-                    ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);      
+                SpielelementeEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
+                ItemEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
             }
-        }        
+        }
         //-----------Zeichne Gegner------------
         for (int i = 0; Gegner.length > i; i++) {
             Gegner[i].zeichne(g, breite, hoehe);
         }
-        
+
         for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
             for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite 
 
 //-----------------------------------------dient um die Sichtweite der Spielfigur einzugrenzen ---------------------------
-                if (h < figur.getxPos() - figur.getSichtweite() || h > figur.getxPos() + figur.getSichtweite() || v < figur.getyPos() - figur.getSichtweite() || v > figur.getyPos() + figur.getSichtweite()) {                 
+                if (h < figur.getxPos() - figur.getSichtweite() || h > figur.getxPos() + figur.getSichtweite() || v < figur.getyPos() - figur.getSichtweite() || v > figur.getyPos() + figur.getSichtweite()) {
                     //SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
                 }
             }
@@ -129,8 +129,6 @@ public class Steuerung {
         figur.zeichne(g, breite, hoehe);
         figur.zeichneInventar(g, breite, hoehe);
 
-
-
     }
 
     //--------------------reagiert auf tastendruck zum Bewegen---------------------
@@ -142,12 +140,12 @@ public class Steuerung {
 
         if (SpielelementeEbene[akT][p.y][p.x].isBegehbarkeit()) {   //<---- prüft ob nächstes Feld begehbar ist oder nicht
             for (int i = 0; Gegner.length > i; i++) {
-                if(Gegner[i].getAktiveTurmseite() == akT && p.x == Gegner[i].getxPos() && p.y == Gegner[i].getyPos()){
+                if (Gegner[i].getAktiveTurmseite() == akT && p.x == Gegner[i].getxPos() && p.y == Gegner[i].getyPos()) {
                     bewege = false;
                 }
             }
-            
-            if(bewege){
+
+            if (bewege) {
                 aktiveTurmseite = figur.bewege(evt, aktiveTurmseite);
             }
 
@@ -225,6 +223,18 @@ public class Steuerung {
 
     public void setAktiveTurmseite(int aktiveTurmseite) {
         this.aktiveTurmseite = aktiveTurmseite;
+    }
+
+    public void verarbeiteAngriffsTaste() {
+        Point p = figur.attacke();
+        if (p != null) {
+            for (int i = 0; Gegner.length > i; i++) {
+                if (p.x == Gegner[i].getxPos() && p.y == Gegner[i].getyPos()) {
+                    Gegner[i].fügeSchadenZu(figur.getSchaden());
+                }
+            }
+        }
+
     }
 
 }

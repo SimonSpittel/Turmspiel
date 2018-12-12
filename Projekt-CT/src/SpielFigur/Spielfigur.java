@@ -37,6 +37,18 @@ public class Spielfigur extends Spielelement {
     private boolean leuchtmittel = false;
     private int aktiverInventarplatz = 1;
     private int aktiveTurmseite;
+    private int animationsbild = 0;
+    private Timer AttackeAnimation = new Timer(99, new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+                animationsbild++;
+            if(animationsbild == 9){
+                AttackeAnimation.stop();
+                animationsbild = 0;
+            }  
+        }
+    });
+    private int Richtung;
+    private int schaden;
 
     private int Lebenspunkte = 100;
 
@@ -56,17 +68,21 @@ public class Spielfigur extends Spielelement {
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_UP:
                 yPos--;
+                Richtung = 1;
                 break;
             case KeyEvent.VK_DOWN:
                 yPos++;
+                Richtung = 2;
                 break;
 
             case KeyEvent.VK_LEFT:
                 xPos--;
+                Richtung = 3;
                 break;
 
             case KeyEvent.VK_RIGHT:
                 xPos++;
+                Richtung = 4;
                 break;
 
         }
@@ -75,19 +91,19 @@ public class Spielfigur extends Spielelement {
             if (aktiveTurmseite == 3) {
                 return 0;
             } else {
-                return(aktiveTurmseite + 1);
+                return (aktiveTurmseite + 1);
             }
         } else if (getxPos() < 0) {
             setxPos(14);
             if (aktiveTurmseite == 0) {
                 return 3;
             } else {
-                return(aktiveTurmseite - 1);
+                return (aktiveTurmseite - 1);
             }
-        }else{
+        } else {
             return aktiveTurmseite;
         }
-        
+
 //        System.out.println("x:" + xPos);
 //        System.out.println("y:" + yPos);
     }
@@ -113,15 +129,15 @@ public class Spielfigur extends Spielelement {
             default:
                 break;
         }
-        if(tempX < 0){
-            tempX= 14;
+        if (tempX < 0) {
+            tempX = 14;
             if (this.aktiveTurmseite == 0) {
                 this.setAktiveTurmseite(3);
             } else {
                 this.setAktiveTurmseite(this.aktiveTurmseite - 1);
             }
         }
-        if(tempX > 14){
+        if (tempX > 14) {
             tempX = 0;
             if (this.aktiveTurmseite == 3) {
                 this.setAktiveTurmseite(0);
@@ -129,7 +145,7 @@ public class Spielfigur extends Spielelement {
                 this.setAktiveTurmseite(this.aktiveTurmseite + 1);
             }
         }
-        
+
         p.x = tempX;
         p.y = tempY;
 
@@ -145,8 +161,7 @@ public class Spielfigur extends Spielelement {
         //-------------------------------Sichtbereich-------------------------
 //            g.drawImage(grafik.getUnseen(), ((2 + xPos-Sichtweite) * this.breite), ((yPos + 2-Sichtweite) * this.hoehe), this.breite*(2*Sichtweite+1), this.hoehe*(2*Sichtweite+1), null);
 //            g.drawOval( ((2 + xPos) * this.breite), ((yPos + 2) * this.hoehe),  this.breite,  this.hoehe);   
-            
-        
+
         
     }
 
@@ -311,4 +326,46 @@ public class Spielfigur extends Spielelement {
         this.aktiverInventarplatz = aktiverInventarplatz;
     }
 
+    public Point attacke() {
+        int tempX = xPos;
+        int tempY = yPos;
+        Point p = new Point();
+        switch (Richtung) {
+            case 1:
+                tempY--;
+                break;
+            case 2:
+                tempY++;
+                break;
+            case 3:
+                tempX--;
+                break;
+            case 4:
+                tempX++;
+                break;
+
+        }
+        if (getxPos() > 14 || getxPos() < 0 || getyPos() < 0 || getyPos() > 29) {
+            return null;
+        } else {
+            p.x = tempX;
+            p.y = tempY;
+            if (!AttackeAnimation.isRunning()) {
+                animationsbild = 0;
+                AttackeAnimation.start();
+            } else {
+                animationsbild = 0;
+                AttackeAnimation.restart();
+            }
+            return p;
+        }
+
+    }
+
+    /**
+     * @return the schaden
+     */
+    public int getSchaden() {
+        return schaden;
+    }
 }
