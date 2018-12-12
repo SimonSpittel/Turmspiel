@@ -152,7 +152,7 @@ public class Grafiken {
                     break;
 
                 case "Figur":
-                    Figur = ImageIO.read(new File("Texturen" + File.separator + "Adventurer" + File.separator + "AdventurerSpriteMove.png"));
+                    Figur = ImageIO.read(new File("Texturen" + File.separator + "Zwerg" + File.separator + "Dwarf Sprite Sheet.png"));
                     break;
                 case "Minotaur":
                     Minotaur = ImageIO.read(new File("Texturen" + File.separator + "Minotaur" + File.separator + "Minotaur.png"));
