@@ -194,6 +194,9 @@ public class Spielfigur extends Spielelement {
                 case 3:
                     g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 8, (258 / 8) * (animationsbild + 1), (315 / 10) * 9, null);
                     break;
+                default:
+                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 8, (258 / 8) * (animationsbild + 1), (315 / 10) * 9, null);
+                    break;    
 
             }
 
@@ -222,6 +225,9 @@ public class Spielfigur extends Spielelement {
                         Items.remove(aktiverInventarplatz - 1);
                     }
                     break;
+                case "SCH":
+                        schaden = 15;
+                        break;
                 default:
                     Sichtweite = 1;
                     break;
