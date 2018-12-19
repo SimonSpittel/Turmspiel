@@ -98,8 +98,11 @@ public class Steuerung {
             }
         }
         //-----------Zeichne Gegner------------
+
         for (int i = 0; Gegner.length > i; i++) {
-            Gegner[i].zeichne(g, breite, hoehe);
+            if (Gegner[i].getAktiveTurmseite() == aktiveTurmseite) {
+                Gegner[i].zeichne(g, breite, hoehe);
+            }
         }
 
         for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
