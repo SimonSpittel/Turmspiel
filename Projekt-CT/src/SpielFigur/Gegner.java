@@ -17,13 +17,21 @@ import javax.swing.Timer;
  */
 public abstract class Gegner {
 
+    /**
+     * @return the lebendig
+     */
+    public boolean isLebendig() {
+        return lebendig;
+    }
+
     protected int xPos;
     protected int yPos;
 
     protected int schaden;
     protected int breite;
     protected int hoehe;
-    protected int Lebenspunkte = 100;
+    protected int Lebenspunkte = 20;
+    private boolean lebendig = true;
     protected Spielelement.Spielelement[][][] SpielelementeEbene;
     protected Gegner[] gegner;
     protected SpielFigur.Spielfigur figur;
@@ -41,30 +49,63 @@ public abstract class Gegner {
             }
         }
     });
-    protected Timer Bewege = new Timer(1000, new ActionListener() {
+    protected Timer SterbeAnimation = new Timer(99, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
-            bewege();
-            if (pruefeAufFeind() && !Attackiere.isRunning()) {
-                Attackiere.start();
+
+            
+
+            if (animationsbild == 6) {
+                
 
                 Bewege.stop();
+                Attackiere.stop();
+                SterbeAnimation.stop();
             }
+            
+            
+            animationsbild++;
+        }
+    });
+    protected Timer Bewege = new Timer(1000, new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {            
+            bewege();
+                if (Lebenspunkte > 0) {
+                    if (pruefeAufFeind() && !Attackiere.isRunning()) {
+                        Attackiere.start();
 
+                        Bewege.stop();
+                    }
+                } else {
+                    lebendig = false;
+                    animationsbild = 0;
+                    SterbeAnimation.start();
+                    Bewege.stop();
+                }
+
+            
         }
     });
     protected Timer Attackiere = new Timer(1000, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
-            if (pruefeAufFeind()) {
+            if (Lebenspunkte > 0) {
+                if (pruefeAufFeind()) {
 
-                if (!AttackeAnimation.isRunning()) {
-                    AttackeAnimation.start();
+                    if (!AttackeAnimation.isRunning()) {
+                        AttackeAnimation.start();
 
+                    }
+                    figur.fügeSchadenZu(schaden);
+                } else {
+                    AttackeAnimation.stop();
+                    Bewege.start();
+                    Attackiere.stop();
                 }
-                figur.fügeSchadenZu(schaden);
             } else {
+                lebendig = false;
                 AttackeAnimation.stop();
-                Bewege.start();
-                Attackiere.stop();
+                animationsbild = 0;
+                SterbeAnimation.start();
+
             }
         }
     });
@@ -121,6 +162,7 @@ public abstract class Gegner {
     }
 
     public boolean pruefeNaechstenSchritt() {
+        
         int zdieRichtung = Richtung;
         int zposY = getyPos();
         int zposX = getxPos();
@@ -160,9 +202,13 @@ public abstract class Gegner {
         }
 
         for (int i = 0; i < gegner.length; i++) {
-            if (gegner[i].getxPos() == zposX && gegner[i].getyPos() == zposY) {
+            if (gegner[i].getxPos() == zposX && gegner[i].getyPos() == zposY ) {
                 return false;
             }
+        }
+        
+        if(zposY == figur.getyPos() && zposX == figur.getxPos()){
+            return false;
         }
         if (!SpielelementeEbene[Turmseite][zposY][zposX].isBegehbarkeit()) {
             return false;

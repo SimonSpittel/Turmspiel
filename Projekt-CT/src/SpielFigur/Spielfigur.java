@@ -196,7 +196,7 @@ public class Spielfigur extends Spielelement {
                     break;
                 default:
                     g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 8, (258 / 8) * (animationsbild + 1), (315 / 10) * 9, null);
-                    break;    
+                    break;
 
             }
 
@@ -226,8 +226,8 @@ public class Spielfigur extends Spielelement {
                     }
                     break;
                 case "SCH":
-                        schaden = 15;
-                        break;
+                    schaden = 15;
+                    break;
                 default:
                     Sichtweite = 1;
                     break;
@@ -254,8 +254,8 @@ public class Spielfigur extends Spielelement {
     }
 
     public void addItem(Ausrüstung.Item item) {
-        System.out.println(Items.size());
-        System.out.println(item.getArt());
+        //System.out.println(Items.size());
+        //System.out.println(item.getArt());
         Items.add(item);
 
     }

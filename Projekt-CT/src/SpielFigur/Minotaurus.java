@@ -27,22 +27,30 @@ public class Minotaurus extends Gegner {
         this.breite = breite / 19;
         this.hoehe = hoehe / 32;
         //g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (890/9) * animationsbild,(1920/20)*13 , (890/9) * (animationsbild + 1), (1920/20)*14, null);  
-        if ((getxPos() + 1 == figur.getxPos() && getyPos() == figur.getyPos()) && Attackiere.isRunning()) {
-            g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (890 / 9) * animationsbild, (1920 / 20) * 3, (890 / 9) * (animationsbild + 1), (1920 / 20) * 4, null);
-        } else if ((getxPos() - 1 == figur.getxPos() && getyPos() == figur.getyPos()) && Attackiere.isRunning()) {
-            g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (890 / 9) * animationsbild, (1920 / 20) * 13, (890 / 9) * (animationsbild + 1), (1920 / 20) * 14, null);
-        } else {
-            switch (Richtung) {
-                case 1:
-                    g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, 0, 0, (890 / 9), (1920 / 20), null);
-                    break;
-                case 3:
-                    g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, 0, (1920 / 20) * 10, (890 / 9), (1920 / 20) * 11, null);
-                    break;
+        if (isLebendig()) {
+            if ((getxPos() + 1 == figur.getxPos() && getyPos() == figur.getyPos()) && Attackiere.isRunning()) {
+                g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (890 / 9) * animationsbild, (1920 / 20) * 3, (890 / 9) * (animationsbild + 1), (1920 / 20) * 4, null);
+            } else if ((getxPos() - 1 == figur.getxPos() && getyPos() == figur.getyPos()) && Attackiere.isRunning()) {
+                g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (890 / 9) * animationsbild, (1920 / 20) * 13, (890 / 9) * (animationsbild + 1), (1920 / 20) * 14, null);
+            } else {
+                switch (Richtung) {
+                    case 1:
+                        g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, 0, 0, (890 / 9), (1920 / 20), null);
+                        break;
+                    case 3:
+                        g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, 0, (1920 / 20) * 10, (890 / 9), (1920 / 20) * 11, null);
+                        break;
+                }
+
             }
-
+        }else{
+            if ((getxPos() + 1 == figur.getxPos() && getyPos() == figur.getyPos())) {
+                g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (890 / 9) * animationsbild, (1920 / 20) * 9, (890 / 9) * (animationsbild + 1), (1920 / 20) * 10, null);
+            } else if ((getxPos() - 1 == figur.getxPos() && getyPos() == figur.getyPos())) {
+                g.drawImage(grafik.getMinotaur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (890 / 9) * animationsbild, (1920 / 20) * 19, (890 / 9) * (animationsbild + 1), (1920 / 20) * 20, null);
+            }
         }
-
+            
     }
 
 }

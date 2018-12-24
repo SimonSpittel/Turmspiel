@@ -143,7 +143,7 @@ public class Steuerung {
 
         if (SpielelementeEbene[akT][p.y][p.x].isBegehbarkeit()) {   //<---- prüft ob nächstes Feld begehbar ist oder nicht
             for (int i = 0; Gegner.length > i; i++) {
-                if (Gegner[i].getAktiveTurmseite() == akT && p.x == Gegner[i].getxPos() && p.y == Gegner[i].getyPos()) {
+                if (Gegner[i].getAktiveTurmseite() == akT && p.x == Gegner[i].getxPos() && p.y == Gegner[i].getyPos() && Gegner[i].isLebendig()) {
                     bewege = false;
                 }
             }
