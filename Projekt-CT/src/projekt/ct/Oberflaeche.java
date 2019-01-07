@@ -38,7 +38,27 @@ public class Oberflaeche extends javax.swing.JPanel {
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-        s.zeichneSpielElemente(g, this.getHeight(), this.getWidth());
+        switch (s.getSpielzustand()) {
+            case 0:     //-----Spiel_Aktiv----------
+                s.zeichneSpielElemente(g, this.getHeight(), this.getWidth());
+                break;
+            case 1:     //------Game_Over----------
+                System.out.println("Over");
+                //-------Zeige Game_Over Screen
+                break;
+            case 2: //----------Gewonnen--------
+                //-------Zeige Winning_Screen-----------
+                break;
+            default:
+                s.zeichneSpielElemente(g, this.getHeight(), this.getWidth());
+                break;
+
+        }
+
+    }
+
+    public void GameOver() {
+        animation.stop();
     }
 
     @SuppressWarnings("unchecked")

@@ -7,17 +7,25 @@ package projekt.ct;
 
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 /**
  *
  * @author Simon Spittel
  */
 public class Steuerung {
+
+    public int getSpielzustand() {
+        return Spielzustand;
+    }
     //--------------------------------------------Allgemeine Atribute------------------------------
 
     private Oberflaeche o;
     private int Intervall = 500;
     private Levels.LoadLevel loadLevel = new Levels.LoadLevel();
+    private int Spielzustand = 0;
 
     //------------------------------------------------AktionsEbene--------------------------------- 
     private Aktionen.Aktion[][][] AktionsEbene;   //<-- [1] gibt Turmseite; [2] gibt Höhe im Turm;  [3] gibt breite im Turm
@@ -29,6 +37,21 @@ public class Steuerung {
     private SpielFigur.Minotaurus[] Gegner = new SpielFigur.Minotaurus[2];
     //------------------------------------ItemEbene----------------------------
     private Ausrüstung.Item[][][] ItemEbene;
+
+    //-----------------------------Timer der Spielzustand prüft---------------------------
+    private Timer aktualisiereSpielzustand = new Timer(1, new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+            if (!figur.isLebendig() && !figur.SterbeAktiv()) {
+                Spielzustand = 5;
+                o.GameOver();
+                for (int i = 0; Gegner.length > i; i++) {
+                    Gegner[i].GameOver();
+                }
+                o.repaint();
+                aktualisiereSpielzustand.stop();
+            }
+        }
+    });
 
     //-----------------------------------------------EndeAtribute-----------------------------------
     public Steuerung(Oberflaeche o) {
@@ -86,7 +109,9 @@ public class Steuerung {
             Gegner[i].setSpielelementeEbene(SpielelementeEbene);
             Gegner[i].setFigur(figur);
             Gegner[i].BewegeStart();
+
         }
+        aktualisiereSpielzustand.start();
 
     }
 
@@ -229,11 +254,13 @@ public class Steuerung {
     }
 
     public void verarbeiteAngriffsTaste() {
-        Point p = figur.attacke();
-        if (p != null) {
-            for (int i = 0; Gegner.length > i; i++) {
-                if (p.x == Gegner[i].getxPos() && p.y == Gegner[i].getyPos()) {
-                    Gegner[i].fügeSchadenZu(figur.getSchaden());
+        if (!figur.getAngriffAktiv()) {
+            Point p = figur.attacke();
+            if (p != null) {
+                for (int i = 0; Gegner.length > i; i++) {
+                    if (p.x == Gegner[i].getxPos() && p.y == Gegner[i].getyPos()) {
+                        Gegner[i].fügeSchadenZu(figur.getSchaden());
+                    }
                 }
             }
         }

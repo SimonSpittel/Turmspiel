@@ -52,37 +52,32 @@ public abstract class Gegner {
     protected Timer SterbeAnimation = new Timer(99, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
 
-            
-
             if (animationsbild == 6) {
-                
 
                 Bewege.stop();
                 Attackiere.stop();
                 SterbeAnimation.stop();
             }
-            
-            
+
             animationsbild++;
         }
     });
     protected Timer Bewege = new Timer(1000, new ActionListener() {
-        public void actionPerformed(ActionEvent evt) {            
+        public void actionPerformed(ActionEvent evt) {
             bewege();
-                if (Lebenspunkte > 0) {
-                    if (pruefeAufFeind() && !Attackiere.isRunning()) {
-                        Attackiere.start();
+            if (Lebenspunkte > 0) {
+                if (pruefeAufFeind() && !Attackiere.isRunning()) {
+                    Attackiere.start();
 
-                        Bewege.stop();
-                    }
-                } else {
-                    lebendig = false;
-                    animationsbild = 0;
-                    SterbeAnimation.start();
                     Bewege.stop();
                 }
+            } else {
+                lebendig = false;
+                animationsbild = 0;
+                SterbeAnimation.start();
+                Bewege.stop();
+            }
 
-            
         }
     });
     protected Timer Attackiere = new Timer(1000, new ActionListener() {
@@ -162,7 +157,7 @@ public abstract class Gegner {
     }
 
     public boolean pruefeNaechstenSchritt() {
-        
+
         int zdieRichtung = Richtung;
         int zposY = getyPos();
         int zposX = getxPos();
@@ -202,12 +197,12 @@ public abstract class Gegner {
         }
 
         for (int i = 0; i < gegner.length; i++) {
-            if (gegner[i].getxPos() == zposX && gegner[i].getyPos() == zposY ) {
+            if (gegner[i].getxPos() == zposX && gegner[i].getyPos() == zposY) {
                 return false;
             }
         }
-        
-        if(zposY == figur.getyPos() && zposX == figur.getxPos()){
+
+        if (zposY == figur.getyPos() && zposX == figur.getxPos()) {
             return false;
         }
         if (!SpielelementeEbene[Turmseite][zposY][zposX].isBegehbarkeit()) {
@@ -229,6 +224,10 @@ public abstract class Gegner {
 
     public void BewegeStart() {
         Bewege.start();
+    }
+
+    public void BewegeStop() {
+        Bewege.stop();
     }
 
     public abstract void zeichne(Graphics g, int hoehe, int breite);
@@ -274,4 +273,9 @@ public abstract class Gegner {
         System.out.println("Leben-Gegner: " + Lebenspunkte);
     }
 
+    public void GameOver() {
+        AttackeAnimation.stop();
+        Bewege.stop();
+        Attackiere.stop();
+    }
 }
