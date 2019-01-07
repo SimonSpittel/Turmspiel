@@ -202,7 +202,7 @@ public class Spielfigur extends Spielelement {
 
         }
         //-------------------------------Sichtbereich-------------------------
-//            g.drawImage(grafik.getUnseen(), ((2 + xPos-Sichtweite) * this.breite), ((yPos + 2-Sichtweite) * this.hoehe), this.breite*(2*Sichtweite+1), this.hoehe*(2*Sichtweite+1), null);
+            g.drawImage(grafik.getUnseen(), ((2 + xPos-Sichtweite) * this.breite), ((yPos + 2-Sichtweite) * this.hoehe), this.breite*(2*Sichtweite+1), this.hoehe*(2*Sichtweite+1), null);
 //            g.drawOval( ((2 + xPos) * this.breite), ((yPos + 2) * this.hoehe),  this.breite,  this.hoehe);   
 
     }

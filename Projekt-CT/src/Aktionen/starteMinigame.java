@@ -13,11 +13,14 @@ import java.awt.Graphics;
  * @author Simon Spittel
  */
 public class starteMinigame extends Aktion {
-
+    private MiniGame.MGFrame mgF;
+    
     public starteMinigame(int x, int y) {
         xPos = x;
         yPos = y;
         aktionVerfügbar = true;
+        mgF = new MiniGame.MGFrame();
+        
     }
 
     public void aktion() {

@@ -7,6 +7,9 @@ package Aktionen;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 /**
  *
@@ -15,16 +18,47 @@ import java.awt.Graphics;
 public class wechsleTurmseite extends Aktion {
 
     private int neueTurmseite; //<--- gibt an zu welhcer turmseite gewechselt werden soll
+    private wurmspiel.WFrame WF;
+ 
+    private Timer t = new Timer(2, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+
+            pruefeObGewonnen();
+
+        }
+    });
 
     public wechsleTurmseite(int Turmseite, int x, int y) {
         xPos = x;
         yPos = y;
         this.neueTurmseite = Turmseite;
+        WF = new wurmspiel.WFrame();
     }
 
     public void aktion() {
-        s.setAktiveTurmseite(neueTurmseite);
+   
+            WF.setVisible(true);
+            WF.restart();
+        
+        t.start();
 
+    }
+
+    public void pruefeObGewonnen() {
+
+        if (WF.getGelöst() == 1) {
+            WF.setGelöst(0);
+ 
+            WF.setVisible(false);
+            s.setAktiveTurmseite(neueTurmseite);
+            t.stop();
+        } else if (WF.getGelöst() == 2) {
+            WF.setGelöst(0);
+
+            WF.setVisible(false);
+            t.stop();
+        }
     }
 
     @Override
