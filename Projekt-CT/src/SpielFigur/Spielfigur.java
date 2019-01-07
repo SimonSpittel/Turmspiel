@@ -21,6 +21,13 @@ import javax.swing.Timer;
  */
 public class Spielfigur extends Spielelement {
 
+    /**
+     * @return the lebendig
+     */
+    public boolean isLebendig() {
+        return lebendig;
+    }
+
     public void setAktiveTurmseite(int aktiveTurmseite) {
         this.aktiveTurmseite = aktiveTurmseite;
     }
@@ -33,6 +40,7 @@ public class Spielfigur extends Spielelement {
     private ArrayList<Ausrüstung.Item> Items = new ArrayList<Ausrüstung.Item>();
     private int Sichtweite = 1;
     private Timer refresh;
+    private boolean lebendig = true;
     private boolean leuchtmittel = false;
     private int aktiverInventarplatz = 1;
     private int aktiveTurmseite;
@@ -40,26 +48,52 @@ public class Spielfigur extends Spielelement {
     private Timer AttackeAnimation = new Timer(99, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
             animationsbild++;
-            if (animationsbild == 8) {
-                animationsbild = 0;
-                BewegeAnimation.start();
-                AttackeAnimation.stop();
+            if (Lebenspunkte > 0) {
+                if (animationsbild == 8) {
+                    animationsbild = 0;
+                    BewegeAnimation.start();
+                    AttackeAnimation.stop();
 
+                }
+            } else {
+                lebendig = false;
+                animationsbild = 0;
+                SterbeAnimation.start();
+                AttackeAnimation.stop();
             }
         }
     });
     private Timer BewegeAnimation = new Timer(99, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
+            if (Lebenspunkte > 0) {
+                animationsbild++;
+                if (animationsbild == 4) {
+                    animationsbild = 0;
+                }
 
-            animationsbild++;
-            if (animationsbild == 4) {
+            } else {
+                lebendig = false;
                 animationsbild = 0;
+                SterbeAnimation.start();
+                BewegeAnimation.stop();
+            }
+        }
+    });
+    protected Timer SterbeAnimation = new Timer(99, new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+
+            if (animationsbild == 7) {
+
+                BewegeAnimation.stop();
+                AttackeAnimation.stop();
+                SterbeAnimation.stop();
             }
 
+            animationsbild++;
         }
     });
     private int Richtung;
-    private int schaden = 1;
+    private int schaden = 30;
 
     private int Lebenspunkte = 100;
 
@@ -174,32 +208,47 @@ public class Spielfigur extends Spielelement {
         this.hoehe = hoehe / 32;
         //g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, this.breite, this.hoehe, null);
         //g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, 0, 0, 32, 32, null);
-        if (AttackeAnimation.isRunning()) {
-            switch (Richtung) {
-                case 4:
-                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 2, (258 / 8) * (animationsbild + 1), (315 / 10) * 3, null);
-                    break;
-                case 3:
-                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 7, (258 / 8) * (animationsbild + 1), (315 / 10) * 8, null);
-                    break;
-                default:
-                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 7, (258 / 8) * (animationsbild + 1), (315 / 10) * 8, null);
-                    break;
+        if (isLebendig()) {
+            if (AttackeAnimation.isRunning()) {
+                switch (Richtung) {
+                    case 4:
+                        g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 2, (258 / 8) * (animationsbild + 1), (315 / 10) * 3, null);
+                        break;
+                    case 3:
+                        g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 7, (258 / 8) * (animationsbild + 1), (315 / 10) * 8, null);
+                        break;
+                    default:
+                        g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (320 / 10) * 7, (258 / 8) * (animationsbild + 1), (315 / 10) * 8, null);
+                        break;
+                }
+            } else {
+                switch (Richtung) {
+                    case 4:
+                        g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 3, (258 / 8) * (animationsbild + 1), (315 / 10) * 4, null);
+                        break;
+                    case 3:
+                        g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 8, (258 / 8) * (animationsbild + 1), (315 / 10) * 9, null);
+                        break;
+                    default:
+                        g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 8, (258 / 8) * (animationsbild + 1), (315 / 10) * 9, null);
+                        break;
+
+                }
+
             }
         } else {
             switch (Richtung) {
                 case 4:
-                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 3, (258 / 8) * (animationsbild + 1), (315 / 10) * 4, null);
+                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 4, (258 / 8) * (animationsbild + 1), (315 / 10) * 5, null);
                     break;
                 case 3:
-                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 8, (258 / 8) * (animationsbild + 1), (315 / 10) * 9, null);
+                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 9, (258 / 8) * (animationsbild + 1), (315 / 10) * 10, null);
                     break;
                 default:
-                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 8, (258 / 8) * (animationsbild + 1), (315 / 10) * 9, null);
+                    g.drawImage(grafik.getFigur(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, (258 / 8) * animationsbild, (315 / 10) * 9, (258 / 8) * (animationsbild + 1), (315 / 10) * 10, null);
                     break;
 
             }
-
         }
         //-------------------------------Sichtbereich-------------------------
             g.drawImage(grafik.getUnseen(), ((2 + xPos-Sichtweite) * this.breite), ((yPos + 2-Sichtweite) * this.hoehe), this.breite*(2*Sichtweite+1), this.hoehe*(2*Sichtweite+1), null);
@@ -404,5 +453,13 @@ public class Spielfigur extends Spielelement {
 
     public int getSchaden() {
         return schaden;
+    }
+    
+    public boolean getAngriffAktiv(){
+        return AttackeAnimation.isRunning();
+    }
+    
+    public boolean SterbeAktiv(){
+        return SterbeAnimation.isRunning();
     }
 }
