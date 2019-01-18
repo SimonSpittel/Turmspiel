@@ -130,15 +130,7 @@ public class Steuerung {
             }
         }
 
-        for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
-            for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite 
-
-//-----------------------------------------dient um die Sichtweite der Spielfigur einzugrenzen ---------------------------
-                if (h < figur.getxPos() - figur.getSichtweite() || h > figur.getxPos() + figur.getSichtweite() || v < figur.getyPos() - figur.getSichtweite() || v > figur.getyPos() + figur.getSichtweite()) {
-                    SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
-                }
-            }
-        }
+        
         //------------------------------------------------Darstellen der Items an der Wand----------------------------------------------
 //        for (int v = 0; ItemEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
 //            for (int h = 0; ItemEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
@@ -149,7 +141,19 @@ public class Steuerung {
         //------------------------------------------dient zum darstellen der Aktionseben um zu überprüfen----------------------------
         for (int v = 0; AktionsEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
             for (int h = 0; AktionsEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite    
-                AktionsEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
+                if(AktionsEbene[aktiveTurmseite][v][h].isFalle()){
+                        AktionsEbene[aktiveTurmseite][v][h].zeichne(g, breite, hoehe);
+                }
+            }
+        }
+        
+        for (int v = 0; SpielelementeEbene[aktiveTurmseite].length > v; v++) {        //  v  <--- Durchlaufvariable für die Turmhöhe
+            for (int h = 0; SpielelementeEbene[aktiveTurmseite][v].length > h; h++) { //  h  <--- Durchlaufvariable für die Turmbreite 
+
+//-----------------------------------------dient um die Sichtweite der Spielfigur einzugrenzen ---------------------------
+                if (h < figur.getxPos() - figur.getSichtweite() || h > figur.getxPos() + figur.getSichtweite() || v < figur.getyPos() - figur.getSichtweite() || v > figur.getyPos() + figur.getSichtweite()) {
+                    SpielelementeEbene[aktiveTurmseite][v][h].zeichneUnseen(g, breite, hoehe);
+                }
             }
         }
 

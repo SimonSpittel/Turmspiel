@@ -52,7 +52,7 @@ public abstract class Gegner {
     protected Timer SterbeAnimation = new Timer(99, new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
 
-            if (animationsbild == 6) {
+            if (animationsbild == 6) {  // Länge der Animation 6
 
                 Bewege.stop();
                 Attackiere.stop();
@@ -73,7 +73,7 @@ public abstract class Gegner {
                 }
             } else {
                 lebendig = false;
-                animationsbild = 0;
+                animationsbild = 0;     // Beginn der animation bei bild 0
                 SterbeAnimation.start();
                 Bewege.stop();
             }
@@ -98,7 +98,7 @@ public abstract class Gegner {
             } else {
                 lebendig = false;
                 AttackeAnimation.stop();
-                animationsbild = 0;
+                animationsbild = 0;  // Beginn der animation bei bild 0
                 SterbeAnimation.start();
 
             }
@@ -124,12 +124,13 @@ public abstract class Gegner {
             default:
                 break;
         }
-        if (getxPos() > 14) {
+        //------------------- 4 Turmseiten ----------------------
+        if (getxPos() > 14) {           // Turmbreite 15 
             setxPos(0);
             if (getAktiveTurmseite() == 3) {
                 setAktiveTurmseite(0);
             } else {
-                setAktiveTurmseite(getAktiveTurmseite() + 1);
+                setAktiveTurmseite(getAktiveTurmseite() + 1);      
             }
         } else if (getxPos() < 0) {
             setxPos(14);
@@ -146,10 +147,10 @@ public abstract class Gegner {
         while (!pruefeNaechstenSchritt()) {
             switch (wuerfel.nextInt(2)) {
                 case 0:
-                    Richtung = 1;
+                    Richtung = 1;      // Richtung Rechts ist 1
                     break;
                 case 1:
-                    Richtung = 3;
+                    Richtung = 3;   // Richtung Links ist 3
                     break;
             }
         }
@@ -163,7 +164,7 @@ public abstract class Gegner {
         int zposX = getxPos();
         int Turmseite = aktiveTurmseite;
 
-        switch (zdieRichtung) {
+        switch (zdieRichtung) {     //Richtungen in zahlen 1,2,3,4
             case 1:
                 zposX++;
                 break;
@@ -179,7 +180,7 @@ public abstract class Gegner {
             default:
                 break;
         }
-        if (zposX < 0) {
+        if (zposX < 0) {        // Turmbreite 0-14
             zposX = 14;
             if (Turmseite == 0) {
                 Turmseite = 3;
@@ -187,7 +188,7 @@ public abstract class Gegner {
                 Turmseite = (this.aktiveTurmseite - 1);
             }
         }
-        if (zposX > 14) {
+        if (zposX > 14) {       // Turmbreite 0-14
             zposX = 0;
             if (Turmseite == 3) {
                 Turmseite = 0;

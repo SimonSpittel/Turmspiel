@@ -70,7 +70,7 @@ public class Speerfalle extends Falle {
         xPos = x;
         yPos = y;
         Falle = true;
-        Schaden = 4;
+        Schaden = 4;  // Standardschaden einer Falle ist 4
 
     }
 
@@ -81,7 +81,7 @@ public class Speerfalle extends Falle {
     }
 
     public void zeichne(Graphics g, int hoehe, int breite) {
-        this.breite = breite / 19;
+        this.breite = breite / 19;    
         this.hoehe = hoehe / 32;
         g.drawImage(grafik.getSpeerfalle(), (2 + xPos) * this.breite, (yPos + 2) * this.hoehe, (3 + xPos) * this.breite, (yPos + 3) * this.hoehe, 25 * animationsbild, 0, 25 * (animationsbild + 1), 21, null);
 
