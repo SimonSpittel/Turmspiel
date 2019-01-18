@@ -5,6 +5,8 @@
  */
 package projekt.ct;
 
+import java.awt.Color;
+
 /**
  *
  * @author Noah Hauke
@@ -16,6 +18,7 @@ public class Frame extends javax.swing.JFrame {
      */
     public Frame() {
         initComponents();
+        
     }
 
     /**
